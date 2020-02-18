@@ -1,0 +1,41 @@
+// Place all the styles related to the forms here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Company Sign Up Page // 
+
+.signup { 
+    .text {
+        font-size: 25px;
+        line-height: 33px;
+    }
+    img {
+        margin-left: -50px;
+    }
+}
+
+.form {
+    background: #ffffff;
+    padding: 40px;
+    margin-top: -50px;
+    position: relative;
+    -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+    -moz-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+    box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+}
+
+input  {
+    border: 1px solid #e1e1e1;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+input::placeholder {
+    color: #e1e1e1;
+}
+
+input:focus {
+    outline: none;
+    border-radius: 10px;
+}
