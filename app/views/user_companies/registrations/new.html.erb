@@ -1,13 +1,30 @@
-<h2>Sign up</h2>
 
+<div class="top-header">
+<h1>Grow Your Team</h1>
+<div class="h1-after">&nbsp;</div>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="col-sm-6"><%= image_tag('/standup-call.png') %></div>
+  <div class="col-sm-6">
+    Linkdr offers a full stack of free job posting, premium recruitment marketplace solution, strategic offshoring and millennial employer branding. <br><br>Find the top young professionals and graduates you need.
+  </div>
+</div>
+
+<div class="signup-form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+<div class="row">
+  <div class="col-sm-6">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  </div>
 
+  <div class="col-sm-6">
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -15,15 +32,23 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
+  </div>
 
+  <div class="col-sm-6">
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
   </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</div>
 
 <%= render "user_companies/shared/links" %>
+
+</div>
+
+</div>
