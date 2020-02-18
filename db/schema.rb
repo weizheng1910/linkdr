@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "offered_salary"
+    t.string "country"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "skills", force: :cascade do |t|
