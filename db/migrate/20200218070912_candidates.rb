@@ -6,6 +6,7 @@ class Candidates < ActiveRecord::Migration[5.2]
   		t.integer :years_of_experience
   		t.string :expected_salary
   		t.integer :candidate_id
+  		t.timestamps
   	end
   end
 end
