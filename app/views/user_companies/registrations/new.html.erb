@@ -6,19 +6,23 @@
 </div>
 
 <div class="container">
-<div class="row">
-  <div class="col-sm-6"><%= image_tag('/standup-call.png') %></div>
-  <div class="col-sm-6">
-    Linkdr offers a full stack of free job posting, premium recruitment marketplace solution, strategic offshoring and millennial employer branding. <br><br>Find the top young professionals and graduates you need.
+<div class="row signup">
+  <div class="col-sm-6 image"><%= image_tag('/standup-call.png') %></div>
+  <div class="col-sm-6 text pt-5">
+    <strong>Linkdr</strong> offers a full stack of free job posting, premium recruitment marketplace solution, strategic offshoring and millennial employer branding. <br><br>Find the top young professionals and graduates you need.
   </div>
 </div>
 
-<div class="signup-form">
+<div class="form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-12 text-center">
+    <h2>Create Your Employer Account</h2>
+    Reach candidates you can't find anywhere else
+  </div>
+  <div class="col-sm-12">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

@@ -37,6 +37,8 @@ $body-font-color: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
+$main-font: 'Apercu', Helvetica, sans-serif;
+
 @media (min-width: 1200px) {
   .container, 
   .container-lg, 
@@ -48,22 +50,24 @@ $secondary-color: #ff6161;
 }
 
 body {
-  background-color: $secondary-background-color;
+  background-color: $main-background-color;
   color: $body-font-color;
-  font-family: 'Apercu', arial, helvetica, sans-serif;
-  font-size: 18px;
-  line-height: 22px;
+  font-family: $main-font;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 1px;
 }
 
 p, ol, ul, td {
-  font-family: 'Apercu', arial, helvetica, sans-serif;
-  font-size: 18px;
-  line-height: 22px;
+  font-family: $main-font;
+  font-size: 20px;
+  line-height: 26px;
+}
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .top-header {
@@ -71,15 +75,20 @@ pre {
 }
 
 h1 {
-  font-size: 85px;
+  font-size: 125px;
   text-transform: uppercase;
   text-align: center;
+  font-weight: bold;
 }
 
 .h1-after {
   background: #fbd864;
   transform: rotate(-2deg);
   margin-top: -25px;
+}
+
+h2 {
+  text-align: center;
 }
 
 a {
@@ -158,4 +167,3 @@ label {
 .container {
   margin: 50px auto;
 }
-
