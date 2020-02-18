@@ -1,14 +1,47 @@
+@font-face {
+    font-family: 'Apercu';
+    src: url('../fonts/Apercu-BoldItalic.woff2') format('woff2'),
+        url('../fonts/Apercu-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('../fonts/Apercu-Italic.woff2') format('woff2'),
+        url('../fonts/Apercu-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('../fonts/Apercu-Regular.woff2') format('woff2'),
+        url('../fonts/Apercu-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('../fonts/Apercu-Bold.woff2') format('woff2'),
+        url('../fonts/Apercu-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
 body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: apercu, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: apercu, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
