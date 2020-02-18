@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.integer "years_of_experience"
     t.string "expected_salary"
     t.integer "candidate_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_candidate_id"
   end
 
@@ -50,12 +48,14 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "offered_salary"
+    t.string "country"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "user_candidates", force: :cascade do |t|

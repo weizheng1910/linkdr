@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :user_candidates, path: 'candidates', controllers: { sessions: 'user_candidates/sessions', registrations: 'user_candidates/registrations' }
+  resources :candidates
+  devise_for :user_candidates, path: 'candidate', controllers: { sessions: 'user_candidates/sessions', registrations: 'user_candidates/registrations' }
   devise_for :user_companies, path: 'companies', controllers: { sessions: 'user_companies/sessions', registrations: 'user_companies/registrations' }
   resources :jobs
 
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
   get "/companies/:id/edit" => "companies#edit"
   patch "/companies/:id" => "companies#update"
 
-  get "/candidates/createprofile" => "candidates#edit"
+  get "/candidate/createprofile" => "candidates#edit"
 end
