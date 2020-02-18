@@ -1,4 +1,5 @@
 module Accessible
+  # This concern means that someone cannot log in as a company AND as a candidate at the same time in the same session
   extend ActiveSupport::Concern
   included do
     before_action :check_user
@@ -6,13 +7,15 @@ module Accessible
 
   protected
   def check_user
+    p "aaaaa"
+    p current_user_company
+    p current_user_candidate
     if current_user_candidate
       flash.clear
-      redirect_to(authenticated_user_root_path) and return
+      redirect_to('/') and return
     elsif current_user_company
       flash.clear
-      # The authenticated root path can be defined in your routes.rb in: devise_scope :user do...
-      redirect_to(authenticated_user_root_path) and return
+      redirect_to('/') and return
     end
   end
 end
