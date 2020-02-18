@@ -1,3 +1,30 @@
-<h1>Candidates#sho</h1>
-<p>Find me in app/views/candidates/sho.html.erb</p>
+<h1>Candidate <%= @candidate.user_candidate_id %></h1>
+
+
+
+		
+	<p>
+  	<strong>Given Name:</strong>
+  	<%= @candidate.given_name %>
+	</p>
+
+	<p>
+  	<strong>Family Name:</strong>
+  	<%= @candidate.family_name %>
+	</p>
+
+	<p>
+  	<strong>Years of experience:</strong>
+  	<%= @candidate.years_of_experience %>
+	</p>
+
+	<p>
+  	<strong>Expected salary:</strong>
+  	<%= @candidate.expected_salary %>
+	</p>
+
+	<p>
+  	<strong>User Candidate ID:</strong>
+  	<%= @candidate.user_candidate_id %>
+	</p>
 
