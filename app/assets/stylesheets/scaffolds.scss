@@ -30,18 +30,24 @@
     font-style: normal;
 }
 
+$main-background-color: #f3f3f3;
+$secondary-background-color: #ffffff;
+
+$body-font-color: #262222;
+$primary-color: #4585a9;
+$secondary-color: #ff6161;
 
 body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: apercu, arial, helvetica, sans-serif;
+  font-family: 'Apercu', arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: apercu, arial, helvetica, sans-serif;
+  font-family: 'Apercu', arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
