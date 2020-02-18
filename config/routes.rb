@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get "/companies/:id" => "companies#show", as: "company"
   get "/companies/:id/edit" => "companies#edit"
   patch "/companies/:id" => "companies#update"
+
+  get "/candidates/createprofile" => "candidates#edit"
 end
