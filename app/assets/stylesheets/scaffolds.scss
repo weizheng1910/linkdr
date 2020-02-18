@@ -37,6 +37,16 @@ $body-font-color: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
+@media (min-width: 1200px) {
+  .container, 
+  .container-lg, 
+  .container-md, 
+  .container-sm, 
+  .container-xl {
+      max-width: 960px !important;
+  }
+}
+
 body {
   background-color: $secondary-background-color;
   color: $body-font-color;
@@ -49,29 +59,27 @@ p, ol, ul, td {
   font-family: 'Apercu', arial, helvetica, sans-serif;
   font-size: 18px;
   line-height: 22px;
-}
-
-h1 {
-  font-size: 80px;
-  text-transform: uppercase;
-}
-
-.h1-after {
-  background: #fbd864;
-  transform: rotate(-2deg);
-  height: 12px;
-  margin-top: -25px;
-}
-
-.top-header {
-  text-align: center;
-  width: 100%;
-}
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+}
+
+.top-header {
+  width: 100%;
+}
+
+h1 {
+  font-size: 85px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.h1-after {
+  background: #fbd864;
+  transform: rotate(-2deg);
+  margin-top: -25px;
 }
 
 a {
@@ -138,3 +146,16 @@ div {
 label {
   display: block;
 }
+
+.navbar {
+  margin-bottom: 30px;
+
+  img {
+    width: 120px;
+  }
+}
+
+.container {
+  margin: 50px auto;
+}
+
