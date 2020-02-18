@@ -1,5 +1,5 @@
 class UserCandidate < ApplicationRecord
-  belongs_to :candidate, optional: true
+  has_one :candidate
   after_create :init_candidate
 
   def init_candidate
