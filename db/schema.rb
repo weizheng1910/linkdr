@@ -10,23 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_02_18_071647) do
+ActiveRecord::Schema.define(version: 2020_02_18_090431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "industry"
-    t.string "size"
-    t.bigint "user_company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_company_id"], name: "index_companies_on_user_company_id"
-  end
-  
   create_table "candidates", force: :cascade do |t|
     t.string "given_name"
     t.string "family_name"
@@ -46,11 +34,25 @@ ActiveRecord::Schema.define(version: 2020_02_18_071647) do
     t.index ["skill_id"], name: "index_candidates_skills_on_skill_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "industry"
+    t.string "size"
+    t.bigint "user_company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_company_id"], name: "index_companies_on_user_company_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "offered_salary"
+    t.string "country"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "skills", force: :cascade do |t|
