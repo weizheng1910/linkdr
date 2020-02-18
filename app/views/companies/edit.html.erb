@@ -1,0 +1,20 @@
+<%= form_with scope: :company, model: @company, local: true do |form| %>
+  <p>
+    <%= form.label :company_name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :industry %><br>
+    <%= form.text_area :industry %>
+  </p>
+
+  <p>
+    <%= form.label :company_Size %><br>
+    <%= form.text_area :size %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
