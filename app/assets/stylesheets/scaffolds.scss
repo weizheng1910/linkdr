@@ -1,23 +1,23 @@
 @font-face {
     font-family: 'Apercu';
-    src: url('../fonts/Apercu-BoldItalic.woff2') format('woff2'),
-        url('../fonts/Apercu-BoldItalic.woff') format('woff');
+    src: url('/fonts/Apercu-BoldItalic.woff2') format('woff2'),
+        url('/fonts/Apercu-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Apercu';
-    src: url('../fonts/Apercu-Italic.woff2') format('woff2'),
-        url('../fonts/Apercu-Italic.woff') format('woff');
+    src: url('/fonts/Apercu-Italic.woff2') format('woff2'),
+        url('/fonts/Apercu-Italic.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Apercu';
-    src: url('../fonts/Apercu-Regular.woff2') format('woff2'),
-        url('../fonts/Apercu-Regular.woff') format('woff');
+    src: url('fonts/Apercu-Regular.woff2') format('woff2'),
+        url('/fonts/Apercu-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
