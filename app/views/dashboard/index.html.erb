@@ -7,13 +7,7 @@
 <div class="col-sm-6 text pt-5">
   <%= image_tag('/transparent-logo.png') %> <br><br>
 Linkdr is where the people hire <strong>software developers</strong>. Like in real life, but better. <br>
-<% if user_company_signed_in? %>
-  <%#redirect to dashboard%>
-<% elsif user_candidate_signed_in? %>
-  <%#redirect to dashboard%>
-<% else %>
   <div class="button-box submit">Join us today!</div>
-<% end %>
 </div>
 </div>
 
