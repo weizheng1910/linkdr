@@ -8,9 +8,9 @@
 
 Faker::UniqueGenerator.clear
 
-UserCandidate.create(email: "linkdr@linkdr.com", password: "password")
+# UserCandidate.create(email: "linkdr@linkdr.com", password: "password")
 # Fill in our first candidate info
-UserCompany.create(email: "linkdr@linkdr.com", password: "password")
+# UserCompany.create(email: "linkdr@linkdr.com", password: "password")
 # Fill in our first company info
 
 20.times do
