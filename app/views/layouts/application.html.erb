@@ -4,24 +4,24 @@
     <title>Linkdr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body class="<%= 'home' if @home %>">
-  <div class="container">
-    <% if @home %>
-      <nav class="navbar">
-      <% if user_candidate_signed_in? || user_company_signed_in? %>
-        they are signed in
-        <% elsif %>
+    <div class="container">
+      <% if @home %>
+        <nav class="navbar">
+          <% if user_candidate_signed_in? || user_company_signed_in? %>
+            they are signed in
+          <% elsif %>
             <%= link_to "/candidate/sign_in" do %>
               candidate log in
             <% end %>
-          <%= link_to "/company/sign_in" do %>
+            <%= link_to "/company/sign_in" do %>
               company log in
+<<<<<<< HEAD
             <% end %> 
       <% end %>
       </nav>
@@ -57,6 +57,64 @@
       </div>
     </div>  
   </footer>
+=======
+            <% end %>
+          <% end %>
+        </nav>
+      <% elsif %>
+        <nav class="navbar">
+          <%= link_to "/" do %>
+            <%= image_tag('/logo.png') %>
+            <% if request.path.start_with?("/companies") %>
+              <a href="/jobs/new">Post new job <i class="material-icons">
+                  add_circle_outline
+                </i></a>
+            <%end %>
+          <% end %>
+          <div class="text-right">
+            <% if request.path.start_with?('/companies') %>
+              <i class="material-icons header-icon">supervisor_account</i>
+              <em>companies</em>
+              <% if user_company_signed_in? %>
+                | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
+              <% end %>
+            <% elsif request.path.start_with?('/company') %>
+              <i class="material-icons header-icon">supervisor_account</i>
+              <em>companies</em>
+              <% if user_company_signed_in? %>
+                | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
+              <% end %>
+            <% elsif %>
+              <i class="material-icons header-icon">face</i>
+              <em>candidate</em>
+              <% if user_candidate_signed_in? %>
+                | <%= link_to 'log out', destroy_user_candidate_session_url, method: :delete %>
+              <% end %>
+            <% end %>
+          </div>
+        </nav>
+>>>>>>> fc5452a093a44db503f04f687da89e55cdf7cfa2
       <% end %>
+    </div>
+    <%= yield %>
+    <% if @home %>
+    <% elsif %>
+      <footer>
+        <div class="container">
+          <div class="row d-flex">
+            <div class="col-sm-4">
+              <h3>About</h3>
+              &copy; <strong>SBRWZ</strong> 2020.<br>
+              All Rights Reserved.</div>
+            <div class="col-sm-4">
+              <h3>Links</h3>
+              <%= link_to "/company/sign_in" do %>Company<% end %> | <%= link_to "/candidate/sign_in" do %>Candidate<% end %></div>
+            <div class="col-sm-4">
+              <h3>Contact</h3>
+              Please do not contact us.</div>
+          </div>
+        </div>
+      </footer>
+    <% end %>
   </body>
 </html>
