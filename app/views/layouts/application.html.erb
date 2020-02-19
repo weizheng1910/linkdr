@@ -37,6 +37,12 @@
               <% if user_company_signed_in? %>
                 | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
               <% end %>
+          <% elsif request.path.start_with?('/company') %>
+              <i class="material-icons header-icon">supervisor_account</i> 
+              <em>companies</em> 
+              <% if user_company_signed_in? %>
+                | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
+              <% end %>
           <% elsif %>
               <i class="material-icons header-icon">face</i>
               <em>candidate</em>
