@@ -12,7 +12,7 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
 <% elsif user_candidate_signed_in? %>
   <%#redirect to dashboard%>
 <% else %>
-  <div class="button submit">Join us today!</div>
+  <div class="button-box submit">Join us today!</div>
 <% end %>
 </div>
 </div>
@@ -21,6 +21,7 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
 
 
 <div class="overlay">
+  <i class="close-box material-icons">close</i>
   <div class="box">
     <div class="row">
       <div class="col-sm-6">
@@ -44,3 +45,17 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
 </div>
 
 <%# <p>if no cookies, show the sign up buttons / log in buttons otherwise, after sign in, will redirect to "/candidates/:id/dashboard" or "/companies/:id/dashboard"</p> %>
+
+<script>
+var button = document.querySelector('.button-box');
+var closeBox = document.querySelector('.close-box');
+var box = document.querySelector('.overlay');
+
+button.addEventListener('click', () => {
+  box.style.display = "block"
+})
+
+closeBox.addEventListener('click', () => {
+    box.style.display = "none"
+})
+</script>
