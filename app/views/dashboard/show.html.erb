@@ -1,15 +1,18 @@
-<% if @company %>
-  <p><%= @company.name %></p>
-  Jobs posted: <% @company.job.each do |job| %>
-    <a href="/jobs/<%= job.id %>">
-      <p><%= job.title %></p>
-    </a>
+<% if user_company_signed_in? %>
+  <% if @company %>
+    <p><%= @company.name %></p>
+    Jobs posted: <% @company.job.each do |job| %>
+      <a href="/jobs/<%= job.id %>">
+        <p><%= job.title %></p>
+      </a>
+    <% end %>
+  <% elsif !@company %>
+    <%= link_to "Add company details", "/companies/new" %>
   <% end %>
-<% elsif !@company %>
-  <%= link_to "Add company details", "/companies/new" %>
-<% end %>
-<% if @candidate %>
-  <%# show candidate stuff. don't know what's relevant yet %>
-  <a href="/candidate/<%@candidate.id%>>Edit Profile</a>
-  <%= @candidate.inspect %>
+<% elsif user_candidate_signed_in? %>
+  <% if @candidate %>
+    <%# show candidate stuff. don't know what's relevant yet %>
+    <a href="/candidate/<%@candidate.id%>>Edit Profile</a>
+    <%= @candidate.inspect %>
+  <% end %>
 <% end %>

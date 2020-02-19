@@ -13,16 +13,11 @@ Rails.application.routes.draw do
   get "/companies/:id/dashboard" => "dashboard#show"
   get "/candidates/:id/dashboard" => "dashboard#show"
 
-
   get "/candidate/createprofile" => "candidates#edit"
   get "/candidate/:id/edit" => "candidates#edit"
 
-  
-
-  get "/candidates/:id/matches" => "matches#candidatesmatch"
-  post "/candidates/:id/matches" => "matches#likejob"
-
+  get "/companies/:id/matches" => "matches#companiesmatch"
+  get "/candidate/:id/matches" => "matches#candidatesmatch"
 
   get "/companies/:id/jobs/:jobs_id/matches" => "matches#companiesmatch"
-
 end
