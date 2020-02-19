@@ -33,6 +33,14 @@ $button-color: #ffffff;
 }
 
 .candidate {
+    h2 {
+        font-weight: bold;
+
+        .highlight {
+            background: rgba(198,259,44,0.7);
+        }
+    }
+
     .suggested-jobs {
         margin: 40px auto;
     }

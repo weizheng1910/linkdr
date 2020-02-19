@@ -1,12 +1,14 @@
-<h1>Candidate <%= @candidate.user_candidate_id %></h1>
 
 <div class="container candidate">
+<h2>Hey, <span class="highlight"><%= @candidate.given_name %></span>! </h2>
+<br>
 <section class="candidate-info">
   <div class="row">
     <div class="col-sm-7 profile">
     <div class="row">
       <div class="col-6"><h3>Your Profile</h3></div>
-      <div class="col-6 text-right"><i class="material-icons">edit</i></div>
+      <div class="col-6 text-right">
+      <a href="/candidates/<%= @candidate.id %>/edit"><i class="material-icons">edit</i></a></div>
     </div>
       <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
       <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
