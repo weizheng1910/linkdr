@@ -8,11 +8,28 @@
 
 Faker::UniqueGenerator.clear
 
-# UserCandidate.create(email: "linkdr@linkdr.com", password: "password")
-# Fill in our first candidate info
-# UserCompany.create(email: "linkdr@linkdr.com", password: "password")
-# Fill in our first company info
 
-20.times do
-  Skill.create(name: Faker::ProgrammingLanguage.unique.name)
-end
+
+# Fill in our first company info
+Company.create()
+firstCompany = Company.first
+firstCompany.name = Faker::Company.name
+firstCompany.industry = Faker::Company.industry
+firstCompany.size = Faker::Company.bs
+firstCompany.user_company_id = 1
+firstCompany.save
+# Create our first job!
+Job.create(
+  title: Faker::Job.title,
+  description: Faker::Lorem.paragraph,
+  offered_salary: "$5000 pcm",
+  country: "Singapore",
+  company_id: 1,
+)
+firstJob = Job.first
+firstJob.skills << Skill.first
+firstJob.save
+
+# 1.time do
+#   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
+# end

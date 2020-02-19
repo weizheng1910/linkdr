@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
 
   get "/candidate/createprofile" => "candidates#edit"
+  get "/candidate/:id/edit" => "candidates#edit"
 end

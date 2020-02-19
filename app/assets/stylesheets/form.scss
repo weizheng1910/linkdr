@@ -48,6 +48,10 @@ input[type=submit] {
     color: $button-color;
 }
 
+input[type=submit]:hover {
+    background: $primary-color;
+}
+
 input::placeholder {
     color: #e1e1e1;
 }
@@ -57,9 +61,6 @@ input:focus {
     border-radius: 10px;
 }
 
-.field {
-    margin: 20px 0;
-}
 
 .field_with_errors {
     border-radius: 10px;

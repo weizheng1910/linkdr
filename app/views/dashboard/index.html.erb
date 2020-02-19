@@ -1,9 +1,46 @@
-<h2>Hi DO CONDITIONAL RENDERING </h2>
+<div class="container">
+<div class="row">
+<div class="col-sm-6 circle">
+<%= image_tag('/workers-circle.jpg') %>
+</div>
+
+<div class="col-sm-6 text pt-5">
+  <%= image_tag('/transparent-logo.png') %> <br><br>
+Linkdr is where the people hire <strong>software developers</strong>. Like in real life, but better. <br>
 <% if user_company_signed_in? %>
-  <p>show company stuff</p>
+  <%#redirect to dashboard%>
 <% elsif user_candidate_signed_in? %>
-  show candidate stuff
+  <%#redirect to dashboard%>
 <% else %>
-  SHOW SIGN UP OR LOGIN BUTTONS
+  <div class="button submit">Join us today!</div>
 <% end %>
+</div>
+</div>
+
+</div>
+
+
+<div class="overlay">
+  <div class="box">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2><i class="material-icons sm-48">supervisor_account</i> Company</h2>
+        <p>Hire Top Talents Fast and Cost-Efficiently</p>
+        <ul>
+          <li><i class="material-icons">check</i> Unlimited Jobs</li>
+          <li><i class="material-icons">check</i> Unlimited Posting Duration</li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <h2><i class="material-icons sm-48">face</i> Candidate</h2>
+        <p>Hire Top Talents Fast and Cost-Efficiently</p>
+        <ul>
+          <li><i class="material-icons">check</i> Unlimited Jobs</li>
+          <li><i class="material-icons">check</i> Unlimited Posting Duration</li>
+        </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
 <%# <p>if no cookies, show the sign up buttons / log in buttons otherwise, after sign in, will redirect to "/candidates/:id/dashboard" or "/companies/:id/dashboard"</p> %>

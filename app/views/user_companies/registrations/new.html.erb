@@ -1,5 +1,3 @@
-
-
 <div class="top-header">
 <h1>Grow Your Team</h1>
 <div class="h1-after">&nbsp;</div>
@@ -25,6 +23,7 @@
   <div class="col-sm-12">
      <%= render "devise/shared/error_messages", resource: resource %>
   </div>
+  
   <div class="col-sm-12">
   <div class="field">
     <%= f.email_field :email, placeholder: "Email Address", autofocus: true, autocomplete: "email" %>
@@ -43,9 +42,13 @@
   </div>
   </div>
 
-  <div class="col-sm-12 text-right">
-    <div class="actions"><br>
-      <%= f.submit "Sign up" %>
+  <div class="col-sm-12">
+    <div class="actions row">
+    <div class="col-sm-6 text-left"> <%= render "user_companies/shared/links" %>
+    </div>
+    <div class="col-sm-6 text-right">
+     <%= f.submit "Sign up" %>
+    </div>
     </div>
   </div>
 <% end %>

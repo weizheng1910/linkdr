@@ -1,28 +1,58 @@
+<div class="top-header">
+<h1>Start Seeking Jobs</h1>
+<div class="h1-after">&nbsp;</div>
+</div>
 
+<div class="container">
+<div class="row signup">
+  <div class="col-sm-6 image"><%= image_tag('/computer-flowers.png') %></div>
+  <div class="col-sm-6 text pt-5">
+    <strong>Linkdr</strong> offers a full stack of free job posting, premium recruitment marketplace solution, strategic offshoring and millennial employer branding. <br><br>Find the top young professionals and graduates you need.
+  </div>
+</div>
+
+<div class="form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h2>Let’s create your Linkdr account</h2>
+    Discover a career you'll love<br><br>
+  </div>
 
+ <div class="col-sm-12">
+     <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
+
+  <div class="col-sm-12">
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Email Address", autocomplete: "email" %>
+  </div>
   </div>
 
+  <div class="col-sm-6">
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password" %>
+  </div>
   </div>
 
+  <div class="col-sm-6">
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password" %>
+  </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="col-sm-12">
+    <div class="actions row">
+    <div class="col-sm-6 text-left"> <%= render "user_candidates/shared/links" %>
+    </div>
+    <div class="col-sm-6 text-right">
+     <%= f.submit "Sign up" %>
+    </div>
+    </div>
   </div>
+
 <% end %>
+</div>
 
-<%= render "user_candidates/shared/links" %>
+
+</div>
