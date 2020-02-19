@@ -1,5 +1,9 @@
-<% if user_company_signed_in? %>
-  this is <%= current_user_company.email %>
-<% elsif user_candidate_signed_in? %>
-  this is <%= current_user_candidate.email %>
-<% end %>dashboard
+<% if @company %>
+  <p><%= @company.name %></p>
+  Jobs posted: <% @company.job.each do |job| %>
+    <a href="/jobs/<%= job.id %>"><p><%= job.title %></p></a>
+  <% end %>
+<% elsif @candidate %>
+  <%# show candidate stuff. don't know what's relevant yet %>
+  <%= @candidate.inspect %>
+<% end %>
