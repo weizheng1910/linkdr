@@ -53,9 +53,14 @@ class UserCandidates::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  
+
+    def after_sign_in_path_for(resource)
+      @candidate = Candidate.last
+    puts @candidate.id
+    '/candidates/' + @candidate.id.to_s + '/edit'   
+    end
+  
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

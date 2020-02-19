@@ -1,0 +1,92 @@
+// Place all the styles related to the forms here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Company Sign Up Page // 
+
+$body-font-color: #262222;
+$primary-color: #4585a9;
+$secondary-color: #ff6161;
+
+$button-color: #ffffff;
+
+.signup { 
+    .text {
+        font-size: 25px;
+        line-height: 33px;
+    }
+    img {
+        margin-left: -50px;
+    }
+}
+
+.form {
+    background: #ffffff;
+    padding: 40px;
+    margin-top: -50px;
+    position: relative;
+    -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+    -moz-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+    box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+}
+
+input[type=text],
+input[type=email],
+input[type=password]  {
+    border: 1px solid #e1e1e1;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+input[type=submit] {
+    background: $secondary-color;
+    min-width: 150px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 10px;
+    color: $button-color;
+}
+
+input::placeholder {
+    color: #e1e1e1;
+}
+
+input:focus {
+    outline: none;
+    border-radius: 10px;
+}
+
+.field {
+    margin: 20px 0;
+}
+
+.field_with_errors {
+    border-radius: 10px;
+    border: 1px solid $secondary-color;
+
+    input {
+        border: 0;
+    }
+  }
+  
+  #error_explanation {
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+  
+    h2 {
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 15px;
+      font-size: 18px;
+    }
+  
+    ul li {
+      font-size: 16px;
+      list-style: square;
+    }
+  }
+  
+  label {
+    display: block;
+  }

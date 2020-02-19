@@ -7,12 +7,9 @@ module Accessible
 
   protected
   def check_user
-    p "aaaaa"
-    p current_user_company
-    p current_user_candidate
     if current_user_candidate
       flash.clear
-      redirect_to('/') and return
+      redirect_to('/candidates/' + current_user_candidate.id.to_s + '/edit') and return
     elsif current_user_company
       flash.clear
       redirect_to('/') and return

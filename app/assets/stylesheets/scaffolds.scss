@@ -1,33 +1,33 @@
 @font-face {
-    font-family: 'Apercu';
-    src: url('../fonts/Apercu-BoldItalic.woff2') format('woff2'),
-        url('../fonts/Apercu-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-BoldItalic.woff2') format('woff2'),
+      url('/fonts/Apercu-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Apercu';
-    src: url('../fonts/Apercu-Italic.woff2') format('woff2'),
-        url('../fonts/Apercu-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Italic.woff2') format('woff2'),
+      url('/fonts/Apercu-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Apercu';
-    src: url('../fonts/Apercu-Regular.woff2') format('woff2'),
-        url('../fonts/Apercu-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Regular.woff2') format('woff2'),
+      url('/fonts/Apercu-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Apercu';
-    src: url('../fonts/Apercu-Bold.woff2') format('woff2'),
-        url('../fonts/Apercu-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Bold.woff2') format('woff2'),
+      url('/fonts/Apercu-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 $main-background-color: #f3f3f3;
@@ -37,37 +37,71 @@ $body-font-color: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
+$main-font: 'Apercu', Helvetica, sans-serif;
+
+@media (min-width: 1200px) {
+  .container, 
+  .container-lg, 
+  .container-md, 
+  .container-sm, 
+  .container-xl {
+      max-width: 960px !important;
+  }
+}
+
 body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px;
-  font-family: 'Apercu', arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  background-color: $main-background-color;
+  color: $body-font-color;
+  font-family: $main-font;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 1px;
 }
 
 p, ol, ul, td {
-  font-family: 'Apercu', arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: $main-font;
+  font-size: 20px;
+  line-height: 26px;
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+  font-size: 16px;
+}
+
+.top-header {
+  width: 100%;
+}
+
+h1 {
+  font-size: 125px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+
+.h1-after {
+  background: #fbd864;
+  transform: rotate(-2deg);
+  margin-top: -25px;
+}
+
+h2 {
+  text-align: center;
 }
 
 a {
-  color: #000;
+  color: $primary-color;
+  text-decoration: none;
 
   &:visited {
-    color: #666;
+    color: $primary-color;
   }
 
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: $primary-color;
   }
 }
 
@@ -89,35 +123,15 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+.navbar {
+  margin-bottom: 30px;
 
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px -7px 0;
-    background-color: #c00;
-    color: #fff;
-  }
-
-  ul li {
-    font-size: 12px;
-    list-style: square;
+  img {
+    width: 120px;
   }
 }
 
-label {
-  display: block;
+.container {
+  margin: 50px auto;
 }
