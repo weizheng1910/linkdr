@@ -30,8 +30,10 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.update(company_params)
+    @company = Company.find(params[:id])
+    @company.update(company_params)
     redirect_to @company
+    # redirect_to '/companies/' + params[:id]
   end
 
   def destroy
