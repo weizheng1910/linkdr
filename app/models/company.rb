@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  belongs_to :user_company, optional: true
+  belongs_to :user_company
   has_many :job
 
   # Include default devise modules. Others available are:

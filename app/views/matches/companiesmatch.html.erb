@@ -8,13 +8,7 @@
 <h5>Expected Salary</h5>
 <p><%= @match.candidate.expected_salary %></p>
 <h5>Skills to pay the bills</h5>
-<% @match.candidate.skills.each do |skill| %>
-  <% if @match.job.skills.include? skill %>
-    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
-  <% else %>
-    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
-  <% end %>
-<% end %>
+<%= render "skills/skills_pills" %>
 <hr/>
 <h5>DO YOU LIKE IT:</h5>
 <p>Yay</p><p>Boo</p>
