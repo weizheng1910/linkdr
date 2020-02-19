@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'matches/matches'
   resources :candidates
   devise_for :user_candidates, path: 'candidate', controllers: { sessions: 'user_candidates/sessions', registrations: 'user_candidates/registrations' }
   devise_for :user_companies, path: 'companies', controllers: { sessions: 'user_companies/sessions', registrations: 'user_companies/registrations' }
