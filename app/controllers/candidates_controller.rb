@@ -3,6 +3,7 @@ class CandidatesController < ApplicationController
   end
 
   def new
+    @skills = Skill.all
   end
 
   def show
@@ -11,6 +12,7 @@ class CandidatesController < ApplicationController
 
   def edit
     @candidate = Candidate.find(params[:id])
+    @skills = Skill.all
   end
 
   def create

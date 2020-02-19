@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [ :edit, :update, :destroy]
   before_action :authenticate_user_company!, :except => [ :show ]
 
   # GET /jobs
@@ -11,13 +11,15 @@ class JobsController < ApplicationController
 
   # GET /jobs/1
   # GET /jobs/1.json
+  # Anyone can see a job, hence it skips the validation in :set_job
   def show
+    @job = Job.find(params[:id])
   end
 
   # GET /jobs/new
   def new
     if current_user_candidate
-      redirect_to "/"
+      redirect_to root
     end
     @job = Job.new
     @company = current_user_company.company
@@ -27,6 +29,7 @@ class JobsController < ApplicationController
   # GET /jobs/1/edit
   def edit
     @skills = Skill.all
+    @company = current_user_company.company
   end
 
   # POST /jobs
@@ -72,11 +75,22 @@ class JobsController < ApplicationController
 
   private
 
+    # Set the job, also check that the user is allowed to see/edit the job.
+    # Candidates should be able to see any job.
     def set_job
+      company = current_user_company.company
       @job = Job.find(params[:id])
+      if @job.company == company
+        return
+      else
+        @job = nil
+        redirect_to '/'
+        return false
+      end
     end
+
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:title, :description, :company_id, :skill_ids => [])
+      params.require(:job).permit(:title, :description, :offered_salary, :country, :company_id, :skill_ids => [])
     end
 end

@@ -11,6 +11,16 @@
 </p>
 
 <p>
+  <strong>Salary Offered:</strong>
+  <%= @job.offered_salary %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @job.country %>
+</p>
+
+<p>
   <strong>Skills Requested:</strong>
   <% @job.skills.each do |skill| %>
     <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
