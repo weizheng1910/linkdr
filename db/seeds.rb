@@ -8,11 +8,17 @@
 
 Faker::UniqueGenerator.clear
 
-UserCandidate.create(email: "linkdr@linkdr.com", password: "password")
+# create our first Candidate and our first candidate
+UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
+firstCandidate = Candidate.first
 # Fill in our first candidate info
-UserCompany.create(email: "linkdr@linkdr.com", password: "password")
+UserCompany.create(email: "linkdrcom@linkdr.com", password: "password")
+firstCompany = Company.first
 # Fill in our first company info
 
-20.times do
+# Have one skill
+Skill.create(name: Faker::ProgrammingLanguage.unique.name)
+
+1.time do
   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
 end
