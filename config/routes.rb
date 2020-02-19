@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'matches/matches'
   resources :candidates
   resources :companies
   devise_for :user_candidates, path: 'candidate', controllers: { sessions: 'user_candidates/sessions', registrations: 'user_candidates/registrations' }
@@ -15,4 +16,7 @@ Rails.application.routes.draw do
 
   get "/candidate/createprofile" => "candidates#edit"
   get "/candidate/:id/edit" => "candidates#edit"
+
+  get "/companies/:id/matches" => "matches#companiesmatch"
+  get "/candidate/:id/matches" => "matches#candidatesmatch"
 end
