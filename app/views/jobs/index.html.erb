@@ -7,6 +7,8 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Offered Salary</th>
+      <th>Country</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= job.title %></td>
         <td><%= job.description %></td>
+        <td><%= job.offered_salary %></td>
+        <td><%= job.country %></td>
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
