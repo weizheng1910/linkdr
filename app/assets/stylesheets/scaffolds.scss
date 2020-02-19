@@ -38,6 +38,7 @@ $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
 $main-font: 'Apercu', Helvetica, sans-serif;
+$footer-font: #555555;
 
 @media (min-width: 1200px) {
   .container, 
@@ -145,11 +146,30 @@ div {
 
 footer {
   font-size: 16px;
-  color: #788888;
+  color: $footer-font;
+  margin-top: 50px;
+
+  .container {
+    margin: 20px auto 50px;
+  }
+
+  h3 {
+    color: $body-font-color;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
   .text {
-    padding-top: 15px;
-    margin-top: 15px;
-    border-top: 1px solid #788888;
+    padding-top: 20px;
+    margin-top: 20px;
+    // border-top: 1px solid $footer-font;
   }
+}
+
+footer:before {
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  content: "〰️";
+  display: block;
 }
