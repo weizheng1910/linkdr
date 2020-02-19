@@ -1,12 +1,14 @@
-<h1>Candidate <%= @candidate.user_candidate_id %></h1>
 
 <div class="container candidate">
+<h2>Hey, <span class="highlight"><%= @candidate.given_name %></span>! </h2>
+<br>
 <section class="candidate-info">
   <div class="row">
     <div class="col-sm-7 profile">
     <div class="row">
       <div class="col-6"><h3>Your Profile</h3></div>
-      <div class="col-6 text-right"><i class="material-icons">edit</i></div>
+      <div class="col-6 text-right">
+      <a href="/candidates/<%= @candidate.id %>/edit"><i class="material-icons">edit</i></a></div>
     </div>
       <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
       <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
@@ -18,13 +20,25 @@
         <a href=<%= @candidate.resume_url %>> Link</a>
       <% end %>
     </div>
-    <div class="offset-sm-1 col-sm-4 stats">
-      Some stats
+    <div class="offset-sm-1 col-sm-4 stats pt-5">
+      Your profile has been viewed <strong>68</strong> times.
+      <br><br>
+      You expressed interest in <strong>5</strong> jobs.
     </div>
   </div>
 </section>
 
 <section class="suggested-jobs">
   Hey lookie here! Just thought you would be interested in these jobs:
+  <div class="board">
+    <div class="listing">
+    <div class="row">
+      <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
+      <div class="col-11"><div class="position-title"> Senior Software Engineer (Backend)</div></div>
+    </div>
+      <span class="position-salary">$2500 - $5000</span> | <span class="location">CBD</span><br>
+      Skills pills here
+    </div>
+  </div>
 </section>
 </div>

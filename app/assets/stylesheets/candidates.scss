@@ -8,6 +8,8 @@ $secondary-color: #ff6161;
 
 $button-color: #ffffff;
 
+$light-pink: rgb(252,232,227);
+
 .candidate-info {
     .profile {
         background: $button-color;
@@ -18,7 +20,7 @@ $button-color: #ffffff;
         line-height: 40px;
 
         h3 {
-            background: rgb(252,232,227 ); 
+            background: rgb(252,232,227); 
             font-weight: bold;
             font-style: italic;
         }
@@ -26,14 +28,45 @@ $button-color: #ffffff;
     
     .stats {
         padding: 20px;
-        -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
-        -moz-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
-        box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
     }
 }
 
 .candidate {
+    h2 {
+        font-weight: bold;
+
+        .highlight {
+            background: rgba(198,259,44,0.7);
+        }
+    }
+
     .suggested-jobs {
         margin: 40px auto;
+        
+        .board {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+
+            .listing {
+                flex: 0 50%;
+                background: #e8e8e8;
+                padding: 20px;
+
+                &:hover {
+                    background: $light-pink;
+                    // transform: translateY(5px);
+                }
+
+                .position-title {
+                    font-weight: bold;
+                }
+
+                .position-salary,
+                .location {
+                    font-style: italic;
+                }
+            }
+        }
     }
 }
