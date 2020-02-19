@@ -22,12 +22,14 @@ firstCandidate.save
 
 # Create our first company
 UserCompany.create(email: "linkdrcom@linkdr.com", password: "password")
-# Automatically generates a blank first company profile. Fill it in.
+# TODO: Automatically generates a blank first company profile. Fill it in.
 # Fill in our first company info
+Company.create()
 firstCompany = Company.first
 firstCompany.name = Faker::Company.name
 firstCompany.industry = Faker::Company.industry
 firstCompany.size = Faker::Company.bs
+firstCompany.user_company_id = 1
 # Create our first job!
 Job.create(
   title: Faker::Job.title,
@@ -39,6 +41,6 @@ firstJob = Job.first
 firstJob.skills << Skill.first
 firstJob.save
 
-1.time do
-  Skill.create(name: Faker::ProgrammingLanguage.unique.name)
-end
+# 1.time do
+#   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
+# end
