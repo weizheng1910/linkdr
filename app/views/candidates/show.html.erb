@@ -1,6 +1,6 @@
 <h1>Candidate <%= @candidate.user_candidate_id %></h1>
 
-<div class="container">
+<div class="container candidate">
 <section class="candidate-info">
   <div class="row">
     <div class="col-sm-7 profile">
@@ -14,11 +14,15 @@
       <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
       <strong>User Candidate ID:</strong> <%= @candidate.user_candidate_id %> <br>
       <strong>Resume</strong>
-      <a href=<%= @candidate.resume_url %>>Link</a>
+      <a href=<%= @candidate.resume_url %>> Link</a>
     </div>
     <div class="offset-sm-1 col-sm-4 stats">
       Some stats
     </div>
   </div>
+</section>
+
+<section class="suggested-jobs">
+  Hey lookie here! Just thought you would be interested in these jobs:
 </section>
 </div>
