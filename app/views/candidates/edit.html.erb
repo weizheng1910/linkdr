@@ -27,6 +27,10 @@
     <%= form.file_field :resume %>
   </p>
   <p>
+    <%= form.label :skill_ids %>
+    <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
+  </p>
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
