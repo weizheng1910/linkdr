@@ -13,6 +13,7 @@ class DashboardController < ApplicationController
   def show
     if user_company_signed_in?
       if current_user_company.company
+        puts current_user_company.company
         @company = Company.find(params[:id])
         puts @company.job
       else
