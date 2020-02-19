@@ -13,11 +13,20 @@
   <body class="<%= 'home' if @home %>">
   <div class="container">
     <% if @home %>
+      <nav class="navbar">
+          <% if !user_company_signed_in? || !user_candidate_signed_in? %>
+              login form url
+          <% elsif %>
+              xx
+          <% end %>
+      </nav>
     <% elsif %>
     <nav class="navbar">
-        <%= image_tag('/logo.png') %>
+        <%= link_to "/" do %>
+         <%= image_tag('/logo.png') %>
+        <% end %>
         <div class="text-right">
-          <% if request.path.start_with?('/companies') %>
+          <% if request.path.start_with?('/company') %>
               <i class="material-icons header-icon">supervisor_account</i> 
               <em>companies</em>
           <% elsif %>

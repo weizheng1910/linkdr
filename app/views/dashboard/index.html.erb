@@ -21,7 +21,7 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
 
 
 <div class="overlay">
-  <div class="box">
+  <div class="signup-box box">
   <div class="text-right">
     <i class="close-box material-icons">close</i>
   </div>
@@ -34,7 +34,9 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
           <li><i class="material-icons">check</i> Unlimited Jobs</li>
           <li><i class="material-icons">check</i> Unlimited Posting Duration</li>
         </ul>
-      <div class="button-hire submit">Start Hiring</div>
+        <%= link_to "/company/sign_up" do %>
+          <div class="button-hire submit">Start Hiring</div>
+        <% end %>
       </div>
       <div class="col-sm-6 text-center">
       <i class="material-icons header-icon">face</i>
@@ -44,7 +46,9 @@ Linkdr is where the people hire <strong>software developers</strong>. Like in re
           <li><i class="material-icons">check</i> Unlimited Jobs</li>
           <li><i class="material-icons">check</i> Unlimited Posting Duration</li>
         </ul>
-      <div class="button-seek submit">Start Seeking</div>
+        <%= link_to "/candidate/sign_up" do %>
+          <div class="button-hire submit">Start Seeking</div>
+        <% end %>
         </div>
     </div>
   </div>
