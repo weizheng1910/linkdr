@@ -10,6 +10,8 @@ class MatchesController < ApplicationController
           job_like: nil
         )
         render plain: "companies match here"
+      end
+    end
   end
 
   def candidatesmatch
