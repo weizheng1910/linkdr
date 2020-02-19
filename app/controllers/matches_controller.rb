@@ -6,8 +6,12 @@ class MatchesController < ApplicationController
   def candidatesmatch
     if current_user_candidate
       populate_matches_for_candidate ( current_user_candidate )
+      @match = Match.find_by(
+        candidate: current_user_candidate.candidate,
+        candidate_like: nil,
+        job_like: nil,
+      )
     end
-    render plain: "candidates match here"
   end
 
 private
