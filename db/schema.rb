@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_091640) do
+ActiveRecord::Schema.define(version: 2020_02_19_025327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.integer "years_of_experience"
     t.string "expected_salary"
     t.integer "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_candidate_id"
   end
 
@@ -54,8 +56,30 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
+  create_table "jobs_skills", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_jobs_skills_on_job_id"
+    t.index ["skill_id"], name: "index_jobs_skills_on_skill_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "candidate_id"
+    t.boolean "job_like"
+    t.boolean "candidate_like"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_matches_on_candidate_id"
+    t.index ["job_id"], name: "index_matches_on_job_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_candidates", force: :cascade do |t|
@@ -82,4 +106,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_091640) do
     t.index ["reset_password_token"], name: "index_user_companies_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "matches", "candidates"
+  add_foreign_key "matches", "jobs"
 end

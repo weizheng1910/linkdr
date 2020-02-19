@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: 
+  candidate: 
+  job_like: false
+  candidate_like: false
+
+two:
+  job: 
+  candidate: 
+  job_like: false
+  candidate_like: false
