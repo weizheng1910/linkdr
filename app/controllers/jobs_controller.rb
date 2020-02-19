@@ -6,7 +6,6 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     company_id = current_user_company.id
-    byebug
     @jobs = Job.where(company_id: company_id)
   end
 

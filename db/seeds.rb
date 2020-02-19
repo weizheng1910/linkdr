@@ -25,7 +25,6 @@ firstCandidate.skills << Skill.first
 firstCandidate.save
 # Fill in our first company info
 UserCompany.create(email: "linkdrcom@linkdr.com", password: "password")
-Company.create()
 firstCompany = Company.first
 firstCompany.name = Faker::Company.name
 firstCompany.industry = Faker::Company.industry
