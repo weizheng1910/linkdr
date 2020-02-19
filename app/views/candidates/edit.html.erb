@@ -1,32 +1,55 @@
-<h1>Candidates#edit</h1>
-<p>Find me in app/views/candidates/edit.html.erb</p>
-<h1>Edit candidate</h1>
+
+<div class="container candidate">
+<h2>Edit your profile</h2>
+<br>
+
+<div class="form">
 <%= form_with scope: :candidate, model: @candidate, local: true do |form| %>
-  <p>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="field">
     <%= form.label :given_name %><br>
     <%= form.text_field :given_name %>
-  </p>
-  <p>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="field">
     <%= form.label :family_name %><br>
-    <%= form.text_area :family_name %>
-  </p>
-  <p>
+    <%= form.text_field :family_name %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="field">
     <%= form.label :years_of_experience %><br>
-    <%= form.text_area :years_of_experience %>
-  </p>
-  <p>
+    <%= form.text_field :years_of_experience %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="field">
     <%= form.label :expected_salary %><br>
-    <%= form.text_area :expected_salary %>
-  </p>
-  <p>
-    <%= form.label :user_candidate_id %><br>
-    <%= form.text_area :user_candidate_id %>
-  </p>
-  <p>
+    <%= form.text_field :expected_salary %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="field">
     <%= form.label :resume %>
     <%= form.file_field :resume %>
-  </p>
-  <p>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <%= form.hidden_field :user_candidate_id %>
+  </div>
+
+<div class="col-sm-12">
+    <div class="actions row">
+  <div class="col-sm-6">
+      <%= link_to 'Back', url_for(:back) %>
+  </div>
+  <div class="col-sm-6 text-right">
     <%= form.submit %>
-  </p>
+  </div>
+  </div>
+  </div></div>
 <% end %>
+</div>
+</div>
