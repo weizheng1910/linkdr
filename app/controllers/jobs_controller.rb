@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     company_id = current_user_company.id
+    byebug
     @jobs = Job.where(company_id: company_id)
   end
 
@@ -20,6 +21,7 @@ class JobsController < ApplicationController
       redirect_to "/"
     end
     @job = Job.new
+    @company = current_user_company.company
     @skills = Skill.all
   end
 
@@ -76,6 +78,6 @@ class JobsController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:title, :description, :skill_ids => [])
+      params.require(:job).permit(:title, :description, :company_id, :skill_ids => [])
     end
 end

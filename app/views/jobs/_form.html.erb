@@ -26,6 +26,8 @@
     <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
   </div>
 
+    <%= form.hidden_field :company_id, :value => @company.id %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
