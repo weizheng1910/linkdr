@@ -12,7 +12,6 @@
 <% elsif user_candidate_signed_in? %>
   <% if @candidate %>
     <%# show candidate stuff. don't know what's relevant yet %>
-    <a href="/candidate/<%@candidate.id%>>Edit Profile</a>
-    <%= @candidate.inspect %>
+    <a href="/candidate/<%@candidate.id%>">Edit Profile</a>
   <% end %>
 <% end %>
