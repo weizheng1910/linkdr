@@ -11,6 +11,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1
   # GET /jobs/1.json
+  # Anyone can see a job, hence it skips the validation in :set_job
   def show
     @job = Job.find(params[:id])
   end
