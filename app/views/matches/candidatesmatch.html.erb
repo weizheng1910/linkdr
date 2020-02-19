@@ -18,22 +18,22 @@
 			<td><%= m.job.offered_salary %></td>
 			<td><%= m.job.country %></td>
 			<td>
-				<% if m.candidate_like == nil %>	
-					<%= form_for :candidate_like do |f| %>	
+				<% if m.candidate_like == nil %>
+					<%= form_for :candidate_like do |f| %>
 						<p>
 						<%= f.hidden_field :match_id, :value => m.id %>
 						</p>
   					<%= f.submit "Please RSVP" %>
 					<% end %>
 				<% elsif m.candidate_like == true %>
-					<%= form_for :candidate_like do |f| %>	
+					<%= form_for :candidate_like do |f| %>
 						<p>
 						<%= f.hidden_field :match_id, :value => m.id %>
 						</p>
   					<%= f.submit "Unlike" %>
 					<% end %>
 				<% else%>
-					<%= form_for :candidate_like do |f| %>	
+					<%= form_for :candidate_like do |f| %>
 						<p>
 						<%= f.hidden_field :match_id, :value => m.id %>
 						</p>
@@ -41,10 +41,10 @@
 					<% end %>
 				<% end %>
 
-				
+
 			</td>
 		<tr>
 	<% end %>
 </table>
 
-<%= button_to 'Edit profile', '/candidates/' + @match[0].candidate_id.to_s + '/edit', :method => "get" %>
+<%= button_to 'Edit profile', edit_candidate_path(@candidate), :method => "get" %>

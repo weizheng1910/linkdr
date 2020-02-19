@@ -16,20 +16,21 @@ class MatchesController < ApplicationController
   def candidatesmatch
     if current_user_candidate
       populate_matches_for_candidate ( current_user_candidate )
+      @candidate = current_user_candidate.candidate
       @match = Match.where(
-        candidate: current_user_candidate.candidate,
+        candidate: @candidate,
         job_like: nil,
       )
     end
   end
 
-  def likejob 
+  def likejob
 
     this_match = Match.find(params[:candidate_like][:match_id])
 
     if this_match.candidate_like == false || this_match.candidate_like == nil
       this_match.update_attributes(:candidate_like => true)
-    else 
+    else
       this_match.update_attributes(:candidate_like => false)
     end
 

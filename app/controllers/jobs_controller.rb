@@ -19,7 +19,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     if current_user_candidate
-      redirect_to "/"
+      redirect_to root
     end
     @job = Job.new
     @company = current_user_company.company
@@ -75,9 +75,8 @@ class JobsController < ApplicationController
 
   private
 
-    # Set the job, also check that the user is allowed to see the job.
-    # Companies can only see jobs posted by their own company.
-    # Candidates should be able to see any job?
+    # Set the job, also check that the user is allowed to see/edit the job.
+    # Candidates should be able to see any job.
     def set_job
       company = current_user_company.company
       @job = Job.find(params[:id])
