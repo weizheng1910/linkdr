@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :offered_salary %>
+    <%= form.text_field :offered_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
   </div>
