@@ -1,11 +1,20 @@
 <h3>Potential Candidate</h3>
 <h5>Candidate Name</h5>
 <p><%= @match.candidate.given_name %> <%= @match.candidate.family_name %></p>
-<h5>JOB DESCRIPTION:</h5>
-<p><%= @match.job.description %></p>
-<h5>Offered Salary</h5>
-<p><%= @match.job.offered_salary %></p>
-<h5>Country</h5>
-<p><%= @match.job.country %></p>
+<h5>Candidate Bio</h5>
+<p><%= @match.candidate.bio %></p>
+<h5>Years Of Experience</h5>
+<p><%= @match.candidate.years_of_experience %></p>
+<h5>Expected Salary</h5>
+<p><%= @match.candidate.expected_salary %></p>
+<h5>Skills to pay the bills</h5>
+<% @match.candidate.skills.each do |skill| %>
+  <% if @match.job.skills.include? skill %>
+    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
+  <% else %>
+    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+  <% end %>
+<% end %>
+<hr/>
 <h5>DO YOU LIKE IT:</h5>
 <p>Yay</p><p>Boo</p>

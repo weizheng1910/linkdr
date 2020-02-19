@@ -3,13 +3,12 @@ class MatchesController < ApplicationController
     if current_user_company
       job_id = params[:jobs_id]
       if job_id
-        @job = Job.find_by( job_id: job_id )
+        @job = Job.find_by( id: job_id )
         populate_matches_for_company ( @job )
         @match = Match.find_by(
           job: @job,
           job_like: nil
         )
-        render plain: "companies match here"
       end
     end
   end
@@ -46,15 +45,16 @@ private
   def populate_matches_for_company ( job )
     @candidates = Candidate.all
     @candidates.each_with_index do |candidate, index|
+      match = true
       job.skills.each do |skill|
-        if candidate.candidate.skills.include? skill
+        if candidate.skills.include? skill
           next
         else
           match = false
         end
       end
       if match == true
-        Match.create(candidate: candidate.candidate, job: job)
+        Match.create(candidate: candidate, job: job)
       end
     end
   end
