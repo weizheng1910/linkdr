@@ -1,12 +1,50 @@
-<h3>Matches#candidatesmatch</h3>
-<p>Find me in app/views/matches/candidatesmatch.html.erb</p>
-<h5>JOB TITLE:</h5>
-<p><%= @match.job.title %></p>
-<h5>JOB DESCRIPTION:</h5>
-<p><%= @match.job.description %></p>
-<h5>Offered Salary</h5>
-<p><%= @match.job.offered_salary %></p>
-<h5>Country</h5>
-<p><%= @match.job.country %></p>
-<h5>DO YOU LIKE IT:</h5>
-<p>Yay</p><p>Boo</p>
+
+
+<h4>List of job which matches your skillsets</h4>
+
+<table>
+	<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Offered Salary</th>
+    <th>Country</th>
+    <th>Like Button</th>
+  </tr>
+
+	<% @match.each do |m|%>
+		<tr>
+			<td><%= m.job.title%></td>
+			<td><%= m.job.description%></td>
+			<td><%= m.job.offered_salary %></td>
+			<td><%= m.job.country %></td>
+			<td>
+				<% if m.candidate_like == nil %>	
+					<%= form_for :candidate_like do |f| %>	
+						<p>
+						<%= f.hidden_field :match_id, :value => m.id %>
+						</p>
+  					<%= f.submit "Please RSVP" %>
+					<% end %>
+				<% elsif m.candidate_like == true %>
+					<%= form_for :candidate_like do |f| %>	
+						<p>
+						<%= f.hidden_field :match_id, :value => m.id %>
+						</p>
+  					<%= f.submit "Unlike" %>
+					<% end %>
+				<% else%>
+					<%= form_for :candidate_like do |f| %>	
+						<p>
+						<%= f.hidden_field :match_id, :value => m.id %>
+						</p>
+					<%= f.submit "Like" %>
+					<% end %>
+				<% end %>
+
+				
+			</td>
+		<tr>
+	<% end %>
+</table>
+
+<%= button_to 'Edit profile', '/candidates/' + @match[0].candidate_id.to_s + '/edit', :method => "get" %>
