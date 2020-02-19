@@ -92,11 +92,12 @@ h2 {
 }
 
 a {
-  color: $primary-color;
-  text-decoration: none;
+  color: $body-font-color;
+  text-decoration: underline;
+  cursor: pointer;
 
   &:visited {
-    color: $primary-color;
+    color: $body-font-color;
   }
 
   &:hover {
@@ -115,7 +116,7 @@ td {
 
 div {
   &.field, &.actions {
-    margin-bottom: 10px;
+    margin: 20px 0 0;
   }
 }
 
@@ -126,6 +127,7 @@ div {
 
 .navbar {
   margin-bottom: 30px;
+  padding: 0;
 
   img {
     width: 120px;
