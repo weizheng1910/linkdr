@@ -17,6 +17,8 @@ UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
 firstCandidate = Candidate.first
 firstCandidate.given_name = Faker::Name.first_name,
 firstCandidate.family_name = Faker::Name.last_name,
+firstCandidate.years_of_experience = Faker::Number.number(digits: 1)
+firstCandidate.expected_salary = Faker::Number.number(digits: 4).to_s
 firstCandidate.skills << Skill.first
 firstCandidate.save
 
