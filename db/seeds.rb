@@ -16,7 +16,7 @@ UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
 # Automatically generates a blank first candidate profile. Fill it in.
 firstCandidate = Candidate.first
 firstCandidate.given_name = Faker::Name.first_name,
-firstCandidate.family_name = Faker::Name.last_name,
+                            firstCandidate.family_name = Faker::Name.last_name,
 firstCandidate.years_of_experience = Faker::Number.number(digits: 1)
 firstCandidate.expected_salary = Faker::Number.number(digits: 4).to_s
 firstCandidate.skills << Skill.first
@@ -32,13 +32,15 @@ firstCompany.name = Faker::Company.name
 firstCompany.industry = Faker::Company.industry
 firstCompany.size = Faker::Company.bs
 firstCompany.user_company_id = 1
+firstCompany.save
 # Create our first job!
 Job.create(
   title: Faker::Job.title,
   description: Faker::Lorem.paragraph,
   offered_salary: "$5000 pcm",
   country: "Singapore",
-  company_id: 1)
+  company_id: 1,
+)
 firstJob = Job.first
 firstJob.skills << Skill.first
 firstJob.save
