@@ -28,7 +28,7 @@
         <div class="text-right">
           <% if request.path.start_with?('/company') %>
               <i class="material-icons header-icon">supervisor_account</i> 
-              <em>companies</em>
+              <em>companies</em> 
           <% elsif %>
               <i class="material-icons header-icon">face</i>
               <em>candidate</em>
@@ -37,11 +37,23 @@
     </nav>
     <% end %> 
   </div>
+  
       <%= yield %>
+
+ <% if @home %>
+    <% elsif %>
   <footer>
-    <div class="container text-center">
-      &copy; <strong>SBRWZ</strong> 2020. All Rights Reserved.
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-sm-4"><h3>About</h3> 
+          &copy; <strong>SBRWZ</strong> 2020.<br>All Rights Reserved.</div>
+        <div class="col-sm-4"><h3>Links</h3> 
+        Company | Candidate</div>
+        <div class="col-sm-4"><h3>Contact</h3>
+        Please do not contact us.</div>
+      </div>
     </div>  
   </footer>
+      <% end %>
   </body>
 </html>
