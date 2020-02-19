@@ -17,12 +17,12 @@
       <% if user_candidate_signed_in? || user_company_signed_in? %>
         they are signed in
         <% elsif %>
-                <%= link_to "/candidate/sign_in" do %>
-                  candidate log in
-               <% end %>
-              <%= link_to "/company/sign_in" do %>
-                  company log in
-               <% end %> 
+            <%= link_to "/candidate/sign_in" do %>
+              candidate log in
+            <% end %>
+          <%= link_to "/company/sign_in" do %>
+              company log in
+            <% end %> 
       <% end %>
       </nav>
     <% elsif %>
@@ -31,7 +31,7 @@
          <%= image_tag('/logo.png') %>
         <% end %>
         <div class="text-right">
-          <% if request.path.start_with?('/company') %>
+          <% if request.path.start_with?('/companies') %>
               <i class="material-icons header-icon">supervisor_account</i> 
               <em>companies</em> 
               <% if user_company_signed_in? %>
