@@ -16,6 +16,15 @@
     <% elsif %>
     <nav class="navbar">
         <%= image_tag('/logo.png') %>
+        <div class="text-right">
+          <% if request.path.start_with?('/companies') %>
+              <i class="material-icons header-icon">supervisor_account</i> 
+              <em>companies</em>
+          <% elsif %>
+              <i class="material-icons header-icon">face</i>
+              <em>candidate</em>
+          <% end %>
+        </div>
     </nav>
     <% end %> 
   </div>
