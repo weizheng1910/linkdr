@@ -20,6 +20,7 @@ $button-color: #ffffff;
         }
     }
 
+
     .circle {
         img {
             width: 100%;
@@ -45,7 +46,7 @@ $button-color: #ffffff;
 
     .overlay {
         position: absolute;
-        // display: none;
+        display: none;
         width: 100%;
         height: 100%;
         margin: 0;
@@ -99,6 +100,14 @@ $button-color: #ffffff;
                     font-size: 16px;
                     padding: 2px;
                     margin-right: 15px;
+                }
+            }
+            
+            a {
+                text-decoration: none;
+                
+                .submit {
+                    text-decoration: none;
                 }
             }
         }
