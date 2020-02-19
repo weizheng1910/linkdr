@@ -43,5 +43,27 @@ $button-color: #ffffff;
 
     .suggested-jobs {
         margin: 40px auto;
+        
+        .board {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+
+            .listing {
+                flex: 0 50%;
+                border: 0px solid $primary-color;
+                background: $button-color;
+                padding: 20px;
+
+                .position-title {
+                    font-weight: bold;
+                }
+
+                .position-salary,
+                .location {
+                    font-style: italic;
+                }
+            }
+        }
     }
 }
