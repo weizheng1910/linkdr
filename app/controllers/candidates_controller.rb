@@ -20,12 +20,11 @@ class CandidatesController < ApplicationController
   end
 
   def update
-    # render plain: params
     result = Cloudinary::Uploader.upload(params["candidate"]["resume"], :allowed_formats => ["pdf"])
-    render plain: result
-    # @candidate = Candidate.find(params[:id])
-    # @candidate.update(candidate_params)
-    # redirect_to @candidate
+    @candidate = Candidate.find(params[:id])
+    @candidate.resume_url = result["url"]
+    @candidate.update(candidate_params)
+    redirect_to @candidate
   end
 
   private
