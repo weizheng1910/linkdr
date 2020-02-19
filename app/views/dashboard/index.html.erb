@@ -1,0 +1,9 @@
+<h2>Hi DO CONDITIONAL RENDERING </h2>
+<% if user_company_signed_in? %>
+  <p>show company stuff</p>
+<% elsif user_candidate_signed_in? %>
+  show candidate stuff
+<% else %>
+  SHOW SIGN UP OR LOGIN BUTTONS
+<% end %>
+<%# <p>if no cookies, show the sign up buttons / log in buttons otherwise, after sign in, will redirect to "/candidates/:id/dashboard" or "/companies/:id/dashboard"</p> %>
