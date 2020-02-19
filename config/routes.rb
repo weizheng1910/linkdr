@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "/candidates/:id/dashboard" => "dashboard#show"
 
   get "/candidate/createprofile" => "candidates#edit"
+  get "/candidate/:id/edit" => "candidates#edit"
 end

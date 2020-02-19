@@ -5,5 +5,5 @@
   <% end %>
 <% elsif @candidate %>
   <%# show candidate stuff. don't know what's relevant yet %>
-  <%= @candidate.inspect %>
+  <a href="/candidate/<%= @candidate.id %>/edit">Edit Profile</a>
 <% end %>
