@@ -21,6 +21,11 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

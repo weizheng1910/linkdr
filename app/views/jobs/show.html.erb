@@ -10,5 +10,12 @@
   <%= @job.description %>
 </p>
 
+<p>
+  <strong>Skills Requested:</strong>
+  <% @job.skills.each do |skill| %>
+    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

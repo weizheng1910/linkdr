@@ -1,10 +1,12 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user_company!, :except => [ :show ]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    company_id = current_user_company.id
+    @jobs = Job.where(company_id: company_id)
   end
 
   # GET /jobs/1
@@ -15,10 +17,12 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
+    @skills = Skill.all
   end
 
   # GET /jobs/1/edit
   def edit
+    @skills = Skill.all
   end
 
   # POST /jobs
@@ -70,6 +74,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:title, :description)
+      params.require(:job).permit(:title, :description, :skill_ids => [])
     end
 end
