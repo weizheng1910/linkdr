@@ -9,7 +9,16 @@
 Faker::UniqueGenerator.clear
 
 
-
+# create our first Candidate who has our one skill
+UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
+# Automatically generates a blank first candidate profile. Fill it in.
+firstCandidate = Candidate.first
+firstCandidate.given_name = Faker::Name.first_name,
+firstCandidate.family_name = Faker::Name.last_name,
+firstCandidate.years_of_experience = Faker::Number.number(digits: 1)
+firstCandidate.expected_salary = Faker::Number.number(digits: 4).to_s
+firstCandidate.skills << Skill.first
+firstCandidate.save
 # Fill in our first company info
 Company.create()
 firstCompany = Company.first
@@ -18,6 +27,7 @@ firstCompany.industry = Faker::Company.industry
 firstCompany.size = Faker::Company.bs
 firstCompany.user_company_id = 1
 firstCompany.save
+
 # Create our first job!
 Job.create(
   title: Faker::Job.title,
