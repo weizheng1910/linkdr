@@ -72,6 +72,10 @@ pre {
 
 .top-header {
   width: 100%;
+
+  .candidate {
+    background: #fce8e3 !important;
+  }
 }
 
 h1 {
@@ -86,6 +90,7 @@ h1 {
   transform: rotate(-2deg);
   margin-top: -25px;
 }
+
 
 h2 {
   text-align: center;
@@ -136,4 +141,15 @@ div {
 
 .container {
   margin: 50px auto;
+}
+
+footer {
+  font-size: 16px;
+  color: #788888;
+
+  .text {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #788888;
+  }
 }
