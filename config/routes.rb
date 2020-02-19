@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   get "/candidate/:id/edit" => "candidates#edit"
 
   get "/companies/:id/matches" => "matches#companiesmatch"
-  get "/candidate/:id/matches" => "matches#candidatesmatch"
+  get "/candidates/:id/matches" => "matches#candidatesmatch"
+
+  post "/candidates/:id/matches" => "matches#likejob"
+
 end

@@ -8,6 +8,7 @@
 
 Faker::UniqueGenerator.clear
 
+Skill.create(name:"Java")
 
 # create our first Candidate who has our one skill
 UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
@@ -36,9 +37,33 @@ Job.create(
   country: "Singapore",
   company_id: 1,
 )
+
 firstJob = Job.first
 firstJob.skills << Skill.first
 firstJob.save
+
+# Create our second job!
+secondJob = Job.create(
+  title: "Software Dev 1",
+  description: Faker::Lorem.paragraph,
+  offered_salary: "$6000 pcm",
+  country: "Singapore",
+  company_id: 1,
+)
+
+secondJob.skills << Skill.first
+secondJob.save
+
+thirdJob = Job.create(
+  title: "Software Dev 2",
+  description: Faker::Lorem.paragraph,
+  offered_salary: "$7000 pcm",
+  country: "Singapore",
+  company_id: 1,
+)
+
+thirdJob.skills << Skill.first
+thirdJob.save
 
 # 1.time do
 #   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
