@@ -35,7 +35,9 @@ Job.create(
   offered_salary: "$5000 pcm",
   country: "Singapore",
   company_id: 1)
-
+firstJob = Job.first
+firstJob.skills << Skill.first
+firstJob.save
 
 1.time do
   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
