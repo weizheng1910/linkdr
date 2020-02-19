@@ -38,6 +38,7 @@ $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
 $main-font: 'Apercu', Helvetica, sans-serif;
+$footer-font: #555555;
 
 @media (min-width: 1200px) {
   .container, 
@@ -72,10 +73,14 @@ pre {
 
 .top-header {
   width: 100%;
+
+  .candidate {
+    background: #fce8e3 !important;
+  }
 }
 
 h1 {
-  font-size: 125px;
+  font-size: 85px;
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
@@ -84,8 +89,10 @@ h1 {
 .h1-after {
   background: #fbd864;
   transform: rotate(-2deg);
-  margin-top: -25px;
+  height: 10px;
+  margin-top: -20px;
 }
+
 
 h2 {
   text-align: center;
@@ -136,4 +143,34 @@ div {
 
 .container {
   margin: 50px auto;
+}
+
+footer {
+  font-size: 16px;
+  color: $footer-font;
+  margin-top: 50px;
+
+  .container {
+    margin: 20px auto 50px;
+  }
+
+  h3 {
+    color: $body-font-color;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .text {
+    padding-top: 20px;
+    margin-top: 20px;
+    // border-top: 1px solid $footer-font;
+  }
+}
+
+footer:before {
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  content: "〰️";
+  display: block;
 }

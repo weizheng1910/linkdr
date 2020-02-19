@@ -8,19 +8,23 @@
 
 Faker::UniqueGenerator.clear
 
-Skill.create(name:"Java")
+
+Skill.create(name: Faker::ProgrammingLanguage.unique.name)
+
 
 # create our first Candidate who has our one skill
 UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
 # Automatically generates a blank first candidate profile. Fill it in.
 firstCandidate = Candidate.first
-firstCandidate.given_name = Faker::Name.first_name,
-firstCandidate.family_name = Faker::Name.last_name,
+firstCandidate.given_name = Faker::Name.first_name
+firstCandidate.family_name = Faker::Name.last_name
 firstCandidate.years_of_experience = Faker::Number.number(digits: 1)
 firstCandidate.expected_salary = Faker::Number.number(digits: 4).to_s
+firstCandidate.bio = Faker::TvShows::TheFreshPrinceOfBelAir.quote
 firstCandidate.skills << Skill.first
 firstCandidate.save
 # Fill in our first company info
+UserCompany.create(email: "linkdrcom@linkdr.com", password: "password")
 Company.create()
 firstCompany = Company.first
 firstCompany.name = Faker::Company.name

@@ -6,7 +6,7 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find(params[:id])   
+    @candidate = Candidate.find(params[:id])
   end
 
   def edit
@@ -20,12 +20,15 @@ class CandidatesController < ApplicationController
   end
 
   def update
+    result = Cloudinary::Uploader.upload(params["candidate"]["resume"], :allowed_formats => ["pdf"])
     @candidate = Candidate.find(params[:id])
+    @candidate.resume_url = result["url"]
     @candidate.update(candidate_params)
     redirect_to @candidate
   end
 
-private
+  private
+
   def candidate_params
     params.require(:candidate).permit(:given_name, :family_name, :years_of_experience, :expected_salary, :user_candidate_id)
   end

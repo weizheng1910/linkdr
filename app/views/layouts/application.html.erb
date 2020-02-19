@@ -14,11 +14,16 @@
   <div class="container">
     <% if @home %>
       <nav class="navbar">
-          <% if !user_company_signed_in? || !user_candidate_signed_in? %>
-              login form url
-          <% elsif %>
-              xx
-          <% end %>
+      <% if user_candidate_signed_in? || user_company_signed_in? %>
+        they are signed in
+        <% elsif %>
+            <%= link_to "/candidate/sign_in" do %>
+              candidate log in
+            <% end %>
+          <%= link_to "/company/sign_in" do %>
+              company log in
+            <% end %> 
+      <% end %>
       </nav>
     <% elsif %>
     <nav class="navbar">
@@ -26,22 +31,46 @@
          <%= image_tag('/logo.png') %>
         <% end %>
         <div class="text-right">
-          <% if request.path.start_with?('/company') %>
+          <% if request.path.start_with?('/companies') %>
               <i class="material-icons header-icon">supervisor_account</i> 
-              <em>companies</em>
+              <em>companies</em> 
+              <% if user_company_signed_in? %>
+                | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
+              <% end %>
+          <% elsif request.path.start_with?('/company') %>
+              <i class="material-icons header-icon">supervisor_account</i> 
+              <em>companies</em> 
+              <% if user_company_signed_in? %>
+                | <%= link_to 'log out', destroy_user_company_session_url, method: :delete %>
+              <% end %>
           <% elsif %>
               <i class="material-icons header-icon">face</i>
               <em>candidate</em>
+              <% if user_candidate_signed_in? %>
+                | <%= link_to 'log out', destroy_user_candidate_session_url, method: :delete %>
+              <% end %>
           <% end %>
         </div>
     </nav>
     <% end %> 
   </div>
+  
       <%= yield %>
+
+ <% if @home %>
+    <% elsif %>
   <footer>
-    <div class="container text-center">
-      &copy; <strong>SBRWZ</strong> 2020. All Rights Reserved.
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-sm-4"><h3>About</h3> 
+          &copy; <strong>SBRWZ</strong> 2020.<br>All Rights Reserved.</div>
+        <div class="col-sm-4"><h3>Links</h3> 
+        <%= link_to "/company/sign_in" do %>Company<% end %> | <%= link_to "/candidate/sign_in" do %>Candidate<% end %></div>
+        <div class="col-sm-4"><h3>Contact</h3>
+        Please do not contact us.</div>
+      </div>
     </div>  
   </footer>
+      <% end %>
   </body>
 </html>

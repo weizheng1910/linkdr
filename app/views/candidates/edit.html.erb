@@ -1,38 +1,32 @@
 <h1>Candidates#edit</h1>
 <p>Find me in app/views/candidates/edit.html.erb</p>
-
 <h1>Edit candidate</h1>
-
 <%= form_with scope: :candidate, model: @candidate, local: true do |form| %>
-
   <p>
     <%= form.label :given_name %><br>
     <%= form.text_field :given_name %>
   </p>
-
   <p>
     <%= form.label :family_name %><br>
     <%= form.text_area :family_name %>
   </p>
-
   <p>
     <%= form.label :years_of_experience %><br>
     <%= form.text_area :years_of_experience %>
   </p>
-
   <p>
     <%= form.label :expected_salary %><br>
     <%= form.text_area :expected_salary %>
   </p>
-
   <p>
     <%= form.label :user_candidate_id %><br>
     <%= form.text_area :user_candidate_id %>
   </p>
-
+  <p>
+    <%= form.label :resume %>
+    <%= form.file_field :resume %>
+  </p>
   <p>
     <%= form.submit %>
   </p>
-
 <% end %>
-

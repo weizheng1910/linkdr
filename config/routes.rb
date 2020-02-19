@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "dashboard#index"
-  
+
 
   get "/companies/:id/dashboard" => "dashboard#show"
   get "/candidates/:id/dashboard" => "dashboard#show"
@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   get "/candidate/createprofile" => "candidates#edit"
   get "/candidate/:id/edit" => "candidates#edit"
 
-  get "/companies/:id/matches" => "matches#companiesmatch"
-  get "/candidates/:id/matches" => "matches#candidatesmatch"
+  
 
+  get "/candidates/:id/matches" => "matches#candidatesmatch"
   post "/candidates/:id/matches" => "matches#likejob"
+
+
+  get "/companies/:id/jobs/:jobs_id/matches" => "matches#companiesmatch"
 
 end

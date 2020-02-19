@@ -20,6 +20,14 @@ $button-color: #ffffff;
         }
     }
 
+    a {
+        color: $button-color !important;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
     .circle {
         img {
