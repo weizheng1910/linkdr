@@ -15,7 +15,12 @@
     <% if @home %>
       <nav class="navbar">
           <% if !user_company_signed_in? || !user_candidate_signed_in? %>
-              login form url
+              <%= link_to "/company/sign_in" do %>
+                  company log in
+               <% end %>  
+                <%= link_to "/candidate/sign_in" do %>
+                  candidate log in
+               <% end %>
           <% elsif %>
               xx
           <% end %>
@@ -29,9 +34,15 @@
           <% if request.path.start_with?('/company') %>
               <i class="material-icons header-icon">supervisor_account</i> 
               <em>companies</em> 
+              <% if user_company_signed_in? %>
+                | <%= link_to "Log out", logout_path, method: "delete" %>
+              <% end %>
           <% elsif %>
               <i class="material-icons header-icon">face</i>
               <em>candidate</em>
+              <% if user_candidate_signed_in? %>
+                | <%= link_to "Log out", logout_path, method: "delete" %>
+              <% end %>
           <% end %>
         </div>
     </nav>
@@ -48,7 +59,7 @@
         <div class="col-sm-4"><h3>About</h3> 
           &copy; <strong>SBRWZ</strong> 2020.<br>All Rights Reserved.</div>
         <div class="col-sm-4"><h3>Links</h3> 
-        Company | Candidate</div>
+        <%= link_to "/company/sign_in" do %>Company<% end %> | <%= link_to "/candidate/sign_in" do %>Candidate<% end %></div>
         <div class="col-sm-4"><h3>Contact</h3>
         Please do not contact us.</div>
       </div>
