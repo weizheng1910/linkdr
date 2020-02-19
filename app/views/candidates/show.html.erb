@@ -13,8 +13,10 @@
       <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
       <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
       <strong>User Candidate ID:</strong> <%= @candidate.user_candidate_id %> <br>
-      <strong>Resume</strong>
-      <a href=<%= @candidate.resume_url %>> Link</a>
+      <% if @candidate.resume_url != nil %>
+        <strong>Resume</strong>
+        <a href=<%= @candidate.resume_url %>> Link</a>
+      <% end %>
     </div>
     <div class="offset-sm-1 col-sm-4 stats">
       Some stats
