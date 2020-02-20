@@ -83,16 +83,18 @@ class JobsController < ApplicationController
 
   def candidate_match_skills
     match = true
-    @job.skills.each do |skill|
-      if @candidate.skills.include? skill
-        next
-      else
-        match = false
+    if @candidate
+      @job.skills.each do |skill|
+        if @candidate.skills.include? skill
+          next
+        else
+          match = false
+        end
       end
-    end
-    if match == true
-      Match.create(candidate: @candidate, job: @job)
-      @match = Match.find_by(candidate: @candidate, job: @job )
+      if match == true
+        Match.create(candidate: @candidate, job: @job)
+        @match = Match.find_by(candidate: @candidate, job: @job )
+      end
     end
   end
 

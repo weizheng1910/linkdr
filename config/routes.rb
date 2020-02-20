@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   get "/candidate/createprofile" => "candidates#edit"
   get "/candidate/:id/edit" => "candidates#edit"
 
-  get "/companies/:id/matches" => "matches#companiesmatch"
-  get "/candidate/:id/matches" => "matches#candidatesmatch"
+  get "/jobs/:id/matches" => "matches#companiesmatch"
 
   get "/jobs/:jobs_id/matches" => "matches#companiesmatch"
 
