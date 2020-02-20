@@ -36,11 +36,13 @@
             <div class="text-right">
               <div class="dropdown show">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons header-icon">supervisor_account</i>   <em>companies</em>
+                  <i class="material-icons header-icon">supervisor_account</i> <em>companies</em>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Post a New Job <i class="material-icons">add_circle_outline</i> </a>
-                  <a class="dropdown-item" href="#">Account</a>
+                  <%= link_to new_job_path, class: "dropdown-item" do %>
+                    Post A New Job <i class="material-icons">add_circle_outline</i>
+                  <% end %>  
+                  <%= link_to 'Account', dashboard_path, class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <%= link_to 'Log Out', destroy_user_company_session_url, method: :delete, class: "dropdown-item" %>
                 </div>
@@ -50,11 +52,13 @@
             <div class="text-right">
               <div class="dropdown show">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons header-icon">face</i>   <em>candidates</em>
+                  <i class="material-icons header-icon">face</i> <em>candidates</em>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                  <a class="dropdown-item" href="#">Job Listings <i class="material-icons">work_outline</i> </a>
-                  <a class="dropdown-item" href="#">Account</a>
+                <%= link_to jobs_path, class: "dropdown-item" do %>
+                    Job Listings  <i class="material-icons">work_outline</i>
+                  <% end %>  
+                  <%= link_to 'Account', dashboard_path, class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <%= link_to 'Log Out', destroy_user_candidate_session_url, method: :delete, class: "dropdown-item" %>
                 </div>

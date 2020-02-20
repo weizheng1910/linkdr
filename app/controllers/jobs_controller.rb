@@ -28,6 +28,7 @@ class JobsController < ApplicationController
   # Anyone can see a job, hence it skips the validation in :set_job
   def show
     @job = Job.find(params[:id])
+    candidate_match_skills
   end
 
   # GET /jobs/new
@@ -86,6 +87,21 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def candidate_match_skills
+    match = true
+    @job.skills.each do |skill|
+      if @candidate.skills.include? skill
+        next
+      else
+        match = false
+      end
+    end
+    if match == true
+      Match.create(candidate: @candidate, job: @job)
+      @match = Match.find_by(candidate: @candidate, job: @job )
+    end
+  end
 
   # If the page viewer is a candidate we then want to access their information.
   def set_candidate_info
