@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
       if job_id
         @job = Job.find_by( id: job_id )
         populate_matches_for_company ( @job )
-        @match = Match.find_by(
+        @matches = Match.find_by(
           job: @job,
           job_like: nil
         )

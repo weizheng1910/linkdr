@@ -30,15 +30,44 @@
 
 <section class="suggested-jobs">
   Hey lookie here! Just thought you would be interested in these jobs:
-  <div class="board">
-    <div class="listing">
-    <div class="row">
-      <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
-      <div class="col-11"><div class="position-title"> Senior Software Engineer (Backend)</div></div>
+    <div class="board">
+      <% @matches.each do |m|%>
+      <a href=<%= job_path(m.job.id) %>>
+      <div class="listing">
+      <div class="row">
+        <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
+        <div class="col-11"><div class="position-title"><%= m.job.title %></div></div>
+      </div>
+        <span class="position-salary"><%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %></span><br>
+        <% m.job.skills.each do |skill| %>
+          <% if m.candidate.skills.include? skill %>
+            <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+          <% else %>
+            <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+          <% end %>
+        <% end %>
+      </div>
+        </a>
+        <% end %>
     </div>
-      <span class="position-salary">$2500 - $5000</span> | <span class="location">CBD</span><br>
-      Skills pills here
-    </div>
-  </div>
 </section>
 </div>
+
+<script type="text/javascript">
+  
+
+</script>
+
+<script>
+var button = document.querySelector('.button-box');
+var closeBox = document.querySelector('.close-box');
+var box = document.querySelector('.overlay');
+
+button.addEventListener('click', () => {
+  box.style.display = "block"
+})
+
+closeBox.addEventListener('click', () => {
+    box.style.display = "none"
+})
+</script>
