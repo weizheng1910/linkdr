@@ -1,18 +1,21 @@
 <div class="container jobs">
 <p id="notice"><%= notice %></p>
-<h1>#<%= @job.id %> <%= @job.title %> <a href="#"><i class="material-icons">edit</i></a></h1>
+<h1>#<%= @job.id %> <%= @job.title %> </h1>
 <div class="h1-after companies">&nbsp;</div>
 
 <section class="job-info">
   <div class="row">
     <div class="col-sm-7 profile">
       <strong>Job Title:</strong> <%= @job.title %> <br>
-      <strong>Created:</strong> <%= time_ago_in_words @job.created_at %> ago<br>
-      <strong>Description:</strong> <%= @job.description %> <br>
       <strong>Salary Offered:</strong> <%= @job.offered_salary %> <br>
       <strong>Country:</strong> <%= @job.country %> <br>
       <strong>Skills Requested:</strong>
-      <%= render "skills/skills_pills" %>
+      <%= render "skills/skills_pills" %><br>
+      <strong>Description:</strong><br>
+      <p class="description"><%= @job.description %></p>
+      <div class="text-right">
+      <strong>Job posted</strong> <%= time_ago_in_words @job.created_at %> ago
+      </div>
     </div>
     <div class="offset-sm-1 col-sm-4 stats pt-5">
       This job listing has been viewed <strong>455</strong> times.
@@ -41,14 +44,14 @@
           <% end %>
         </div>
       <% end %>
-
+      <% if @company = @job.company %>
+        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      <% end %>
     </div>
   </div>
 </section>
 <% if @company %>
-  <% if @company = @job.company %>
-    <%= link_to 'Edit', edit_job_path(@job) %> |
-  <% end %>
+  
 <% end %>
 <%= link_to 'Back', jobs_path %>
 </div>

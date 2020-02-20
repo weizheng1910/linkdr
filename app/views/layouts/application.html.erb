@@ -24,63 +24,67 @@
             <% end %>
             <%= link_to "/company/sign_in" do %>
               company log in
-            <% end %> 
-      <% end %>
-      </nav>
-    <% elsif %>
-    <nav class="navbar">
-        <%= link_to "/" do %>
-         <%= image_tag('/logo.png') %>
-        <% end %>
-          <% if user_company_signed_in? %>
-          <div class="text-right">
-          <div class="dropdown show">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons header-icon">supervisor_account</i>   <em>companies</em>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Post a New Job <i class="material-icons">add_circle_outline</i> </a>
-              <a class="dropdown-item" href="#">Account</a>
-              <div class="dropdown-divider"></div>
-              <%= link_to 'Log Out', destroy_user_company_session_url, method: :delete, class: "dropdown-item" %>
-            </div>
-          </div>
-             </div>
-          <% elsif user_candidate_signed_in? %>
-        <div class="text-right">
-        <div class="dropdown show">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons header-icon">face</i>   <em>candidates</em>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-              <a class="dropdown-item" href="#">Job Listings <i class="material-icons">work_outline</i> </a>
-              <a class="dropdown-item" href="#">Account</a>
-              <div class="dropdown-divider"></div>
-              <%= link_to 'Log Out', destroy_user_candidate_session_url, method: :delete, class: "dropdown-item" %>
-            </div>
-          </div>
+            <% end %>
           <% end %>
-        </div>
-    </nav>
-    <% end %> 
-  </div>
-  
-      <%= yield %>
-
- <% if @home %>
+        </nav>
+      <% elsif %>
+        <nav class="navbar">
+          <%= link_to "/" do %>
+            <%= image_tag('/logo.png') %>
+          <% end %>
+          <% if user_company_signed_in? %>
+            <div class="text-right">
+              <div class="dropdown show">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons header-icon">supervisor_account</i>   <em>companies</em>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <%= link_to new_job_path, class: "dropdown-item" do %>
+                    Post A New Job <i class="material-icons">add_circle_outline</i>
+                  <% end %>  
+                  <a class="dropdown-item" href="#">Account</a>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Log Out', destroy_user_company_session_url, method: :delete, class: "dropdown-item" %>
+                </div>
+              </div>
+            </div>
+          <% elsif user_candidate_signed_in? %>
+            <div class="text-right">
+              <div class="dropdown show">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons header-icon">face</i>   <em>candidates</em>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                  <a class="dropdown-item" href="#">Job Listings <i class="material-icons">work_outline</i> </a>
+                  <a class="dropdown-item" href="#">Account</a>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Log Out', destroy_user_candidate_session_url, method: :delete, class: "dropdown-item" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </nav>
+      <% end %>
+    </div>
+    <%= yield %>
+    <% if @home %>
     <% elsif %>
-  <footer>
-    <div class="container">
-      <div class="row d-flex">
-        <div class="col-sm-4"><h3>About</h3> 
-          &copy; <strong>SBRWZ</strong> 2020.<br>All Rights Reserved.</div>
-        <div class="col-sm-4"><h3>Links</h3> 
-        <%= link_to "/company/sign_in" do %>Company<% end %> | <%= link_to "/candidate/sign_in" do %>Candidate<% end %></div>
-        <div class="col-sm-4"><h3>Contact</h3>
-        Please do not contact us.</div>
-      </div>
-    </div>  
-  </footer>
+      <footer>
+        <div class="container">
+          <div class="row d-flex">
+            <div class="col-sm-4">
+              <h3>About</h3>
+              &copy; <strong>SBRWZ</strong> 2020.<br>
+              All Rights Reserved.</div>
+            <div class="col-sm-4">
+              <h3>Links</h3>
+              <%= link_to "/company/sign_in" do %>Company<% end %> | <%= link_to "/candidate/sign_in" do %>Candidate<% end %></div>
+            <div class="col-sm-4">
+              <h3>Contact</h3>
+              Please do not contact us.</div>
+          </div>
+        </div>
+      </footer>
     <% end %>
   </body>
 </html>

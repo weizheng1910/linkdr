@@ -1,7 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
+<div class="container jobs">
 <h1>Jobs</h1>
+
+<% if @company %>
+  <div class="text-right">
+    <%= link_to new_job_path do %>
+      Post A New Job <i class="material-icons">add_circle_outline</i>
+    <% end %>  
+  </div>
+<% end %>
+
+<div class="board">
+      <% @jobs.each do |job|%>
+      <div class="listing">
+      <div class="position-title"><%= job.title %></div>
+        <span class="position-salary"><%= job.offered_salary %></span> | <span class="location"><%= job.country %></span><br>
+        <p class="description"><%= job.description %> </p>
+        <p class="skills">Skills Required: <% if @candidate %>
+          <% count = 0 %>
+            <% job.skills.each do |skill| %>
+              <% if @candidate.skills.include? skill %>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
+          <%= count.to_s + " / " %>
+          <% end %>
+          <%= job.skills.length %></p>
+          <div class="actions">
+            <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
+            | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+      </div>
+        </a>
+        <% end %>
+    </div>
 
 <table>
   <thead>
@@ -45,8 +79,5 @@
 
 <br>
 
-<% if @company %>
-  <%= link_to 'New Job', new_job_path %>
-<% end %>
 
 </div>
