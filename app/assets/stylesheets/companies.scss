@@ -1,0 +1,42 @@
+$grey: #262222;
+$primary-color: #4585a9;
+$secondary-color: #ff6161;
+
+$white: #ffffff;
+
+$light-pink: rgb(252,232,227);
+
+.company {
+    h2 {
+        font-weight: bold;
+
+        .highlight {
+            background: rgb(252,232,227);
+        }
+    }
+
+    .posted-jobs {
+        margin: 40px auto;
+    }
+}
+
+.company-info {
+    .profile {
+        background: $white;
+        padding: 20px;
+        -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+        -moz-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+        box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
+        line-height: 40px;
+
+        h3 {
+            background: rgb(252,232,227); 
+            font-weight: bold;
+            font-style: italic;
+        }
+    }
+    
+    .stats {
+        padding: 20px;
+    }
+}

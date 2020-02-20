@@ -1,14 +1,44 @@
-<div class="container">
+<div class="container company">
   <% if user_company_signed_in? %>
     <% if @company && @company.job.length != 0 %>
-      <p><%= @company.name %></p>
+    <div class="container candidate">
+    <h2>Hey, <span class="highlight"><%= @company.name %></span>! </h2><br>
+    <section class="candidate-info">
+        <div class="row">
+      <div class="col-sm-7 profile">
+      <div class="row">
+          <div class="col-6">
+            <h3>Your Profile</h3>
+          </div>
+          <div class="col-6 text-right">
+          <%= link_to "Edit company details", edit_company_path(@company) %>
+          </div>
+        </div>
+
+            <strong>Company Name:</strong> <%= @company.name %><br>
+            <strong>Company Industry:</strong> <%= @company.industry %><br>
+            <strong>Company Size:</strong> <%= @company.size %><br>
+
+      </div>
+      <div class="offset-sm-1 col-sm-4 stats pt-5">
+            Your profile has been viewed <strong>68</strong> times.
+            <br><br>
+            You expressed interest in <strong>5</strong> jobs.
+          </div>
+      </div>
+      </section>
+
+      <section class="posted-jobs">
+      Here are your job listings:<br>
       Jobs posted: <% @company.job.each do |job| %>
         <%= link_to job.title, job_path(job) %>
       <% end %>
+      </div>
+      
     <% elsif @company.job.length == 0 %>
       <%= link_to "Add new job!", new_job_path %>
     <% end %>
-    <p><%= link_to "Edit company details", edit_company_path(@company) %></p>
+    </div>
   <% elsif user_candidate_signed_in? %>
     <% if @candidate %>
       <%# show candidate stuff. don't know what's relevant yet %>
