@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [ :edit, :update, :destroy ]
-  before_action :authenticate_user_company!, :except => [ :index, :show, :filter_job_company ]
+  before_action :set_job, only: [:edit, :update, :destroy]
+  before_action :authenticate_user_company!, :except => [:index, :show, :filter_job_company]
   before_action :set_candidate_info
   before_action :set_company_info
 
@@ -8,6 +8,13 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    sort_by = params["sort"]
+    puts sort_by
+    if sort_by == "salary asc"
+      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }
+    elsif sort_by == "salary desc"
+      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }.reverse
+    end
   end
 
   def filter_job_company
@@ -118,7 +125,7 @@ class JobsController < ApplicationController
       return
     else
       @job = nil
-      redirect_to '/'
+      redirect_to "/"
       return false
     end
   end
