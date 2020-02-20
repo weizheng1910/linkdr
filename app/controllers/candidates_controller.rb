@@ -9,7 +9,13 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find(params[:id])
+    # @candidate = Candidate.find(params[:id])
+    populate_matches_for_candidate ( current_user_candidate )
+      @candidate = current_user_candidate.candidate
+      @matches = Match.where(
+        candidate: @candidate,
+        job_like: nil,
+      )
   end
 
   def edit
@@ -40,4 +46,25 @@ class CandidatesController < ApplicationController
   def candidate_params
     params.require(:candidate).permit(:given_name, :family_name, :years_of_experience, :expected_salary, :user_candidate_id)
   end
+
+  private
+
+  def populate_matches_for_candidate ( candidate )
+    @jobs = Job.all
+    @jobs.each_with_index do |job, index|
+      match = true
+      job.skills.each do |skill|
+        if candidate.candidate.skills.include? skill
+          next
+        else
+          match = false
+        end
+      end
+      if match == true
+        Match.create(candidate: candidate.candidate, job: job)
+      end
+    end
+  end
+
+
 end

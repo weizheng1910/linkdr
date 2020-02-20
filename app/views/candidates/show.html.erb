@@ -21,27 +21,39 @@
           <%= link_to "Link", @candidate.resume_url %>
         <% end %>
       </div>
-      <div class="offset-sm-1 col-sm-4 stats pt-5">
-        Your profile has been viewed <strong>68</strong> times.
-        <br>
-        <br>
-        You expressed interest in <strong>5</strong> jobs.
-      </div>
+      
+
+    <div class="offset-sm-1 col-sm-4 stats pt-5">
+      Your profile has been viewed <strong>68</strong> times.
+      <br><br>
+      You expressed interest in <strong>5</strong> jobs.
     </div>
-  </section>
-  <section class="suggested-jobs">
-    Hey lookie here! Just thought you would be interested in these jobs:
+  </div>
+</section>
+
+<section class="suggested-jobs">
+  Hey lookie here! Just thought you would be interested in these jobs:
     <div class="board">
+      <% @matches.each do |m|%>
+      <a href=<%= job_path(m.job.id) %>>
       <div class="listing">
-        <div class="row">
-          <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
-          <div class="col-11">
-            <div class="position-title"> Senior Software Engineer (Backend)</div>
-          </div>
-        </div>
-        <span class="position-salary">$2500 - $5000</span> | <span class="location">CBD</span><br>
-        Skills pills here
+      <div class="row">
+        <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
+        <div class="col-11"><div class="position-title"><%= m.job.title %></div></div>
       </div>
+        <span class="position-salary"><%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %></span><br>
+        <% m.job.skills.each do |skill| %>
+          <% if m.candidate.skills.include? skill %>
+            <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+          <% else %>
+            <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+          <% end %>
+        <% end %>
+      </div>
+        </a>
+        <% end %>
     </div>
-  </section>
+</section>
+
 </div>
+
