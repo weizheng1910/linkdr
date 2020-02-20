@@ -16,7 +16,7 @@ $color2: #96c6b1;
 $color3: #f54f82;
 
 $colors: $color3, $yellow, $color1, $color2;
-$repeat: 4;
+$repeat: 80;
 
 @for $i from 1 through $repeat {
     .listing:nth-child(#{length($colors)}n+#{$i}) .position-title {
@@ -48,6 +48,7 @@ $repeat: 4;
 }
 
 .jobs,
+.posted-jobs,
 .suggested-jobs {
     .board {
         padding: 20px 0;

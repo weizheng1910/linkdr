@@ -30,9 +30,24 @@
 
       <section class="posted-jobs">
       Here are your job listings:<br>
-      Jobs posted: <% @company.job.each do |job| %>
-        <br><%= link_to job.title, job_path(job) %>
-      <% end %>
+        <div class="board">
+        <% @company.job.each do |job| %>
+          <div class="listing">
+            <div class="position-title"> <%= job.title %></div>
+            <span class="position-salary"><%= job.offered_salary %></span> | <span 
+                class="location"><%= job.country %></span><br>
+                <p class="description"><%= job.description %></p>
+                <div class="skills">
+                  add skills here with company's view
+                </div>
+                <div class="actions">
+                  <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
+                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
+                </div>
+          </div>
+        <% end %>
+        </div>
       </div>
       
     <% elsif @company.job.length == 0 %>
@@ -53,6 +68,7 @@
             <h3>Your Profile</h3>
           </div>
           <div class="col-6 text-right">
+            <%# <%= link_to "View Job", job_path(job) %>
             <a href="/candidates/<%= @candidate.id %>/edit"><i class="material-icons">edit</i></a></div>
         </div>
         <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
@@ -93,10 +109,10 @@
                 <% end %>
                 </div>
                 <div class="actions">
-            <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(m.job.id) %>>View Job</a> <% if @company && @company == job.company %>
-            | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          </div>
+                  <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> <% if @company && @company == job.company %>
+                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
+                </div>
               </div>
                 <% end %>
             </div>
