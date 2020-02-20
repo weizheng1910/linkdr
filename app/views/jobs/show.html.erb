@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-sm-7 profile">
       <strong>Job Title:</strong> <%= @job.title %> <br>
-      <strong>Created:</strong> insert time stamp <br>
+      <strong>Created:</strong> <%= time_ago_in_words @job.created_at %> ago<br>
       <strong>Description:</strong> <%= @job.description %> <br>
       <strong>Salary Offered:</strong> <%= @job.offered_salary %> <br>
       <strong>Country:</strong> <%= @job.country %> <br>
