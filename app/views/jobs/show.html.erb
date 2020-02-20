@@ -25,11 +25,22 @@
       <% if @match %>
         <div>
           <% if @match.candidate_like == nil %>
-
+          <%= form_with model: @match, local: true do |f| %>
+          <p>
+            <%= f.hidden_field :candidate_like, :value => true %>
+          </p>
+          <%= f.submit "I am interested in this job" %>
+          <% end %>
+          <%= form_with model: @match, local: true do |f| %>
+          <p>
+            <%= f.hidden_field :candidate_like, :value => false %>
+          </p>
+          <%= f.submit "I do not like this job" %>
+        <% end %>
           <% elsif @match.candidate_like == true %>
-            <p>You have <strong>liked</strong> this job.</p>
+            <br><p>You have <strong>liked</strong> this job.</p>
           <% else %>
-            <p>You have <strong>rejected</strong> this job.</p>
+            <br><p>You have <strong>rejected</strong> this job.</p>
           <% end %>
         </div>
       <% end %>
