@@ -6,6 +6,16 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    if current_user_company
+      if current_user_company.company == @company
+      else
+        @company.views += 1
+        @company.save
+      end
+    else
+      @company.views += 1
+      @company.save
+    end
   end
 
   def new
