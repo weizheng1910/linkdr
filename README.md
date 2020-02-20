@@ -5,9 +5,10 @@
 
 ## Application Development Process
 ### Built With
-* [NodeJS](http://nodejs.org) - Server-side Javascript
-* [Ruby on Rails](https://rubyonrails.com/) - Web Framework for Node.js
-* [Postgresql](https://www.postgresql.org/) - Object-relational database system
+- **[Ruby 2.5.1](https://www.ruby-lang.org/en/)** - Main Language
+- **[Rails 5.2.1](https://rubyonrails.org)** - Backend Framework
+- **[PostgreSQL 10.5]()** - SQL Database
+- **[Bootstrap](https://getbootstrap.com/)** - CSS Framework
 
 ### How It Works
 
