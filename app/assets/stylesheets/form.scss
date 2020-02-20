@@ -10,6 +10,8 @@ $secondary-color: #ff6161;
 
 $white: #ffffff;
 
+$border-grey: #e1e1e1;
+
 .signup { 
     .text {
         font-size: 25px;
@@ -36,7 +38,7 @@ $white: #ffffff;
 input[type=text],
 input[type=email],
 input[type=password]  {
-    border: 1px solid #e1e1e1;
+    border: 1px solid $border-grey;
     padding: 8px 12px;
     width: 100%;
     border-radius: 10px;
@@ -56,7 +58,7 @@ input[type=submit]:hover {
 }
 
 input::placeholder {
-    color: #e1e1e1;
+    color: $border-grey;
 }
 
 input:focus {
@@ -94,3 +96,25 @@ input:focus {
   .alert {
       padding: 0;
   }
+
+input[type=checkbox] {
+    margin-right: 5px;
+}
+
+label[for*="job_skill_ids"] {
+    // background: #ffff00;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    overflow-y: scroll;
+    border-color: $border-grey;
+
+    &:focus {
+        outline: none;
+    }
+}
