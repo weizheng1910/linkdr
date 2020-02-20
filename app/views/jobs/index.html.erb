@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Jobs</h1>
 <div class="h1-after">&nbsp;</div>
-
 <div class="container jobs">
   <div class="text-left">
     <div class="dropdown show">
@@ -10,50 +8,49 @@
         Sort:
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="/jobs?sort=salary asc">Salary ascending</a>
+        <a class="dropdown-item" href="/jobs?sort=salary asc">Salary ascending</a>
         <a class="dropdown-item" href="/jobs?sort=salary desc">Salary descending</a>
-         
+        <a class="dropdown-item" href="/jobs?sort=best matches">Best Matches</a>
       </div>
     </div>
-</div>
-
-<% if @company %>
-  <div class="text-right">
-    <%= link_to new_job_path do %>
-      Post A New Job <i class="material-icons">add_circle_outline</i>
-    <% end %>  
   </div>
-<% end %>
-
-<div class="board">
-      <% if @company %> 
-      <div class="listing">
-          <%= image_tag('/ad-fast.gif', :class => 'img-fluid') %><br><br>
-          Contact us for ad space!
-      </div>
+  <% if @company %>
+    <div class="text-right">
+      <%= link_to new_job_path do %>
+        Post A New Job <i class="material-icons">add_circle_outline</i>
       <% end %>
-      <% @jobs.each do |job|%>
+    </div>
+  <% end %>
+  <div class="board">
+    <% if @company %>
       <div class="listing">
-      <div class="position-title"><%= job.title %></div>
+        <%= image_tag('/ad-fast.gif', :class => 'img-fluid') %><br>
+        <br>
+        Contact us for ad space!
+      </div>
+    <% end %>
+    <% @jobs.each do |job|%>
+      <div class="listing">
+        <div class="position-title"><%= job.title %></div>
         <span class="position-salary"><%= job.offered_salary %></span> | <span class="location"><%= job.country %></span><br>
         <p class="description"><%= job.description %> </p>
         <p class="skills">Skills Required: <% if @candidate %>
-          <% count = 0 %>
+            <% count = 0 %>
             <% job.skills.each do |skill| %>
               <% if @candidate.skills.include? skill %>
                 <% count += 1 %>
               <% end %>
             <% end %>
-          <%= count.to_s + " / " %>
+            <%= count.to_s + " / " %>
           <% end %>
           <%= job.skills.length %></p>
-          <div class="actions">
-            <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
+        <div class="actions">
+          <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
             | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          </div>
+          <% end %>
+        </div>
       </div>
-        </a>
-        <% end %>
-    </div>
+    </a>
+  <% end %>
+</div>
 </div>
