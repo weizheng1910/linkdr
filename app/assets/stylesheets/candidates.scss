@@ -46,12 +46,16 @@ $light-pink: rgb(252,232,227);
         .board {
             padding: 20px 0;
             display: flex;
-            justify-content: space-between;
+            flex-flow: row wrap;
 
             .listing {
-                flex: 0 50%;
-                background: #e8e8e8;
-                padding: 20px;
+                flex: 0 0 calc(33.333% - 20px);
+                background: $white;
+                padding: 20px 20px 40px;
+                margin-bottom: 20px;
+                position: relative;
+                margin: 10px;
+                text-decoration: none;
 
                 &:hover {
                     background: $light-pink;
