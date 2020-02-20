@@ -44,14 +44,14 @@
           <% end %>
         </div>
       <% end %>
+      <% if @company %>
       <% if @company = @job.company %>
         <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      <% end %>
       <% end %>
     </div>
   </div>
 </section>
-<% if @company %>
-  
-<% end %>
+
 <%= link_to 'Back', jobs_path %>
 </div>
