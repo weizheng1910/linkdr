@@ -9,6 +9,20 @@ $secondary-color: #ff6161;
 $white: #ffffff;
 
 $light-pink: rgb(252,232,227);
+$yellow: #fbd864;
+
+$color1: #4f66f5;
+$color2: #96c6b1;
+$color3: #f54f82;
+
+$colors: $color3, $yellow, $color1, $color2;
+$repeat: 4;
+
+@for $i from 1 through $repeat {
+    .listing:nth-child(#{length($colors)}n+#{$i}) .position-title {
+        background: lighten(nth($colors, random(length($colors))), 20%);
+    }
+}
 
 .job-info {
     margin: 40px auto;
@@ -30,5 +44,53 @@ $light-pink: rgb(252,232,227);
     
     .stats {
         padding: 20px;
+    }
+}
+
+.jobs {
+    .board {
+        padding: 20px 0;
+        display: flex;
+        flex-flow: row wrap;
+
+        .listing {
+            flex: 0 0 calc(33.333% - 20px);
+            background: $white;
+            padding: 20px 20px 40px;
+            margin-bottom: 20px;
+            position: relative;
+            margin: 10px;
+            text-decoration: none;
+
+            &:hover {
+                // background: $light-pink;
+                // transform: translateY(5px);
+            }
+
+            .position-title {
+                font-weight: bold;
+                font-size: 21px;
+                margin-bottom: 15px;
+                // background: $light-pink;
+            }
+
+            .position-salary,
+            .location {
+                font-style: italic;
+            }
+
+            .description,
+            .skills {
+                font-size: 16px;
+                line-height: 20px;
+                padding: 10px 0 0;
+            }
+
+            .actions {
+                font-size: 16px;
+                position: absolute; 
+                bottom: 15px;
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-<div class="form">
+
 <%= form_with(model: job, local: true) do |form| %>
   <div class="row">
   <% if job.errors.any? %>
@@ -36,7 +36,7 @@
 
 <div class="col-sm-6">
   <div class="field">
-    <%= form.label :skills %>
+    <%= form.label :skills %> <br>
     <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
   </div>
 </div>
@@ -65,6 +65,3 @@
 
 
 <% end %>
-
-
-</div>
