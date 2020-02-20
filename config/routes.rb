@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   get "/companies/:id/jobs" => "jobs#filter_job_company"
 
-
   get "/dashboard" => "dashboard#show"
 
   get "/candidate/createprofile" => "candidates#edit"

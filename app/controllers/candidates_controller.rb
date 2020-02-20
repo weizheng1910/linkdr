@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
   before_action :authenticate_user_candidate!, :except => [:show, :index]
-  before_action :set_candidate, only: [ :edit, :show, :update, :destroy ]
+  before_action :set_candidate, only: [:edit, :show, :update, :destroy]
 
   def index
   end
@@ -10,16 +10,27 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    # @candidate = Candidate.find(params[:id])
-    populate_matches_for_candidate ( current_user_candidate )
-    @candidate = current_user_candidate.candidate
-    @matches = Match.where(
-      candidate: @candidate,
-      job_like: nil,
-    )
-    if @candidate != current_user_candidate.candidate
-      @candidate.views += 1
-      @candidate.save
+    if user_candidate_signed_in?
+      # @candidate = Candidate.find(params[:id])
+      populate_matches_for_candidate (current_user_candidate)
+      @candidate = current_user_candidate.candidate
+      @matches = Match.where(
+        candidate: @candidate,
+        job_like: nil,
+      )
+      if @candidate != current_user_candidate.candidate
+        @candidate.views += 1
+        @candidate.save
+      end
+    elsif user_company_signed_in?
+      @matches = Match.where(candidate: @candidate)
+      @matches.each do |match|
+        if match.job_like == match.candidate_like and match.job.company == current_user_company.company
+          @candidate = Candidate.find(params[:id])
+        else
+          redirect_to root_path and return
+        end
+      end
     end
   end
 
@@ -56,7 +67,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find(params[:id])
   end
 
-  def populate_matches_for_candidate ( candidate )
+  def populate_matches_for_candidate(candidate)
     @jobs = Job.all
     @jobs.each_with_index do |job, index|
       match = true
@@ -72,6 +83,4 @@ class CandidatesController < ApplicationController
       end
     end
   end
-
-
 end
