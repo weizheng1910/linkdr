@@ -20,8 +20,16 @@ class MatchesController < ApplicationController
     respond_to do |format|
       if @match.update(match_params)
         if current_user_company
+          if @match.job_like && @match.candidate_like
+            redirect_to @match.candidate
+            return
+          end
           format.html { redirect_to '/jobs/' + @match.job.id.to_s + '/matches/', notice: "Feedback accepted" }
         else
+          if @match.job_like && @match.candidate_like
+            redirect_to @match.job.company # and then chat?
+            return
+          end
           format.html { redirect_to @match.job, notice: "Feedback accepted" }
           format.json { render :show, status: :ok, location: @match.job }
         end
@@ -30,6 +38,7 @@ class MatchesController < ApplicationController
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
     end
+    puts user_company_signed_in?
   end
 
   def destroy
@@ -55,6 +64,8 @@ class MatchesController < ApplicationController
         end
       end
     end
+
+    
   end
 
   # Match game for candidates
