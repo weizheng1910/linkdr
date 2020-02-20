@@ -1,7 +1,11 @@
 # Linkdr
 
 ## The App
+Linkdr is where the people hire software developers. Like in real life, but better.
 
+In this day and age where technology is prevalent 
+
+Made with love by Stuart, Ben, Rachelle, Weizheng xx
 
 ## Application Development Process
 ### Built With
