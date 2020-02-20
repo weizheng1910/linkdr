@@ -5,7 +5,9 @@
 
 <% if @company %>
   <div class="text-right">
-    <%= link_to 'Post a New Job', new_job_path, class: "button-submit" %> <i class="material-icons">add_circle_outline</i>
+    <%= link_to new_job_path do %>
+      Post A New Job <i class="material-icons">add_circle_outline</i>
+    <% end %>  
   </div>
 <% end %>
 
