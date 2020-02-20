@@ -23,4 +23,8 @@ Rails.application.routes.draw do
   get "/jobs/:jobs_id/matches" => "matches#companiesmatch"
 
   get "/matches" => "matches#candidatesmatch"
+
+  get 'users/:user_id/challenges' => 'challenges#user_challenges', as: :user_challenges
+
+  patch "/matches/:id" => "matches#update", as: :matches_update
 end
