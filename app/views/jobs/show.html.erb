@@ -14,7 +14,11 @@
       <strong>Description:</strong><br>
       <p class="description"><%= @job.description %></p>
       <div class="text-left">
-        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      <% if @company %>
+      <% if @company = @job.company %>
+        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>        
+      <% end %>
+      <% end %>
       </div>
       <div class="text-right">
       <strong>posted</strong> <%= time_ago_in_words @job.created_at %> ago
