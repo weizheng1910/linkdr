@@ -4,8 +4,6 @@
 <div class="h1-after">&nbsp;</div>
 
 <div class="container jobs">
-
-<% if @company %>
   <div class="text-left">
     <div class="dropdown show">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,6 +16,8 @@
       </div>
     </div>
 </div>
+
+<% if @company %>
   <div class="text-right">
     <%= link_to new_job_path do %>
       Post A New Job <i class="material-icons">add_circle_outline</i>
