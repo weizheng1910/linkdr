@@ -21,6 +21,10 @@
     </div>
   </div>
 </section>
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<% if @company %>
+  <% if @company = @job.company %>
+    <%= link_to 'Edit', edit_job_path(@job) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', jobs_path %>
 </div>
