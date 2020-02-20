@@ -47,6 +47,8 @@ class MatchesController < ApplicationController
           job_like: nil
         )
         if @match
+          @match.candidate.views += 1
+          @match.candidate.save
         else
           redirect_to @job, notice: "No more candidates, womp womp"
           return
