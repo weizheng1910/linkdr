@@ -19,6 +19,12 @@
     <%= form.text_field :family_name %>
     </div>
   </div>
+  <div class="col-sm-12">
+    <div class="field">
+      <%= form.label :bio %><br>
+      <%= form.text_area :bio, rows: 5 %>
+    </div>
+  </div>
   <div class="col-sm-6">
     <div class="field">
     <%= form.label :years_of_experience %><br>
@@ -29,6 +35,12 @@
     <div class="field">
     <%= form.label :expected_salary %><br>
     <%= form.text_field :expected_salary %>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="field">
+      <%= form.label :skills %> <br>
+      <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
     </div>
   </div>
   <div class="col-sm-6">
