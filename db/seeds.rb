@@ -114,3 +114,30 @@ end
   end
   candidate.save
 end
+
+# Go through each candidate and get them to "match"
+# every job that they are able to be matched for.
+# Except for our first candidate
+candidates = Candidate.where("id > ?", 1)
+jobs = Job.all
+
+candidates.each do |candidate|
+  jobs.each do |job|
+    match = true
+    job.skills.each do |skill|
+      if candidate.skills.include? skill
+        next
+      else
+        match = false
+        break true
+      end
+    end
+    if match == true
+      Match.create(
+        job_id: job.id,
+        candidate_id: candidate.id,
+        candidate_like: true
+      )
+    end
+  end
+end
