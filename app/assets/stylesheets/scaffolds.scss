@@ -30,15 +30,15 @@
   font-style: normal;
 }
 
-$main-background-color: #f3f3f3;
-$secondary-background-color: #ffffff;
+$light-grey: #f3f3f3;
+$white: #ffffff;
+$mid-grey: #555555;
 
-$body-font-color: #262222;
+$grey: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
 $main-font: 'Apercu', Helvetica, sans-serif;
-$footer-font: #555555;
 
 @media (min-width: 1200px) {
   .container, 
@@ -51,8 +51,8 @@ $footer-font: #555555;
 }
 
 body {
-  background-color: $main-background-color;
-  color: $body-font-color;
+  background-color: $light-grey;
+  color: $grey;
   font-family: $main-font;
   font-size: 20px;
   line-height: 26px;
@@ -99,12 +99,12 @@ h2 {
 }
 
 a {
-  color: $body-font-color;
+  color: $grey;
   text-decoration: underline;
   cursor: pointer;
 
   &:visited {
-    color: $body-font-color;
+    color: $grey;
   }
 
   &:hover {
@@ -147,7 +147,7 @@ div {
 
 footer {
   font-size: 16px;
-  color: $footer-font;
+  color: $mid-grey;
   margin-top: 50px;
 
   .container {
@@ -155,7 +155,7 @@ footer {
   }
 
   h3 {
-    color: $body-font-color;
+    color: $grey;
     font-size: 18px;
     font-weight: bold;
   }
@@ -163,8 +163,19 @@ footer {
   .text {
     padding-top: 20px;
     margin-top: 20px;
-    // border-top: 1px solid $footer-font;
+    // border-top: 1px solid $mid-grey;
   }
+}
+
+.dropdown {
+  a {
+    text-decoration: none;
+  }
+  div {
+      i {
+        font-size: 15px;
+      }
+    }
 }
 
 footer:before {

@@ -2,17 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$body-font-color: #262222;
+$grey: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
-$button-color: #ffffff;
+$white: #ffffff;
 
 $light-pink: rgb(252,232,227);
 
 .candidate-info {
     .profile {
-        background: $button-color;
+        background: $white;
         padding: 20px;
         -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
         -moz-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
@@ -36,7 +36,7 @@ $light-pink: rgb(252,232,227);
         font-weight: bold;
 
         .highlight {
-            background: rgba(198,259,44,0.7);
+            background: rgb(252,232,227);
         }
     }
 
