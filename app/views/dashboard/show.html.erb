@@ -1,21 +1,18 @@
 <div class="container">
-<% if user_company_signed_in? %>
-  <% if @company && @company.job.length != 0 %>
-    <p><%= @company.name %></p>
-    Jobs posted: <% @company.job.each do |job| %>
-      <a href="/jobs/<%= job.id %>">
-        <p><%= job.title %></p>
-      </a>
+  <% if user_company_signed_in? %>
+    <% if @company && @company.job.length != 0 %>
+      <p><%= @company.name %></p>
+      Jobs posted: <% @company.job.each do |job| %>
+        <%= link_to job.title, job_path(job) %>
+      <% end %>
+    <% elsif @company.job.length == 0 %>
+      <%= link_to "Add new job!", new_job_path %>
     <% end %>
-  <% elsif @company.job.length == 0 %>
-    <%= link_to "Add new job!", "/jobs/new" %>
-  <% elsif !@company %>
-    <%= link_to "Add company details", "/companies/new" %>
+    <p><%= link_to "Edit company details", edit_company_path %></p>
+  <% elsif user_candidate_signed_in? %>
+    <% if @candidate %>
+      <%# show candidate stuff. don't know what's relevant yet %>
+      <%= link_to "Edit Profile", edit_candidate_path(@candidate) %>
+    <% end %>
   <% end %>
-<% elsif user_candidate_signed_in? %>
-  <% if @candidate %>
-    <%# show candidate stuff. don't know what's relevant yet %>
-    <a href="/candidates/<%= @candidate.id %>/edit">Edit Profile</a>
-  <% end %>
-<% end %>
 </div>
