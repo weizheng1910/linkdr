@@ -3,7 +3,7 @@
     <% if @company && @company.job.length != 0 %>
       <p><%= @company.name %></p>
       Jobs posted: <% @company.job.each do |job| %>
-        <%= link_to job.title, job_path(job) %>
+        <br><%= link_to job.title, job_path(job) %>
       <% end %>
     <% elsif @company.job.length == 0 %>
       <%= link_to "Add new job!", new_job_path %>

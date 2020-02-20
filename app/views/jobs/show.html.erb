@@ -35,7 +35,9 @@
       <% end %>
       <% if @company %>
       <% if @company = @job.company %>
-        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      <br>
+        <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>
+        <br><%= link_to 'Edit Job Listing', edit_job_path(@job) %>
       <% end %>
       <% end %>
     </div>
