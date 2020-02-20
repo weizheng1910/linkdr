@@ -6,10 +6,10 @@ class Job < ApplicationRecord
   after_save :validate_skills
 
 	def validate_skills
-	    if self.skills.length > 5
-	        self.errors.add(:skills, "cannot have more than 5 skills to a job")
-	        return false
-	    end
+    if self.skills.length > 5
+      self.errors.add(:skills, "cannot have more than 5 skills to a job")
+      return false
+    end
 	end
 
 end

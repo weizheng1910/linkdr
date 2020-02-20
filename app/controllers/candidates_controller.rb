@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+  before_action :authenticate_user_candidate!, :except => [:show, :index]
+
   def index
   end
 

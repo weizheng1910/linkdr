@@ -1,31 +1,30 @@
+<div class="container jobs">
 <p id="notice"><%= notice %></p>
+<h1>#<%= @job.id %> <%= @job.title %> <a href="#"><i class="material-icons">edit</i></a></h1>
+<div class="h1-after companies">&nbsp;</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<p>
-  <strong>Salary Offered:</strong>
-  <%= @job.offered_salary %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @job.country %>
-</p>
-
-<p>
-  <strong>Skills Requested:</strong>
-  <% @job.skills.each do |skill| %>
-    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
+<section class="job-info">
+  <div class="row">
+    <div class="col-sm-7 profile">
+      <strong>Job Title:</strong> <%= @job.title %> <br>
+      <strong>Created:</strong> <%= time_ago_in_words @job.created_at %> ago<br>
+      <strong>Description:</strong> <%= @job.description %> <br>
+      <strong>Salary Offered:</strong> <%= @job.offered_salary %> <br>
+      <strong>Country:</strong> <%= @job.country %> <br>
+      <strong>Skills Requested:</strong>
+      <%= render "skills/skills_pills" %>
+    </div>
+    <div class="offset-sm-1 col-sm-4 stats pt-5">
+      This job listing has been viewed <strong>455</strong> times.
+      <br><br>
+      You have <strong>5</strong> interested candidates and <strong>88</strong> relevant matches.
+    </div>
+  </div>
+</section>
+<% if @company %>
+  <% if @company = @job.company %>
+    <%= link_to 'Edit', edit_job_path(@job) %> |
   <% end %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<% end %>
 <%= link_to 'Back', jobs_path %>
+</div>

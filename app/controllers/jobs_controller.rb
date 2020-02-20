@@ -1,12 +1,19 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [ :edit, :update, :destroy]
-  before_action :authenticate_user_company!, :except => [ :show ]
+  before_action :set_job, only: [ :edit, :update, :destroy ]
+  before_action :authenticate_user_company!, :except => [ :index, :show, :filter_job_company ]
+  before_action :set_candidate_info
+  before_action :set_company_info
 
   # GET /jobs
   # GET /jobs.json
   def index
-    company_id = current_user_company.id
+    @jobs = Job.all
+  end
+
+  def filter_job_company
+    company_id = params[:id]
     @jobs = Job.where(company_id: company_id)
+    render :index
   end
 
   # GET /jobs/1
@@ -22,14 +29,12 @@ class JobsController < ApplicationController
       redirect_to root
     end
     @job = Job.new
-    @company = current_user_company.company
     @skills = Skill.all
   end
 
   # GET /jobs/1/edit
   def edit
     @skills = Skill.all
-    @company = current_user_company.company
   end
 
   # POST /jobs
@@ -75,22 +80,35 @@ class JobsController < ApplicationController
 
   private
 
-    # Set the job, also check that the user is allowed to see/edit the job.
-    # Candidates should be able to see any job.
-    def set_job
-      company = current_user_company.company
-      @job = Job.find(params[:id])
-      if @job.company == company
-        return
-      else
-        @job = nil
-        redirect_to '/'
-        return false
-      end
+  # If the page viewer is a candidate we then want to access their information.
+  def set_candidate_info
+    if current_user_candidate
+      @candidate = current_user_candidate.candidate
     end
+  end
 
-    # Only allow a list of trusted parameters through.
-    def job_params
-      params.require(:job).permit(:title, :description, :offered_salary, :country, :company_id, :skill_ids => [])
+  def set_company_info
+    if current_user_company
+      @company = current_user_company.company
     end
+  end
+
+  # Set the job, also check that the user is allowed to see/edit the job.
+  # Candidates should be able to see any job.
+  def set_job
+    company = current_user_company.company
+    @job = Job.find(params[:id])
+    if @job.company == company
+      return
+    else
+      @job = nil
+      redirect_to '/'
+      return false
+    end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def job_params
+    params.require(:job).permit(:title, :description, :offered_salary, :country, :company_id, :skill_ids => [])
+  end
 end
