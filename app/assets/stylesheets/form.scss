@@ -4,11 +4,11 @@
 
 // Company Sign Up Page // 
 
-$body-font-color: #262222;
+$grey: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
-$button-color: #ffffff;
+$white: #ffffff;
 
 .signup { 
     .text {
@@ -21,7 +21,7 @@ $button-color: #ffffff;
 }
 
 .form {
-    background: #ffffff;
+    background: $white;
     padding: 40px;
     position: relative;
     -webkit-box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
@@ -48,7 +48,7 @@ input[type=submit] {
     padding: 8px 12px;
     border: 0;
     border-radius: 10px;
-    color: $button-color;
+    color: $white;
 }
 
 input[type=submit]:hover {

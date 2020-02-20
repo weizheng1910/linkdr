@@ -1,4 +1,6 @@
+<div class="form">
 <%= form_with(model: job, local: true) do |form| %>
+  <div class="row">
   <% if job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -11,34 +13,58 @@
     </div>
   <% end %>
 
+  <div class="col-sm-6">
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "Job Title" %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
+<div class="col-sm-6">
   <div class="field">
     <%= form.label :offered_salary %>
-    <%= form.text_field :offered_salary %>
+    <%= form.text_field :offered_salary, placeholder: "Offered Salary" %>
+  </div>
   </div>
 
+<div class="col-sm-6">
   <div class="field">
     <%= form.label :country %>
     <%= form.text_field :country %>
   </div>
+  </div>
 
+<div class="col-sm-6">
+  <div class="field">
+    <%= form.label :skills %>
+    <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
+  </div>
+</div>
+
+  <div class="col-sm-12">
   <div class="field">
     <%= form.label :description %>
-    <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
+    <%= form.text_area :description %>
+  </div>
   </div>
 
     <%= form.hidden_field :company_id, :value => @company.id %>
 
-  <div class="actions">
-    <%= form.submit %>
   </div>
+
+<div class="col-sm-12">
+    <div class="actions row">
+    <div class="col-sm-6 text-left"> 
+      <%= link_to 'Back', jobs_path %>
+    </div>
+    <div class="col-sm-6 text-right">
+    <%= form.submit %>
+    </div>
+    </div>
+  </div>
+
+
 <% end %>
+
+
+</div>

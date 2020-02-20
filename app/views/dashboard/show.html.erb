@@ -1,3 +1,4 @@
+<div class="container">
 <% if user_company_signed_in? %>
   <% if @company && @company.job.length != 0 %>
     <p><%= @company.name %></p>
@@ -17,3 +18,4 @@
     <a href="/candidates/<%= @candidate.id %>/edit">Edit Profile</a>
   <% end %>
 <% end %>
+</div>
