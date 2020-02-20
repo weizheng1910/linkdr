@@ -77,7 +77,28 @@
         <section class="suggested-jobs">
             Hey lookie here! Just thought you would be interested in these jobs:
             <div class="board">
-              123 ** help me to add suggested jobs here plz **
+              <% @matches.each do |m|%>
+              <div class="listing">
+              <div class="position-title"><%= m.job.title %></div>
+                <span class="position-salary"><%= m.job.offered_salary %></span> | <span 
+                class="location"><%= m.job.country %></span><br>
+                <p class="description"><%= m.job.description %></p>
+                <div class="skills">
+                <% m.job.skills.each do |skill| %>
+                  <% if m.candidate.skills.include? skill %>
+                    <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+                  <% else %>
+                    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+                  <% end %>
+                <% end %>
+                </div>
+                <div class="actions">
+            <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(m.job.id) %>>View Job</a> <% if @company && @company == job.company %>
+            | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+              </div>
+                <% end %>
             </div>
         </section>
       </div>

@@ -47,7 +47,8 @@ $repeat: 4;
     }
 }
 
-.jobs {
+.jobs,
+.suggested-jobs {
     .board {
         padding: 20px 0;
         display: flex;
@@ -84,6 +85,10 @@ $repeat: 4;
                 font-size: 16px;
                 line-height: 20px;
                 padding: 10px 0 0;
+            }
+
+            .skills {
+                margin-bottom: 15px;
             }
 
             .actions {
