@@ -1,33 +1,31 @@
 <div class="top-header">
-<h1>Welcome back</h1>
-<div class="h1-after">&nbsp;</div>
+  <h1>Welcome back</h1>
+  <div class="h1-after">&nbsp;</div>
 </div>
-
 <div class="container">
-<div class="form">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, placeholder: "Email Address", autocomplete: "email" %>
+  <div class="form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email Address", autocomplete: "email" %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <div class="actions row">
+        <div class="col-sm-6 text-left"> <%= render "user_companies/shared/links" %>
+        </div>
+        <div class="col-sm-6 text-right">
+          <%= f.submit "Log In" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-    <div class="actions row">
-    <div class="col-sm-6 text-left"> <%= render "user_companies/shared/links" %>
-    </div>
-    <div class="col-sm-6 text-right">
-     <%= f.submit "Log In" %>
-    </div>
-    </div>
-<% end %>
-
-</div>
 </div>
