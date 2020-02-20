@@ -92,7 +92,7 @@ class JobsController < ApplicationController
     end
     if match == true
       Match.create(candidate: @candidate, job: @job)
-      @match = Match.where(candidate: @candidate, job: @job )
+      @match = Match.find_by(candidate: @candidate, job: @job )
     end
   end
 

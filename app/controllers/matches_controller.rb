@@ -1,4 +1,35 @@
 class MatchesController < ApplicationController
+  before_action :set_match, only: [ :edit, :update, :destroy ]
+
+  def index
+  end
+
+  def show
+  end
+
+  def new
+  end
+
+  def edit
+  end
+
+  def create
+  end
+
+  def update
+    respond_to do |format|
+      if @match.update(match_params)
+        format.html { redirect_to @match.job, notice: "Feedback accepted" }
+        format.json { render :show, status: :ok, location: @match.job }
+      else
+        format.html { render @match.job }
+        format.json { render json: @match.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+  end
 
   # Match game for companies
   def companiesmatch
@@ -42,6 +73,10 @@ class MatchesController < ApplicationController
 
 private
 
+  def set_match
+    @match = Match.find(params[:id])
+  end
+
   def populate_matches_for_candidate ( candidate )
     @jobs = Job.all
     @jobs.each_with_index do |job, index|
@@ -76,4 +111,7 @@ private
     end
   end
 
+  def match_params
+    params.require(:match).permit(:candidate, :job, :candidate_like, :job_like)
+  end
 end
