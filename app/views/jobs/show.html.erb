@@ -11,7 +11,8 @@
       <strong>Country:</strong> <%= @job.country %> <br>
       <strong>Skills Requested:</strong>
       <%= render "skills/skills_pills" %><br>
-      <strong>Description:</strong> <%= @job.description %> <br><br>
+      <strong>Description:</strong><br>
+      <p class="description"><%= @job.description %></p>
       <div class="text-right">
       <strong>Job posted</strong> <%= time_ago_in_words @job.created_at %> ago
       </div>

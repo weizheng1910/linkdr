@@ -51,14 +51,15 @@ $repeat: 4;
     .board {
         padding: 20px 0;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-flow: row wrap;
 
         .listing {
-            flex: 0 0 32%;
+            flex: 0 0 calc(33.333% - 20px);
             background: $white;
-            padding: 20px;
+            padding: 20px 20px 40px;
             margin-bottom: 20px;
+            position: relative;
+            margin: 10px;
             text-decoration: none;
 
             &:hover {
@@ -83,6 +84,12 @@ $repeat: 4;
                 font-size: 16px;
                 line-height: 20px;
                 padding: 10px 0 0;
+            }
+
+            .actions {
+                font-size: 16px;
+                position: absolute; 
+                bottom: 15px;
             }
         }
     }

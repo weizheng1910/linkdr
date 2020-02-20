@@ -16,7 +16,7 @@
       <div class="listing">
       <div class="position-title"><%= job.title %></div>
         <span class="position-salary"><%= job.offered_salary %></span> | <span class="location"><%= job.country %></span><br>
-        <p class="description"><em><%= job.description %></em></p>
+        <p class="description"><%= job.description %> </p>
         <p class="skills">Skills Required: <% if @candidate %>
           <% count = 0 %>
             <% job.skills.each do |skill| %>
@@ -27,9 +27,11 @@
           <%= count.to_s + " / " %>
           <% end %>
           <%= job.skills.length %></p>
-          <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
-          | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+          <div class="actions">
+            <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
+            | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
       </div>
         </a>
         <% end %>
