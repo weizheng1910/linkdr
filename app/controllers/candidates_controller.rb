@@ -25,12 +25,12 @@ class CandidatesController < ApplicationController
     elsif user_company_signed_in?
       @matches = Match.where(candidate: @candidate)
       @matches.each do |match|
-        if match.job_like == match.candidate_like and match.job.company == current_user_company.company
+        if match.job_like and match.candidate_like and match.job.company == current_user_company.company
           @candidate = Candidate.find(params[:id])
-        else
-          redirect_to root_path and return
+          return
         end
       end
+      redirect_to root_path and return
     end
   end
 
