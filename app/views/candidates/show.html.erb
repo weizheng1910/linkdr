@@ -21,10 +21,10 @@
           <%= link_to "Link", @candidate.resume_url %>
         <% end %>
       </div>
-      
+
 
     <div class="offset-sm-1 col-sm-4 stats pt-5">
-      Your profile has been viewed <strong>68</strong> times.
+      Your profile has been viewed <strong><%= @candidate.views %></strong> times.
       <br><br>
       You expressed interest in <strong>5</strong> jobs.
     </div>
@@ -56,4 +56,3 @@
 </section>
 
 </div>
-

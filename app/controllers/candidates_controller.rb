@@ -1,5 +1,6 @@
 class CandidatesController < ApplicationController
   before_action :authenticate_user_candidate!, :except => [:show, :index]
+  before_action :set_candidate, only: [ :edit, :show, :update, :destroy ]
 
   def index
   end
@@ -11,11 +12,15 @@ class CandidatesController < ApplicationController
   def show
     # @candidate = Candidate.find(params[:id])
     populate_matches_for_candidate ( current_user_candidate )
-      @candidate = current_user_candidate.candidate
-      @matches = Match.where(
-        candidate: @candidate,
-        job_like: nil,
-      )
+    @candidate = current_user_candidate.candidate
+    @matches = Match.where(
+      candidate: @candidate,
+      job_like: nil,
+    )
+    if @candidate != current_user_candidate.candidate
+      @candidate.views += 1
+      @candidate.save
+    end
   end
 
   def edit
@@ -47,7 +52,9 @@ class CandidatesController < ApplicationController
     params.require(:candidate).permit(:given_name, :family_name, :years_of_experience, :expected_salary, :user_candidate_id)
   end
 
-  private
+  def set_candidate
+    @candidate = Candidate.find(params[:id])
+  end
 
   def populate_matches_for_candidate ( candidate )
     @jobs = Job.all
