@@ -15,7 +15,7 @@ class JobsController < ApplicationController
     elsif sort_by == "salary desc"
       @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }.reverse
     elsif sort_by == "best matches"
-      @jobs = @jobs.sort_by { |job| job.skills & @candidate.skills }.reverse
+      @jobs = @jobs.sort_by { |job| (job.skills & @candidate.skills).length }.reverse
     end
   end
 
