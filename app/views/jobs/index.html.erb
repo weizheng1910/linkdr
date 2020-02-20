@@ -2,7 +2,8 @@
 <h1>Jobs</h1>
 <div class="h1-after">&nbsp;</div>
 <div class="container jobs">
-  <div class="text-left">
+<div class="row">
+  <div class="col-6 text-left">
     <div class="dropdown show">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Sort:
@@ -10,17 +11,20 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="/jobs?sort=salary asc">Salary ascending</a>
         <a class="dropdown-item" href="/jobs?sort=salary desc">Salary descending</a>
+         <% if @candidate %>
         <a class="dropdown-item" href="/jobs?sort=best matches">Best Matches</a>
+        <% end %>
       </div>
     </div>
   </div>
   <% if @company %>
-    <div class="text-right">
-      <%= link_to new_job_path do %>
+    <div class="col-6 text-right">
+      <%= link_to new_job_path, class: "text-decoration-none" do %>
         Post A New Job <i class="material-icons">add_circle_outline</i>
       <% end %>
     </div>
   <% end %>
+  </div>
   <div class="board">
     <% if @company %>
       <div class="listing">
