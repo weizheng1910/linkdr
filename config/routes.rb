@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root "dashboard#index"
 
   get "/companies/:id/jobs" => "jobs#index"
-  
+
   get "/dashboard" => "dashboard#show"
 
   get "/candidate/createprofile" => "candidates#edit"
@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   get "/jobs/:jobs_id/matches" => "matches#companiesmatch"
 
+  get "/matches" => "matches#candidatesmatch"
 end
