@@ -1,7 +1,7 @@
-<div class="container jobs">
-<p id="notice"><%= notice %></p>
 <h1>#<%= @job.id %> <%= @job.title %> </h1>
-<div class="h1-after companies">&nbsp;</div>
+<div class="h1-after">&nbsp;</div>
+
+<div class="container jobs">
 
 <section class="job-info">
   <div class="row">
@@ -45,6 +45,7 @@
         </div>
       <% end %>
       <% if @company %>
+      <br><br>
       <% if @company = @job.company %>
       <br>
         <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>

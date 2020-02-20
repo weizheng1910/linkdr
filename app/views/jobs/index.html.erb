@@ -1,9 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container jobs">
 <h1>Jobs</h1>
+<div class="h1-after">&nbsp;</div>
+
+<div class="container jobs">
 
 <% if @company %>
+  <div class="text-left">
+    <div class="dropdown show">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort:
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="/jobs?sort=salary asc">Salary ascending</a>
+        <a class="dropdown-item" href="/jobs?sort=salary desc">Salary descending</a>
+         
+      </div>
+    </div>
+</div>
   <div class="text-right">
     <%= link_to new_job_path do %>
       Post A New Job <i class="material-icons">add_circle_outline</i>
@@ -12,6 +26,12 @@
 <% end %>
 
 <div class="board">
+      <% if @company %> 
+      <div class="listing">
+          <%= image_tag('/ad-fast.gif', :class => 'img-fluid') %><br><br>
+          Contact us for ad space!
+      </div>
+      <% end %>
       <% @jobs.each do |job|%>
       <div class="listing">
       <div class="position-title"><%= job.title %></div>
@@ -36,48 +56,4 @@
         </a>
         <% end %>
     </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Offered Salary</th>
-      <th>Country</th>
-      <th>Skills <% if @candidate %>matched<% end %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= link_to job.title, job %></td>
-        <td><%= job.description %></td>
-        <td><%= job.offered_salary %></td>
-        <td><%= job.country %></td>
-        <td>
-          <% if @candidate %>
-          <% count = 0 %>
-            <% job.skills.each do |skill| %>
-              <% if @candidate.skills.include? skill %>
-                <% count += 1 %>
-              <% end %>
-            <% end %>
-          <%= count.to_s + " / " %>
-          <% end %>
-          <%= job.skills.length %>
-        </td>
-        <% if @company && @company == job.company %>
-          <td><%= link_to 'Edit', edit_job_path(job) %></td>
-          <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
 </div>
