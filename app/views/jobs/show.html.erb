@@ -20,7 +20,30 @@
     <div class="offset-sm-1 col-sm-4 stats pt-5">
       This job listing has been viewed <strong>455</strong> times.
       <br><br>
-      You have <strong>5</strong> interested candidates and <strong>88</strong> relevant matches. <br><br>
+      You have <strong>5</strong> interested candidates and <strong>88</strong> relevant matches.
+
+      <% if @match %>
+        <div>
+          <% if @match.candidate_like == nil %>
+            <%= form_with model: @match, local: true do |f| %>
+              <p>
+                <%= f.hidden_field :candidate_like, :value => true %>
+              </p>
+              <%= f.submit "I am interested in this job" %>
+            <% end %>
+              <%= form_with model: @match, local: true do |f| %>
+              <p>
+                <%= f.hidden_field :candidate_like, :value => false %>
+              </p>
+              <%= f.submit "I do not like this job" %>
+            <% end %>
+          <% elsif @match.candidate_like == true %>
+            <p>You have <strong>liked</strong> this job.</p>
+          <% else %>
+            <p>You have <strong>rejected</strong> this job.</p>
+          <% end %>
+        </div>
+      <% end %>
       <% if @company = @job.company %>
         <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
       <% end %>

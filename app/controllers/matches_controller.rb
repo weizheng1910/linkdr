@@ -1,4 +1,37 @@
 class MatchesController < ApplicationController
+  before_action :set_match, only: [ :edit, :update, :destroy ]
+
+  def index
+  end
+
+  def show
+  end
+
+  def new
+  end
+
+  def edit
+  end
+
+  def create
+  end
+
+  def update
+    respond_to do |format|
+      if @match.update(match_params)
+        format.html { redirect_to @match.job, notice: "Feedback accepted" }
+        format.json { render :show, status: :ok, location: @match.job }
+      else
+        format.html { render @match.job }
+        format.json { render json: @match.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+  end
+
+  # Match game for companies
   def companiesmatch
     if current_user_company
       job_id = params[:jobs_id]
@@ -13,6 +46,7 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Match game for candidates
   def candidatesmatch
     if current_user_candidate
       populate_matches_for_candidate ( current_user_candidate )
@@ -25,7 +59,6 @@ class MatchesController < ApplicationController
   end
 
   def likejob
-
     this_match = Match.find(params[:candidate_like][:match_id])
 
     if this_match.candidate_like == false || this_match.candidate_like == nil
@@ -36,11 +69,13 @@ class MatchesController < ApplicationController
 
     id = this_match.candidate_id
     redirect_to '/candidates/' + id.to_s + '/matches'
-
-
   end
 
 private
+
+  def set_match
+    @match = Match.find(params[:id])
+  end
 
   def populate_matches_for_candidate ( candidate )
     @jobs = Job.all
@@ -76,4 +111,7 @@ private
     end
   end
 
+  def match_params
+    params.require(:match).permit(:candidate, :job, :candidate_like, :job_like)
+  end
 end
