@@ -1,12 +1,17 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [ :edit, :update, :destroy]
-  before_action :authenticate_user_company!, :except => [ :show ]
+  before_action :authenticate_user_company!, :except => [ :index, :show, :filter_job_company ]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    company_id = current_user_company.id
+    @jobs = Job.all
+  end
+
+  def filter_job_company
+    company_id = params[:id]
     @jobs = Job.where(company_id: company_id)
+    render :index
   end
 
   # GET /jobs/1
