@@ -97,7 +97,7 @@ end
     email: Faker::Internet.unique.safe_email,
     password: Faker::Internet.password
   )
-  candidate = Candate.last
+  candidate = Candidate.last
   candidate.given_name = Faker::Name.first_name
   candidate.family_name = Faker::Name.last_name
   candidate.years_of_experience = Faker::Number.number(digits: 1)
