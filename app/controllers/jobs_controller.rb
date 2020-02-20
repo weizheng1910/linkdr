@@ -2,20 +2,15 @@ class JobsController < ApplicationController
   before_action :set_job, only: [ :edit, :update, :destroy ]
   before_action :authenticate_user_company!, :except => [ :index, :show, :filter_job_company ]
   before_action :set_candidate_info
+  before_action :set_company_info
 
   # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
-    if current_user_company
-      @company = current_user_company.company
-    end
   end
 
   def filter_job_company
-    if current_user_company
-      @company = current_user_company.company
-    end
     company_id = params[:id]
     @jobs = Job.where(company_id: company_id)
     render :index
@@ -26,7 +21,6 @@ class JobsController < ApplicationController
   # Anyone can see a job, hence it skips the validation in :set_job
   def show
     @job = Job.find(params[:id])
-    @company = current_user_company.company
   end
 
   # GET /jobs/new
@@ -35,14 +29,12 @@ class JobsController < ApplicationController
       redirect_to root
     end
     @job = Job.new
-    @company = current_user_company.company
     @skills = Skill.all
   end
 
   # GET /jobs/1/edit
   def edit
     @skills = Skill.all
-    @company = current_user_company.company
   end
 
   # POST /jobs
@@ -92,6 +84,12 @@ class JobsController < ApplicationController
   def set_candidate_info
     if current_user_candidate
       @candidate = current_user_candidate.candidate
+    end
+  end
+
+  def set_company_info
+    if current_user_company
+      @company = current_user_company.company
     end
   end
 

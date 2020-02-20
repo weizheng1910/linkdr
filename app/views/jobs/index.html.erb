@@ -10,7 +10,7 @@
       <th>Description</th>
       <th>Offered Salary</th>
       <th>Country</th>
-      <th>Skills</th>
+      <th>Skills <% if @candidate %>matched<% end %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -22,7 +22,18 @@
         <td><%= job.description %></td>
         <td><%= job.offered_salary %></td>
         <td><%= job.country %></td>
-        <td><%= job.skills.length %></td>
+        <td>
+          <% if @candidate %>
+          <% count = 0 %>
+            <% job.skills.each do |skill| %>
+              <% if @candidate.skills.include? skill %>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
+          <%= count.to_s + " / " %>
+          <% end %>
+          <%= job.skills.length %>
+        </td>
         <% if @company && @company == job.company %>
           <td><%= link_to 'Edit', edit_job_path(job) %></td>
           <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
