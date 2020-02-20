@@ -89,6 +89,7 @@ thirdJob.save
       newJob.skills << skill
     end
   end
+  newJob.save
 end
 
 # 50 new candidates with random profiles n stuff
