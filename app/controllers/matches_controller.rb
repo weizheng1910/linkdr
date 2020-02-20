@@ -19,8 +19,12 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to @match.job, notice: "Feedback accepted" }
-        format.json { render :show, status: :ok, location: @match.job }
+        if current_user_company
+          format.html { redirect_to '/jobs/' + @match.job.id.to_s + '/matches/', notice: "Feedback accepted" }
+        else
+          format.html { redirect_to @match.job, notice: "Feedback accepted" }
+          format.json { render :show, status: :ok, location: @match.job }
+        end
       else
         format.html { render @match.job }
         format.json { render json: @match.errors, status: :unprocessable_entity }
@@ -34,14 +38,19 @@ class MatchesController < ApplicationController
   # Match game for companies
   def companiesmatch
     if current_user_company
-      job_id = params[:jobs_id]
+      job_id = params[:id]
       if job_id
         @job = Job.find_by( id: job_id )
         populate_matches_for_company ( @job )
-        @matches = Match.find_by(
+        @match = Match.find_by(
           job: @job,
           job_like: nil
         )
+        if @match
+        else
+          redirect_to @job, notice: "No more candidates, womp womp"
+          return
+        end
       end
     end
   end

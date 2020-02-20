@@ -1,6 +1,6 @@
 <% if @candidate %>
-  <% @candidate.skills.each do |skill| %>
-    <% if @job.skills.include? skill %>
+  <% @job.skills.each do |skill| %>
+    <% if @candidate.skills.include? skill %>
       <%= content_tag(:span, skill.name, class: "badge badge-pill badge-primary") %>
     <% else %>
       <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>

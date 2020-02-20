@@ -31,7 +31,7 @@
       <section class="posted-jobs">
       Here are your job listings:<br>
       Jobs posted: <% @company.job.each do |job| %>
-        <%= link_to job.title, job_path(job) %>
+        <br><%= link_to job.title, job_path(job) %>
       <% end %>
       </div>
       

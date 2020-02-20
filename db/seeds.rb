@@ -8,11 +8,16 @@
 
 Faker::UniqueGenerator.clear
 
+skills = ["Javascript", "HTML", "CSS", "Node.js",
+  "Express.js", "Ruby on Rails", "React", "PostgreSQL",
+  "Python", "Git", "Java", "PHP" ]
 
-Skill.create(name: Faker::ProgrammingLanguage.unique.name)
+# Create skills
+skills.each do |skill|
+  Skill.create(name: skill)
+end
 
-
-# create our first Candidate who has our one skill
+# create our first Candidate who has one skill
 UserCandidate.create(email: "linkdrcan@linkdr.com", password: "password")
 # Automatically generates a blank first candidate profile. Fill it in.
 firstCandidate = Candidate.first
@@ -36,9 +41,9 @@ firstCompany.save
 Job.create(
   title: Faker::Job.title,
   description: Faker::Lorem.paragraph,
-  offered_salary: "$5000 pcm",
+  offered_salary: "$" + Faker::Number.number(digits: 4).to_s + " pcm",
   country: "Singapore",
-  company_id: 1,
+  company_id: 1
 )
 
 firstJob = Job.first
@@ -68,6 +73,44 @@ thirdJob = Job.create(
 thirdJob.skills << Skill.first
 thirdJob.save
 
-# 1.time do
-#   Skill.create(name: Faker::ProgrammingLanguage.unique.name)
-# end
+10.times do
+  newJob = Job.new(
+    title: Faker::Job.title,
+    description: Faker::Lorem.paragraph,
+    offered_salary: "$" + Faker::Number.number(digits: 4).to_s + " pcm",
+    country: "Singapore",
+    company_id: 1
+  )
+  5.times do
+    skill = Skill.order('RANDOM()').first
+    if newJob.skills.include? skill
+      next
+    else
+      newJob.skills << skill
+    end
+  end
+  newJob.save
+end
+
+# 50 new candidates with random profiles n stuff
+50.times do
+  UserCandidate.create(
+    email: Faker::Internet.unique.safe_email,
+    password: Faker::Internet.password
+  )
+  candidate = Candidate.last
+  candidate.given_name = Faker::Name.first_name
+  candidate.family_name = Faker::Name.last_name
+  candidate.years_of_experience = Faker::Number.number(digits: 1)
+  candidate.expected_salary = Faker::Number.number(digits: 4).to_s
+  candidate.bio = Faker::TvShows::TheFreshPrinceOfBelAir.quote
+  10.times do
+    skill = Skill.order('RANDOM()').first
+    if candidate.skills.include? skill
+      next
+    else
+      candidate.skills << skill
+    end
+  end
+  candidate.save
+end

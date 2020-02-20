@@ -25,18 +25,7 @@
       <% if @match %>
         <div>
           <% if @match.candidate_like == nil %>
-            <%= form_with model: @match, local: true do |f| %>
-              <p>
-                <%= f.hidden_field :candidate_like, :value => true %>
-              </p>
-              <%= f.submit "I am interested in this job" %>
-            <% end %>
-              <%= form_with model: @match, local: true do |f| %>
-              <p>
-                <%= f.hidden_field :candidate_like, :value => false %>
-              </p>
-              <%= f.submit "I do not like this job" %>
-            <% end %>
+
           <% elsif @match.candidate_like == true %>
             <p>You have <strong>liked</strong> this job.</p>
           <% else %>
@@ -47,7 +36,9 @@
       <% if @company %>
       <br><br>
       <% if @company = @job.company %>
-        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      <br>
+        <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>
+        <br><%= link_to 'Edit Job Listing', edit_job_path(@job) %>
       <% end %>
       <% end %>
     </div>

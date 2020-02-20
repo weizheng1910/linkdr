@@ -1,16 +1,34 @@
-<h3>Potential Candidate</h3>
-<h5>Candidate Name</h5>
-<p><%= @match.candidate.given_name %> <%= @match.candidate.family_name %></p>
-<h5>Candidate Bio</h5>
-<p><%= @match.candidate.bio %></p>
-<h5>Years Of Experience</h5>
-<p><%= @match.candidate.years_of_experience %></p>
-<h5>Expected Salary</h5>
-<p><%= @match.candidate.expected_salary %></p>
-<h5>Skills to pay the bills</h5>
-<% @candidate = @match.candidate %>
-<% @job = @match.job %>
-<%= render "skills/skills_pills" %>
-<hr/>
-<h5>DO YOU LIKE IT:</h5>
-<p>Yay</p><p>Boo</p>
+<div class="container jobs">
+<p id="notice"><%= notice %></p>
+<h1>#<%= @match.job.id %> <%= @match.job.title %> </h1>
+<div class="h1-after companies">&nbsp;</div>
+
+<section class="candidate-info">
+  <div class="row">
+    <div class="col-sm-7 profile">
+      <strong>Candidate Name:</strong> <%= @match.candidate.given_name %> <%= @match.candidate.family_name %> <br>
+      <strong>Candidate Bio:</strong> <br>
+      <p><%= @match.candidate.bio %></p>
+      <strong>Years Of Experience:</strong> <%= @match.candidate.years_of_experience %> <br>
+      <strong>Expected Salary</strong> <%= @match.candidate.expected_salary %> <br>
+      <h5>Skills to pay the bills</h5>
+      <% @candidate = @match.candidate %>
+      <% @job = @match.job %>
+      <%= render "skills/skills_pills" %>
+    </div>
+    <div class="offset-sm-1 col-sm-4 stats pt-5">
+      <%= form_with model: @match, local: true do |f| %>
+        <p>
+          <%= f.hidden_field :job_like, :value => true %>
+        </p>
+        <%= f.submit "I like this candidate" %>
+      <% end %>
+        <%= form_with model: @match, local: true do |f| %>
+        <p>
+          <%= f.hidden_field :job_like, :value => false %>
+        </p>
+        <%= f.submit "I do not like this candidate" %>
+      <% end %>
+    </div>
+  </div>
+</section>
