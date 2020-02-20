@@ -1,7 +1,8 @@
-<div class="container jobs">
-<p id="notice"><%= notice %></p>
+
 <h1>#<%= @match.job.id %> <%= @match.job.title %> </h1>
 <div class="h1-after companies">&nbsp;</div>
+
+<div class="container jobs">
 
 <section class="candidate-info">
   <div class="row">
@@ -10,8 +11,8 @@
       <strong>Candidate Bio:</strong> <br>
       <p><%= @match.candidate.bio %></p>
       <strong>Years Of Experience:</strong> <%= @match.candidate.years_of_experience %> <br>
-      <strong>Expected Salary</strong> <%= @match.candidate.expected_salary %> <br>
-      <h5>Skills to pay the bills</h5>
+      <strong>Expected Salary: </strong> <%= @match.candidate.expected_salary %> <br>
+      <strong>Skills to pay the bills: </strong>
       <% @candidate = @match.candidate %>
       <% @job = @match.job %>
       <%= render "skills/skills_pills" %>

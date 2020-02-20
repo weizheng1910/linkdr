@@ -13,15 +13,17 @@
       <%= render "skills/skills_pills" %><br>
       <strong>Description:</strong><br>
       <p class="description"><%= @job.description %></p>
+      <div class="text-left">
+        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+      </div>
       <div class="text-right">
-      <strong>Job posted</strong> <%= time_ago_in_words @job.created_at %> ago
+      <strong>posted</strong> <%= time_ago_in_words @job.created_at %> ago
       </div>
     </div>
     <div class="offset-sm-1 col-sm-4 stats pt-5">
       This job listing has been viewed <strong>455</strong> times.
       <br><br>
       You have <strong>5</strong> interested candidates and <strong>88</strong> relevant matches.
-
       <% if @match %>
         <div>
           <% if @match.candidate_like == nil %>
@@ -45,11 +47,10 @@
         </div>
       <% end %>
       <% if @company %>
-      <br><br>
-      <% if @company = @job.company %>
       <br>
+      <% if @company = @job.company %>
         <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>
-        <br><%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+        
       <% end %>
       <% end %>
     </div>
