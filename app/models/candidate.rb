@@ -9,9 +9,9 @@ class Candidate < ActiveRecord::Base
 	after_save :validate_skills
 
 	def validate_skills
-	    if self.skills.length > 10
-	        self.errors.add(:skills, "cannot have more than 10 skills")
-	        return false
-	    end
+    if self.skills.length > 10
+      self.errors.add(:skills, "cannot have more than 10 skills")
+      return false
+    end
 	end
 end
