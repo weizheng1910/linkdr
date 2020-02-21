@@ -60,7 +60,7 @@ class MatchesController < ApplicationController
       end
     end
 
-    
+
   end
 
   # Match game for candidates
