@@ -1,26 +1,33 @@
 <div class="container candidate">
-  <h2>Successful match with <span class="highlight"><%= @candidate.given_name %></span>! 🥳 </h2>
+  <h2>Successful match for JOB NAME with <span class="highlight"><%= @candidate.given_name %></span>! 🥳 </h2>
   <br>
   <section class="public-profile text-center">
 
   <div class="info">
+  <div class="row">
+  <div class="col-6">
 
   <p class="message">Congratulations on successfully matching a candidate, here are their contact details where you will be able to schedule an interview with them or click the chat option below to start chatting ✉️</p> 
 
-  <h3><%= @candidate.given_name %>'s Profile</h3>
-  <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
-  <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
-  <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
-  <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+  </div>
+  <div class="col-6">
+     <h3><%= @candidate.given_name %>'s Profile</h3>
+    <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
+    <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
+    <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
+    <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+    <% if @candidate.resume_url != nil %>
+      <strong>Resume</strong>
+      <%= link_to "Download Resume", @candidate.resume_url %>
+    <% end %>
+    <br>
+  <h3> Skills</h3>
+    <% @candidate.skills.each do |m| %>
+     <%= content_tag(:div, m.name, class: "badge badge-pill badge-success") %>
+    <% end %>
+  </div>
+</div>
 
-  <%= @candidate.skills.each do |m| %>
-    <%= m %>
-  <% end %>
-
-  <% if @candidate.resume_url != nil %>
-    <strong>Resume</strong>
-    <%= link_to "Link", @candidate.resume_url %>
-  <% end %>
   </div>
 
   </div>
