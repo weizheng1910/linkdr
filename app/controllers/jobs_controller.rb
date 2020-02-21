@@ -11,11 +11,13 @@ class JobsController < ApplicationController
     sort_by = params["sort"]
     puts sort_by
     if sort_by == "salary asc"
-      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }
+      @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: 8)
     elsif sort_by == "salary desc"
-      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }.reverse
+      @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: 8)
     elsif sort_by == "best matches"
-      @jobs = @jobs.sort_by { |job| (job.skills & @candidate.skills).length }.reverse
+      @pagy, @records = pagy(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: 8)
+    else
+      @pagy, @records = pagy(Job.all, items: 8)
     end
   end
 
