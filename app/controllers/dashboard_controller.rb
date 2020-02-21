@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
     if user_company_signed_in?
       if current_user_company.company
         @company = Company.find(current_user_company.id)
+        @pagy, @records = pagy(Job.where(company: @company))
         if @company.name == nil
           redirect_to edit_company_path(@company)
         end
@@ -18,10 +19,10 @@ class DashboardController < ApplicationController
       end
     elsif user_candidate_signed_in?
       @candidate = Candidate.find(current_user_candidate.id)
-      @matches = Match.where(
+      @pagy, @matches = pagy(Match.where(
         candidate: @candidate,
         job_like: nil,
-      )
+      ))
     end
   end
 end

@@ -22,6 +22,8 @@ gem 'cloudinary'
 gem 'devise'
 gem 'faker'
 gem 'gravtastic'
+# Pagy for pagination
+gem 'pagy', '~> 3.5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
