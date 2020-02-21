@@ -28,32 +28,38 @@
           </div>
       </div>
       </section>
-
-      <% if @company.job.length != 0 %> 
-
-      <section class="posted-jobs">
-      Here are your job listings:<br>
-        <div class="board">
-          <% @company.job.each do |job| %>
-            <div class="listing">
-              <div class="position-title">
-                <%= job.title %>
-              </div>
-              <span class="position-salary"><%= job.offered_salary %></span> | <span
-                class="location"><%= job.country %></span><br>
-              <p class="description"><%= job.description %></p>
-              <div class="skills">
-                  add skills here with company's view
-              </div>
-              <div class="actions">
-                <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
-                | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-          <% end %>
-        </div>
-      <% end %>
-      </section>
       
+      <% if @company.job.length != 0 %> 
+        <section class="posted-jobs">
+        Here are your job listings:<br>
+          <div class="board">
+            <% @company.job.each do |job| %>
+              <div class="listing">
+                <div class="position-title">
+                  <%= job.title %>
+                </div>
+                <span class="position-salary"><%= job.offered_salary %></span> | <span
+                  class="location"><%= job.country %></span><br>
+                <p class="description"><%= job.description %></p>
+                <div class="skills">
+                    add skills here with company's view
+                </div>
+                <div class="actions">
+                  <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
+                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+            <% end %>
+          </div>
+        <% end %>
+        </section>
+      
+      <% elsif %>
+      <section class="posted-jobs">
+        Hey! You haven't posted any jobs yet, 
+        <%= link_to new_job_path do %>
+        post a new Job <i class="material-icons">add_circle_outline</i>
+      </section>
+      <% end %>  
       <% end %>
 
     </div>
