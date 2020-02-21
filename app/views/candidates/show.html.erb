@@ -1,58 +1,41 @@
 <div class="container candidate">
-  <h2>Hey, <span class="highlight"><%= @candidate.given_name %></span>! </h2>
+  <h2>Successful match for JOB NAME with <span class="highlight"><%= @candidate.given_name %></span>! 🥳 </h2>
   <br>
-  <section class="candidate-info">
-    <div class="row">
-      <div class="col-sm-7 profile">
-        <div class="row">
-          <div class="col-6">
-            <h3>Your Profile</h3>
-          </div>
-          <div class="col-6 text-right">
-            <a href="/candidates/<%= @candidate.id %>/edit"><i class="material-icons">edit</i></a></div>
-        </div>
-        <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
-        <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
-        <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
-        <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
-        <strong>User Candidate ID:</strong> <%= @candidate.user_candidate_id %> <br>
-        <% if @candidate.resume_url != nil %>
-          <strong>Resume</strong>
-          <%= link_to "Link", @candidate.resume_url %>
-        <% end %>
-      </div>
+  <section class="public-profile text-center">
 
+  <div class="info">
+  <div class="row">
+  <div class="col-6">
 
-    <div class="offset-sm-1 col-sm-4 stats pt-5">
-      Your profile has been viewed <strong><%= @candidate.views %></strong> times.
-      <br><br>
-      You expressed interest in <strong><%= @matches.length %></strong> jobs.
-    </div>
+  <p class="message">Congratulations on successfully matching a candidate, here are their contact details where you will be able to schedule an interview with them or click the chat option below to start chatting ✉️</p>
+  <select>
+    <option>Start Chatting</option>
+    <option>Send a Technical Test</option>
+    <option>Send An Email</option>
+  </select>
+
   </div>
-</section>
+  <div class="col-6">
+     <h3>Candidate Profile</h3>
+    <strong>Name:</strong> <%= @candidate.given_name %>  <u><%= @candidate.family_name %></u> <br>
+    <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
+    <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+    <% if @candidate.resume_url != nil %>
+      <strong>Resume</strong>
+      <%= link_to "Download Resume", @candidate.resume_url %>
+    <% end %>
+    Their profile has been viewed <strong><%= @candidate.views %></strong> times.
+    <br>
+  <h3> Skills</h3>
+    <% @candidate.skills.each do |m| %>
+     <%= content_tag(:div, m.name, class: "badge badge-pill badge-success") %>
+    <% end %>
+  </div>
+</div>
 
-<section class="suggested-jobs">
-  Hey lookie here! Just thought you would be interested in these jobs:
-    <div class="board">
-      <% @matches.each do |m|%>
-      <a href=<%= job_path(m.job.id) %>>
-      <div class="listing">
-      <div class="row">
-        <div class="col-1 pr-0"><i class="material-icons">remove_red_eye</i></div>
-        <div class="col-11"><div class="position-title"><%= m.job.title %></div></div>
-      </div>
-        <span class="position-salary"><%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %></span><br>
-        <% m.job.skills.each do |skill| %>
-          <% if m.candidate.skills.include? skill %>
-            <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
-          <% else %>
-            <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
-          <% end %>
-        <% end %>
-      </div>
-        </a>
-        <% end %>
-    </div>
+  </div>
+
+  </div>
 </section>
 
 </div>
