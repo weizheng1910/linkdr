@@ -1,5 +1,7 @@
 # Linkdr
 
+![logo](/public/small-logo.png)
+
 Linkdr is where the people hire software developers. Like in real life, but better.
 
 ## The App
@@ -26,9 +28,7 @@ Our app targets to streamline the hiring process for tech companies or recruiter
 - **[Ruby 2.5.1](https://www.ruby-lang.org/en/)** - Main Language
 - **[Rails 5.2.4.1](https://rubyonrails.org)** - Backend Framework
 - **[PostgreSQL 10.5]()** - SQL Database
-- **[Bootstrap](https://getbootstrap.com/)** - CSS Framework
-
-## Future Development
+- **[Bootstrap](https://getbootstrap.com/)** - Frontend Framework
 
 ## Acknowledgements
 
