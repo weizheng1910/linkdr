@@ -79,10 +79,17 @@
                     <i class="material-icons">edit</i>
                   <% end %></div>
               </div>
-              <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
-              <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
-              <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
-              <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+              <div class="row">
+                <div class="col-8">
+                  <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
+                  <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
+                  <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
+                  <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+                </div>
+                <div class="col-4">
+                <%= image_tag current_user_candidate.gravatar_url %>
+                </div>
+              </div>
               <strong>Skills:</strong> <% @candidate.skills.each do |skill| %>
                 <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
               <% end %>
