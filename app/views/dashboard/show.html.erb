@@ -47,13 +47,11 @@
                 <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
                 | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
-            </div>
           <% end %>
         </div>
+    <% end %>
       </section>
     </div>
-    <% end %>
-    <br><%= link_to "Add new job!", new_job_path %>
     </div>
 
 
@@ -64,63 +62,66 @@
         <h2>Hey, <span class="highlight"><%= @candidate.given_name %></span>! </h2>
         <br>
         <section class="candidate-info">
-        <div class="row">
-      <div class="col-sm-7 profile">
-        <div class="row">
-          <div class="col-6">
-            <h3>Your Profile</h3>
+          <div class="row">
+            <div class="col-sm-7 profile">
+              <div class="row">
+                <div class="col-6">
+                  <h3>Your Profile</h3>
+                </div>
+                <div class="col-6 text-right">
+                  <%= link_to edit_candidate_path(@candidate) do %>
+                    <i class="material-icons">edit</i>
+                  <% end %></div>
+              </div>
+              <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
+              <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
+              <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
+              <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
+              <strong>Skills:</strong> <% @candidate.skills.each do |skill| %>
+                <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
+              <% end %>
+              <% if @candidate.resume_url != nil %>
+                <strong>Resume</strong>
+                <%= link_to "Link", @candidate.resume_url %>
+              <% end %>
+            </div>
+            <div class="offset-sm-1 col-sm-4 stats pt-5">
+              Your profile has been viewed <strong><%= @candidate.views %></strong> times.
+              <br>
+              <br>
+              You expressed interest in <strong>5</strong> jobs.
+            </div>
           </div>
-          <div class="col-6 text-right">
-          <%= link_to edit_candidate_path(@candidate) do %>
-            <i class="material-icons">edit</i>
-          <% end %></div>
-        </div>
-        <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
-        <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
-        <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
-        <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
-        <strong>User Candidate ID:</strong> <%= @candidate.user_candidate_id %> <br>
-        <% if @candidate.resume_url != nil %>
-          <strong>Resume</strong>
-          <%= link_to "Link", @candidate.resume_url %>
-        <% end %>
-      </div>
-
-          <div class="offset-sm-1 col-sm-4 stats pt-5">
-            Your profile has been viewed <strong><%= @candidate.views %></strong> times.
-            <br><br>
-            You expressed interest in <strong>5</strong> jobs.
-          </div>
-        </div>
         </section>
-
-        <section class="suggested-jobs">
-            Hey lookie here! Just thought you would be interested in these jobs:
+        <% if @matches.length != 0 %>
+          <section class="suggested-jobs">
+            You've liked these jobs:
             <div class="board">
               <% @matches.each do |m|%>
-              <div class="listing">
-              <div class="position-title"><%= m.job.title %></div>
-                <span class="position-salary"><%= m.job.offered_salary %></span> | <span
+                <div class="listing">
+                  <div class="position-title"><%= m.job.title %></div>
+                  <span class="position-salary"><%= m.job.offered_salary %></span> | <span
                 class="location"><%= m.job.country %></span><br>
-                <p class="description"><%= m.job.description %></p>
-                <div class="skills">
-                <% m.job.skills.each do |skill| %>
-                  <% if m.candidate.skills.include? skill %>
-                    <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
-                  <% else %>
-                    <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
-                  <% end %>
-                <% end %>
+                  <p class="description"><%= m.job.description %></p>
+                  <div class="skills">
+                    <% m.job.skills.each do |skill| %>
+                      <% if m.candidate.skills.include? skill %>
+                        <%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+                      <% else %>
+                        <%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="actions">
+                    <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> <% if @company && @company == job.company %>
+                      | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                  </div>
                 </div>
-                <div class="actions">
-                  <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> <% if @company && @company == job.company %>
-                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <% end %>
-                </div>
-              </div>
-                <% end %>
+              <% end %>
             </div>
-        </section>
+          </section>
+        <% end %>
       </div>
     <% end %>
   <% end %>
