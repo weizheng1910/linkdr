@@ -29,6 +29,8 @@
       </div>
       </section>
 
+      <% if @company.job.length != 0 %> 
+
       <section class="posted-jobs">
       Here are your job listings:<br>
         <div class="board">
@@ -49,8 +51,11 @@
               </div>
           <% end %>
         </div>
-    <% end %>
+      <% end %>
       </section>
+      
+      <% end %>
+
     </div>
     </div>
 
