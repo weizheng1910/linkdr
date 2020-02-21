@@ -119,3 +119,14 @@ textarea {
         outline: none;
     }
 }
+
+.profile-pic {
+    width:150px;
+    height:150px;
+    
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+}
