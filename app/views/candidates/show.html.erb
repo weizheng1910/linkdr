@@ -24,6 +24,7 @@
       <strong>Resume</strong>
       <%= link_to "Download Resume", @candidate.resume_url %>
     <% end %>
+    Their profile has been viewed <strong><%= @candidate.views %></strong> times.
     <br>
   <h3> Skills</h3>
     <% @candidate.skills.each do |m| %>
