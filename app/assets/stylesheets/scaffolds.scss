@@ -205,7 +205,12 @@ footer:before {
 
 .pagy-bootstrap-nav {
   margin: 20px auto;
-  width: 200px;
+  width: 100%;
+  text-align: center;
+
+  .pagination {
+    display: inline-flex;
+  }
 
   a {
     text-decoration: none;
