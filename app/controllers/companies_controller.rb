@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     @company.update(company_params)
-    redirect_to @company
+    redirect_to '/dashboard/'
     # redirect_to '/companies/' + params[:id]
   end
 

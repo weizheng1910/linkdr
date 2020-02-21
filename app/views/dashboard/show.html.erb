@@ -1,6 +1,5 @@
 <div class="container company">
   <% if user_company_signed_in? %>
-    <% if @company && @company.job.length != 0 %>
     <div class="container candidate">
     <h2>Hey, <span class="highlight"><%= @company.name %></span>! </h2><br>
     <section class="candidate-info">
@@ -13,7 +12,7 @@
           <div class="col-6 text-right">
           <%= link_to edit_company_path(@company) do %>
             <i class="material-icons">edit</i>
-          <% end %>  
+          <% end %>
           </div>
         </div>
 
@@ -25,7 +24,7 @@
       <div class="offset-sm-1 col-sm-4 stats pt-5">
             Your profile has been viewed <strong><%= @company.views %></strong> times.
             <br><br>
-            You expressed interest in <strong>5</strong> jobs.
+            You expressed interest in <strong><%= @company.job.length %></strong> jobs.
           </div>
       </div>
       </section>
@@ -33,29 +32,31 @@
       <section class="posted-jobs">
       Here are your job listings:<br>
         <div class="board">
-        <% @company.job.each do |job| %>
-          <div class="listing">
-            <div class="position-title"> <%= job.title %></div>
-            <span class="position-salary"><%= job.offered_salary %></span> | <span 
+          <% @company.job.each do |job| %>
+            <div class="listing">
+              <div class="position-title">
+                <%= job.title %>
+              </div>
+              <span class="position-salary"><%= job.offered_salary %></span> | <span
                 class="location"><%= job.country %></span><br>
-                <p class="description"><%= job.description %></p>
-                <div class="skills">
+              <p class="description"><%= job.description %></p>
+              <div class="skills">
                   add skills here with company's view
-                </div>
-                <div class="actions">
-                  <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
-                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <% end %>
-                </div>
-          </div>
-        <% end %>
+              </div>
+              <div class="actions">
+                <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
+                | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-
-    <% elsif @company.job.length == 0 %>
-      <%= link_to "Add new job!", new_job_path %>
-    <% end %>
+      </section>
     </div>
+    <% end %>
+    <br><%= link_to "Add new job!", new_job_path %>
+    </div>
+
+
   <% elsif user_candidate_signed_in? %>
     <% if @candidate %>
       <%# show candidate stuff. don't know what's relevant yet %>
