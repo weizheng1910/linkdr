@@ -11,13 +11,14 @@ class CandidatesController < ApplicationController
 
   def show
     if user_candidate_signed_in?
-      @matches = Match.where(candidate: @candidate, candidate_like: true)
-      populate_matches_for_candidate (current_user_candidate)
-      @candidate = current_user_candidate.candidate
-      @matches = Match.where(
-        candidate: @candidate,
-        job_like: nil,
-      )
+      redirect_to root_path
+      # @matches = Match.where(candidate: @candidate, candidate_like: true)
+      # populate_matches_for_candidate (current_user_candidate)
+      # @candidate = current_user_candidate.candidate
+      # @matches = Match.where(
+      #   candidate: @candidate,
+      #   job_like: nil,
+      # )
     elsif user_company_signed_in?
       @matches = Match.where(candidate: @candidate)
       @matches.each do |match|
