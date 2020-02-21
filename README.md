@@ -1,9 +1,25 @@
 # Linkdr
 
-## The App
 Linkdr is where the people hire software developers. Like in real life, but better.
 
-In this day and age where technology is prevalent 
+## The App
+
+In this day and age where technology is prevalent, tech companies everywhere are hiring. For tech recruiters who are scuttling around trying to match relevant candidates to their available jobs, they simply have no time to go through bloated resumes. 
+
+Our app targets to streamline the hiring process for tech companies or recruiters, only asking for relevant details from candidates. No more wordy cover letters which no one bothers to read anyway or repeated details being asked! 
+
+### How It Works
+
+- Tech recruiters or companies will be able to sign up to our app
+  - Post job listings
+  - Shown relevant candidates for respective listings
+  - Reach out to candidates after you get LINKD! 
+  
+- Candidates will be able to sign up to our app
+  - View relevant job listings
+  - Express interest in jobs
+  - Sit back and wait for companies to approach!
+
 
 ## Application Development Process
 ### Built With
@@ -12,12 +28,15 @@ In this day and age where technology is prevalent
 - **[PostgreSQL 10.5]()** - SQL Database
 - **[Bootstrap](https://getbootstrap.com/)** - CSS Framework
 
-### How It Works
-
 ## Future Development
 
 ## Acknowledgements
 
-- **[Art Illustrations](https://mixkit.co/free-stock-art/)** - Artwork on site
+- **[Art Illustrations](https://mixkit.co/free-stock-art/)** 
 
-Made with love by Stuart, Ben, Rachelle, Weizheng xx
+## Team
+
+- [Stu](https://www.github.com/laustynspace)
+- [Ben](https://github.com/benjacoblee)
+- [Weizheng](https://github.com/weizheng1910)
+- [Rachelle](https://github.com/rachellesg)
