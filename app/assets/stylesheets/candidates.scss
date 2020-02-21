@@ -32,11 +32,29 @@ $light-pink: rgb(252,232,227);
 }
 
 .candidate {
+    .public-profile {
+        .message {
+            padding: 20px 40px;
+        }
+
+        .info {
+            background: $white;
+            padding: 20px 20px 40px;
+            margin-bottom: 20px;
+            position: relative;
+            margin: 10px;
+            text-decoration: none;
+        }
+    }
+
     h2 {
         font-weight: bold;
 
         .highlight {
             background: rgb(252,232,227);
+        }
+
+        &:after {
         }
     }
 
