@@ -19,10 +19,10 @@ class DashboardController < ApplicationController
       end
     elsif user_candidate_signed_in?
       @candidate = Candidate.find(current_user_candidate.id)
-      @matches = Match.where(
+      @pagy, @matches = pagy(Match.where(
         candidate: @candidate,
         job_like: nil,
-      )
+      ))
     end
   end
 end

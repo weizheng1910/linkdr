@@ -109,7 +109,8 @@
         </section>
         <% if @matches.length != 0 %>
           <section class="suggested-jobs">
-            You've liked these jobs:
+            You've liked these jobs:<br><br>
+            <%== pagy_bootstrap_nav(@pagy) %>
             <div class="board">
               <% @matches.each do |m|%>
                 <div class="listing">
