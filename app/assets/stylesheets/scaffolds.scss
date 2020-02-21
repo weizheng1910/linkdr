@@ -201,3 +201,13 @@ footer:before {
   color: $white;
   background: $secondary-color;
 }
+
+
+.pagy-bootstrap-nav {
+  margin: 20px auto;
+  width: 200px;
+
+  a {
+    text-decoration: none;
+  }
+}

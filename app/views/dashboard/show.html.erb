@@ -42,8 +42,6 @@
       <% if @company.job.length != 0 %>
         <section class="posted-jobs">
           Here are your job listings:<br>
-          <br>
-          <%== pagy_bootstrap_nav(@pagy) %>
           <div class="board">
             <% @records.each do |job| %>
               <div class="listing">
@@ -63,6 +61,8 @@
                 <% end %>
               </div>
             <% end %>
+          <br>
+          <%== pagy_bootstrap_nav(@pagy) %>
           </section>
         <% elsif %>
           <section class="posted-jobs">
@@ -122,8 +122,6 @@
         <% if @matches.length != 0 %>
           <section class="suggested-jobs">
             You've liked these jobs:<br>
-            <br>
-            <%== pagy_bootstrap_nav(@pagy) %>
             <div class="board">
               <% @matches.each do |m|%>
                 <div class="listing">
@@ -141,13 +139,17 @@
                     <% end %>
                   </div>
                   <div class="actions">
-                    <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> <% if @company && @company == job.company %>
+                    <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> 
+                    <% if @company && @company == job.company %>
                       | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
                     <% end %>
                   </div>
                 </div>
               <% end %>
             </div>
+            
+            <div class="clearfix"> </div>
+            <%== pagy_bootstrap_nav(@pagy) %>
           </section>
         <% end %>
       </div>
