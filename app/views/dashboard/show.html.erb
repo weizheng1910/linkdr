@@ -1,37 +1,36 @@
 <div class="container company">
   <% if user_company_signed_in? %>
     <div class="container candidate">
-    <h2>Hey, <span class="highlight"><%= @company.name %></span>! </h2><br>
-    <section class="candidate-info">
+      <h2>Hey, <span class="highlight"><%= @company.name %></span>! </h2>
+      <br>
+      <section class="candidate-info">
         <div class="row">
-      <div class="col-sm-7 profile">
-      <div class="row">
-          <div class="col-6">
-            <h3>Your Profile</h3>
-          </div>
-          <div class="col-6 text-right">
-          <%= link_to edit_company_path(@company) do %>
-            <i class="material-icons">edit</i>
-          <% end %>
-          </div>
-        </div>
-
+          <div class="col-sm-7 profile">
+            <div class="row">
+              <div class="col-6">
+                <h3>Your Profile</h3>
+              </div>
+              <div class="col-6 text-right">
+                <%= link_to edit_company_path(@company) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+              </div>
+            </div>
             <strong>Company Name:</strong> <%= @company.name %><br>
             <strong>Company Industry:</strong> <%= @company.industry %><br>
             <strong>Company Size:</strong> <%= @company.size %><br>
-
-      </div>
-      <div class="offset-sm-1 col-sm-4 stats pt-5">
+          </div>
+          <div class="offset-sm-1 col-sm-4 stats pt-5">
             Your company profile has been viewed <strong><%= @company.views %></strong> times.
-            <br><br>
+            <br>
+            <br>
             You posted <strong><%= @company.job.length %></strong> jobs.
           </div>
-      </div>
+        </div>
       </section>
-      
-      <% if @company.job.length != 0 %> 
+      <% if @company.job.length != 0 %>
         <section class="posted-jobs">
-        Here are your job listings:<br>
+          Here are your job listings:<br>
           <div class="board">
             <% @company.job.each do |job| %>
               <div class="listing">
@@ -42,30 +41,26 @@
                   class="location"><%= job.country %></span><br>
                 <p class="description"><%= job.description %></p>
                 <div class="skills">
-                    add skills here with company's view
+                  add skills here with company's view
                 </div>
                 <div class="actions">
                   <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
-                  | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </div>
+                    | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
-          </div>
+          </section>
+        <% elsif %>
+          <section class="posted-jobs">
+            Hey! You haven't posted any jobs yet, 
+            <%= link_to new_job_path do %>
+              post a new Job <i class="material-icons">add_circle_outline</i>
+            </section>
+          <% end %>
         <% end %>
-        </section>
-      
-      <% elsif %>
-      <section class="posted-jobs">
-        Hey! You haven't posted any jobs yet, 
-        <%= link_to new_job_path do %>
-        post a new Job <i class="material-icons">add_circle_outline</i>
-      </section>
-      <% end %>  
-      <% end %>
-
+      </div>
     </div>
-    </div>
-
-
   <% elsif user_candidate_signed_in? %>
     <% if @candidate %>
       <%# show candidate stuff. don't know what's relevant yet %>
@@ -100,7 +95,7 @@
               Your profile has been viewed <strong><%= @candidate.views %></strong> times.
               <br>
               <br>
-              You expressed interest in <strong>5</strong> jobs.
+              You expressed interest in <strong><%= @matches.length %></strong> jobs.
             </div>
           </div>
         </section>
