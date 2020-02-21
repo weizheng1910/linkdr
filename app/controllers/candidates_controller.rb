@@ -50,7 +50,7 @@ class CandidatesController < ApplicationController
     else
       @candidate.update(candidate_params)
     end
-    redirect_to @candidate
+    redirect_to dashboard_path
   end
 
   private
