@@ -22,7 +22,13 @@
                 <strong>Company Industry:</strong> <%= @company.industry %><br>
                 <strong>Company Size:</strong> <%= @company.size %><br>
               </div>
-              <div class="col-4 profile-pic"><%= image_tag current_user_company.company.avatar_url %></div>
+              <div class="col-4 profile-pic">
+                <% if current_user_company.company.avatar_url != nil %>
+                  <%= image_tag current_user_company.company.avatar_url %>
+                <% else %>
+                  <%= image_tag current_user_company.gravatar_url %>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="offset-sm-1 col-sm-4 stats pt-5">
@@ -35,7 +41,8 @@
       </section>
       <% if @company.job.length != 0 %>
         <section class="posted-jobs">
-          Here are your job listings:<br><br>
+          Here are your job listings:<br>
+          <br>
           <%== pagy_bootstrap_nav(@pagy) %>
           <div class="board">
             <% @records.each do |job| %>
@@ -114,7 +121,8 @@
         </section>
         <% if @matches.length != 0 %>
           <section class="suggested-jobs">
-            You've liked these jobs:<br><br>
+            You've liked these jobs:<br>
+            <br>
             <%== pagy_bootstrap_nav(@pagy) %>
             <div class="board">
               <% @matches.each do |m|%>
