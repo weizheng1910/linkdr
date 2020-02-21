@@ -16,9 +16,15 @@
                 <% end %>
               </div>
             </div>
+            <div class="row">
+            <div class="col-8">
             <strong>Company Name:</strong> <%= @company.name %><br>
             <strong>Company Industry:</strong> <%= @company.industry %><br>
             <strong>Company Size:</strong> <%= @company.size %><br>
+            </div>
+            <div class="col-4"><%= image_tag current_user_company.gravatar_url %></div>
+            </div>
+            
           </div>
           <div class="offset-sm-1 col-sm-4 stats pt-5">
             Your company profile has been viewed <strong><%= @company.views %></strong> times.
