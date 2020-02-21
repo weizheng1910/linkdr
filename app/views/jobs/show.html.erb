@@ -16,7 +16,7 @@
       <div class="text-left">
       <% if @company %>
       <% if @company = @job.company %>
-        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>        
+        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
       <% end %>
       <% end %>
       </div>
@@ -25,9 +25,12 @@
       </div>
     </div>
     <div class="offset-sm-1 col-sm-4 stats pt-5">
-      This job listing has been viewed <strong>455</strong> times.
+      This job listing has been viewed <strong><%= @job.views %></strong> times.
       <br><br>
-      You have <strong>5</strong> interested candidates and <strong>88</strong> relevant matches.
+      You have <strong><%= @matches.length %></strong> interested candidates and <strong>
+        <% result =  @matches.select { |match| match.job_like } %>
+        <%= result.length %>
+      </strong> relevant matches.
       <% if @match %>
         <div>
           <% if @match.candidate_like == nil %>
@@ -54,12 +57,30 @@
       <br>
       <% if @company = @job.company %>
         <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>
-        
+
       <% end %>
       <% end %>
     </div>
   </div>
 </section>
+<% if @matches %>
+  <section class="suggested-jobs">
+    These candidates have liked your job and you have liked them. Why not take it further?
+      <div class="board">
+        <% @matches.each do |m| %>
+          <% if m.job_like %>
+            <div class="listing">
+              <div class="position-title"><%= link_to m.candidate.full_name, m.candidate %></div>
+              <p class="description"><%= m.candidate.bio %></p>
+              <div class="actions">
+                <i class="material-icons">remove_red_eye</i><%= link_to 'View Candidate', m.candidate %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  </section>
+<% end %>
 
 <%= link_to 'Back', jobs_path %>
 </div>

@@ -8,6 +8,10 @@ class Candidate < ActiveRecord::Base
 
 	after_save :validate_skills
 
+	def full_name()
+		return given_name + " " + family_name
+	end
+
 	def validate_skills
     if self.skills.length > 10
       self.errors.add(:skills, "cannot have more than 10 skills")
