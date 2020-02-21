@@ -41,7 +41,7 @@ firstCompany.save
 Job.create(
   title: Faker::Job.title,
   description: Faker::Lorem.paragraph,
-  offered_salary: "$" + Faker::Number.number(digits: 4).to_s + " pcm",
+  offered_salary: Faker::Number.number(digits: 4).to_s,
   country: "Singapore",
   company_id: 1
 )
@@ -54,7 +54,7 @@ firstJob.save
 secondJob = Job.create(
   title: "Software Dev 1",
   description: Faker::Lorem.paragraph,
-  offered_salary: "$6000 pcm",
+  offered_salary: Faker::Number.number(digits: 4).to_s,
   country: "Singapore",
   company_id: 1,
 )
@@ -65,7 +65,7 @@ secondJob.save
 thirdJob = Job.create(
   title: "Software Dev 2",
   description: Faker::Lorem.paragraph,
-  offered_salary: "$7000 pcm",
+  offered_salary: Faker::Number.number(digits: 4).to_s,
   country: "Singapore",
   company_id: 1,
 )
@@ -77,7 +77,7 @@ thirdJob.save
   newJob = Job.new(
     title: Faker::Job.title,
     description: Faker::Lorem.paragraph,
-    offered_salary: "$" + Faker::Number.number(digits: 4).to_s + " pcm",
+    offered_salary: Faker::Number.number(digits: 4).to_s,
     country: "Singapore",
     company_id: 1
   )
