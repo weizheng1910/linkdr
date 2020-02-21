@@ -7,13 +7,17 @@
   <div class="row">
   <div class="col-6">
 
-  <p class="message">Congratulations on successfully matching a candidate, here are their contact details where you will be able to schedule an interview with them or click the chat option below to start chatting ✉️</p> 
+  <p class="message">Congratulations on successfully matching a candidate, here are their contact details where you will be able to schedule an interview with them or click the chat option below to start chatting ✉️</p>
+  <select>
+    <option>Start Chatting</option>
+    <option>Send a Technical Test</option>
+    <option>Send An Email</option>
+  </select>
 
   </div>
   <div class="col-6">
-     <h3><%= @candidate.given_name %>'s Profile</h3>
-    <strong>Given Name:</strong> <%= @candidate.given_name %> <br>
-    <strong>Family Name:</strong> <%= @candidate.family_name %> <br>
+     <h3>Candidate Profile</h3>
+    <strong>Name:</strong> <%= @candidate.given_name %>  <u><%= @candidate.family_name %></u> <br>
     <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
     <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br>
     <% if @candidate.resume_url != nil %>
