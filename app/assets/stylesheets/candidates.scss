@@ -33,8 +33,27 @@ $light-pink: rgb(252,232,227);
 
 .candidate {
     .public-profile {
-        .message {
-            padding: 20px 40px;
+        .message  {
+            padding: 20px;
+        }
+
+        .stats {
+            background: #fdf5f3;
+            padding: 30px 40px;
+            line-height: 30px;
+
+            i {
+                font-size: 18px;
+            }
+
+            .badge-available {
+                color: $white;
+                background: $secondary-color;
+            }
+        }
+
+        .bio {
+            font-size: 16px;
         }
 
         .info {
