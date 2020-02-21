@@ -10,6 +10,9 @@ class DashboardController < ApplicationController
     if user_company_signed_in?
       if current_user_company.company
         @company = Company.find(current_user_company.id)
+        if @company.name == nil
+          redirect_to edit_company_path(@company)
+        end
       else
         @company = nil
       end
