@@ -1,40 +1,43 @@
 <div class="container candidate">
-<h2>Edit your profile</h2>
-<br>
-
-<div class="form">
-<%= form_with scope: :company, model: @company, local: true do |form| %>
-<div class="row">
-  <div class="col-sm-12">
-  <div class="field">
-    <%= form.label :company_name %><br>
-    <%= form.text_field :name %>
-  </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="field">
-      <%= form.label :industry %><br>
-      <%= form.text_field :industry %>
+  <h2>Edit your profile</h2>
+  <br>
+  <div class="form">
+    <%= form_with scope: :company, model: @company, local: true do |form| %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="field">
+            <%= form.label :company_name %><br>
+            <%= form.text_field :name %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :industry %><br>
+            <%= form.text_field :industry %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :company_Size %><br>
+            <%= form.text_field :size %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="field">
+            <%= form.label :avatar %><br>
+            <%= form.file_field :avatar %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="actions row">
+            <div class="col-sm-6">
+              <%= link_to 'Back', url_for(:back) %>
+            </div>
+            <div class="col-sm-6 text-right">
+              <%= form.submit %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-
-  <div class="col-sm-6">
-    <div class="field">
-      <%= form.label :company_Size %><br>
-      <%= form.text_field :size %>
-    </div>
-  </div>
-<div class="col-sm-12">
-    <div class="actions row">
-      <div class="col-sm-6">
-          <%= link_to 'Back', url_for(:back) %>
-      </div>
-      <div class="col-sm-6 text-right">
-        <%= form.submit %>
-      </div>
-  </div>
-</div>
-<% end %>
-</div>
-</div>
