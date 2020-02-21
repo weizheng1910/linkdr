@@ -30,9 +30,10 @@
       </section>
       <% if @company.job.length != 0 %>
         <section class="posted-jobs">
-          Here are your job listings:<br>
+          Here are your job listings:<br><br>
+          <%== pagy_bootstrap_nav(@pagy) %>
           <div class="board">
-            <% @company.job.each do |job| %>
+            <% @records.each do |job| %>
               <div class="listing">
                 <div class="position-title">
                   <%= job.title %>
@@ -53,7 +54,7 @@
           </section>
         <% elsif %>
           <section class="posted-jobs">
-            Hey! You haven't posted any jobs yet, 
+            Hey! You haven't posted any jobs yet,
             <%= link_to new_job_path do %>
               post a new Job <i class="material-icons">add_circle_outline</i>
             </section>
