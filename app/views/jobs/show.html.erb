@@ -27,10 +27,12 @@
     <div class="offset-sm-1 col-sm-4 stats pt-5">
       This job listing has been viewed <strong><%= @job.views %></strong> times.
       <br><br>
-      You have <strong><%= @matches.length %></strong> interested candidates and <strong>
+      <% if @matches %>
+        You have <strong><%= @matches.length %></strong> interested candidates and <strong>
         <% result =  @matches.select { |match| match.job_like } %>
         <%= result.length %>
       </strong> relevant matches.
+      <% end %>
       <% if @match %>
         <div>
           <% if @match.candidate_like == nil %>
