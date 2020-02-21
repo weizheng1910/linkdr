@@ -40,7 +40,11 @@
   <div class="col-sm-12">
     <div class="field">
       <%= form.label :skills %> <br>
-      <%= form.collection_check_boxes :skill_ids, @skills, :id, :name %>
+      <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+         <%=b.check_box + b.text%>
+        <% end %>
+    <% end %>
     </div>
   </div>
   <div class="col-sm-6">
