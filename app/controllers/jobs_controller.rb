@@ -31,6 +31,9 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     candidate_match_skills
+    if @company == @job.company
+      @matches = Match.where(job_id: @job.id, candidate_like: true)
+    end
   end
 
   # GET /jobs/new
@@ -103,6 +106,7 @@ class JobsController < ApplicationController
       if match == true
         Match.create(candidate: @candidate, job: @job)
         @match = Match.find_by(candidate: @candidate, job: @job)
+        @job.views += 1
       end
     end
   end
