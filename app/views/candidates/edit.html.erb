@@ -4,7 +4,7 @@
 <br>
 
 <div class="form">
-<%= form_with scope: :candidate, model: @candidate, local: true do |form| %>
+<%= form_with scope: :candidate, model: @candidate, class: "candidates-form", local: true do |form| %>
 
 <div class="row">
   <div class="col-sm-6">
@@ -34,7 +34,7 @@
   <div class="col-sm-6">
     <div class="field">
     <%= form.label :expected_salary %><br>
-    <%= form.number_field :expected_salary %>
+    <%= form.number_field :expected_salary, :max => 100000, :min => 10 %>
     </div>
   </div>
   <div class="col-sm-12">
@@ -70,3 +70,23 @@
 <% end %>
 </div>
 </div>
+
+<script>
+function onlyOneCheckBox() {
+	var checkboxgroup = document.querySelector('.candidates-form').querySelectorAll("input");
+	var limit = 10;
+	for (var i = 0; i < checkboxgroup.length; i++) {
+		checkboxgroup[i].onclick = function() {
+			var checkedcount = 0;
+				for (var i = 0; i < checkboxgroup.length; i++) {
+				checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+			}
+			if (checkedcount > limit) {
+				alert("You can only select a maximum of " + limit + " skills");
+				this.checked = false;
+			}
+		}
+	}
+}
+onlyOneCheckBox()
+</script>
