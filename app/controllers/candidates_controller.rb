@@ -18,10 +18,6 @@ class CandidatesController < ApplicationController
         candidate: @candidate,
         job_like: nil,
       )
-      if @candidate != current_user_candidate.candidate
-        @candidate.views += 1
-        @candidate.save
-      end
     elsif user_company_signed_in?
       @matches = Match.where(candidate: @candidate)
       @matches.each do |match|
