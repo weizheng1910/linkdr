@@ -11,7 +11,7 @@ class CandidatesController < ApplicationController
 
   def show
     if user_candidate_signed_in?
-      # @candidate = Candidate.find(params[:id])
+      @matches = Match.where(candidate: @candidate, candidate_like: true)
       populate_matches_for_candidate (current_user_candidate)
       @candidate = current_user_candidate.candidate
       @matches = Match.where(
