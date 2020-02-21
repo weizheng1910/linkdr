@@ -1,4 +1,3 @@
-
 <%= form_with(model: job, local: true) do |form| %>
   <div class="row">
   <% if job.errors.any? %>
@@ -16,21 +15,21 @@
   <div class="col-sm-6">
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "Job Title" %>
+    <%= form.text_field :title, placeholder: "Job Title", required: true %>
   </div>
   </div>
 
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :offered_salary %>
-    <%= form.text_field :offered_salary, placeholder: "Offered Salary" %>
+    <%= form.number_field :offered_salary, placeholder: "Offered Salary", required: true %>
   </div>
   </div>
 
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.text_field :country, required: true %>
   </div>
   </div>
 
@@ -49,7 +48,7 @@
   <div class="col-sm-12">
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, required: true %>
   </div>
   </div>
 

@@ -6,9 +6,13 @@ $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
 .home {
-    margin-top: 7vh;
+    margin-top: 10vh;
     background-color: $primary-color;
     color: $white;
+
+    .navbar {
+        margin-bottom: 65px;
+    }
 
     .text {
         font-size: 28px;
