@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :room_messages
+  resources :rooms
   get "matches/matches"
   resources :candidates
   resources :companies

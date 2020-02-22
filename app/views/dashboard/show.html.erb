@@ -37,7 +37,9 @@
             Your company profile has been viewed <strong><%= @company.views %></strong> times.
             <br>
             <br>
-            You posted <strong><%= @company.job.length %></strong> jobs.
+            You posted <strong><%= @company.job.length %></strong> jobs.<br><br>
+                  <%= link_to "See your matches here:)", matches_path %>
+
           </div>
         </div>
       </section>
@@ -120,7 +122,9 @@
               Your profile has been viewed <strong><%= @candidate.views %></strong> times.
               <br>
               <br>
-              You expressed interest in <strong><%= @matches.length %></strong> jobs.
+              You expressed interest in <strong><%= @matches.length %></strong> jobs.<br><br>
+                    <%= link_to "See your matches here:)", matches_path %>
+
             </div>
           </div>
         </section>
