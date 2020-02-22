@@ -15,7 +15,7 @@
       <li>How do you find duplicate numbers in an array if it contains multiple duplicates?</li>
     </ul>
     <% byebug %>
-    <p>Please email your answers to <%= @candidate.candidate.matches.order(updated_at: :asc).last.job.company.user_company.email %>!</p>
+    <p>Please email your answers to <%= @candidate.candidate.matches.order(updated_at: :asc).where(job_like: true).where(candidate_like:true).last.job.company.user_company.email %>!</p>
     <p>All the best and thanks for using <strong>Linkdr</strong>!</p>
     <p><img src="https://github.com/weizheng1910/linkdr/raw/master/public/small-logo.png" /></p>
     <p><small>© SBRWZ 2020.
