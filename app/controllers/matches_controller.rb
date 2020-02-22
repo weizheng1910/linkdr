@@ -22,8 +22,8 @@ class MatchesController < ApplicationController
         if current_user_company
           if @match.job_like && @match.candidate_like
             UserMailer.with(candidate: @match.candidate.user_candidate).technical_test.deliver_now
-            return 
             redirect_to @match.candidate
+            return 
           end
           format.html { redirect_to "/jobs/" + @match.job.id.to_s + "/matches/", notice: "Feedback accepted" }
         else
