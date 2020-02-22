@@ -14,7 +14,8 @@
       <li>How do you find all pairs of an integer array whose sum is equal to a given number?</li>
       <li>How do you find duplicate numbers in an array if it contains multiple duplicates?</li>
     </ul>
-    <p>Please email your answers to <%= @candidate.candidate.matches.last.job.company.user_company.email %>!</p>
+    <% byebug %>
+    <p>Please email your answers to <%= @candidate.candidate.matches.order(updated_at: :asc).last.job.company.user_company.email %>!</p>
     <p>All the best and thanks for using <strong>Linkdr</strong>!</p>
     <p><img src="https://github.com/weizheng1910/linkdr/raw/master/public/small-logo.png" /></p>
     <p><small>© SBRWZ 2020.
