@@ -33,10 +33,12 @@
   </div>
 
   <div class="actions">
-    <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
+    <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> <span class="auto-mailer">Send a Technical Test</span> | <%= mail_to @candidate.user_candidate.email do %>
   <i class="material-icons">email</i> Send An Email
   <% end %>
   </div>
+
+
   
 </div>
 
@@ -46,3 +48,10 @@
 </section>
 
 </div>
+
+<script>
+const autoMailer = document.querySelector(".auto-mailer")
+autoMailer.addEventListener("click", ()=> {})
+</script>
+
+<%# UserMailer.with(candidate: @candidate.user_candidate).technical_test.deliver_now %>
