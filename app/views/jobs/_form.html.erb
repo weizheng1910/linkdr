@@ -80,7 +80,12 @@ function onlyOneCheckBox() {
 				checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
 			}
 			if (checkedcount > limit) {
-				alert("You can select a maximum of " + limit + " skills");
+        Swal.fire({
+            title: 'Error',
+            text: 'You can only select a maximum of ' + limit + "           skills!",
+            icon: 'error',
+            confirmButtonText: 'Continue'
+          })
 				this.checked = false;
 			}
 		}
