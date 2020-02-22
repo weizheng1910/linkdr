@@ -9,13 +9,13 @@ class JobsController < ApplicationController
   def index
     sort_by = params["sort"]
     if sort_by == "salary asc"
-      @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: 8)
+      @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: 6)
     elsif sort_by == "salary desc"
-      @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: 8)
+      @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: 6)
     elsif sort_by == "best matches"
-      @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: 8)
+      @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: 6)
     else
-      @pagy, @records = pagy(Job.all, items: 8)
+      @pagy, @records = pagy(Job.all, items: 6)
     end
   end
 
