@@ -52,7 +52,9 @@
                   class="location"><%= job.country %></span><br>
                 <p class="description"><%= job.description %></p>
                 <div class="skills">
-                  add skills here with company's view
+                    <% job.skills.each do |skill| %>
+                      <%= content_tag(:div, skill.name, class: "badge badge-pill badge-secondary") %>
+                    <% end %>                
                 </div>
                 <div class="actions">
                   <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
