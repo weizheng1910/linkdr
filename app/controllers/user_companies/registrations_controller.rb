@@ -1,4 +1,4 @@
-w# frozen_string_literal: true
+# frozen_string_literal: true
 
 class UserCompanies::RegistrationsController < Devise::RegistrationsController
   include Accessible
