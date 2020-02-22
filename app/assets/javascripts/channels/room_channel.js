@@ -18,13 +18,14 @@ $(function() {
       },
       {
         received: function(data) {
-          var content = messageTemplate.children().clone(true, true);
+          var content = messageTemplate.children().clone(true, true);      
           location.reload()
-          content.find('[data-role="user-avatar"]').attr('src', data.user_avatar_url);
+          content.find('[data-role="user-name"]').text(data.name);
           content.find('[data-role="message-text"]').text(data.message);
-          content.find('[data-role="message-date"]').text(data.updated_at);
+          content.find('[data-role="message-date"]').text(timeago.format(data.updated_at));
+
           $element.append(content);
-            
+           $('.chat-input').focus()   
           
         }
       }

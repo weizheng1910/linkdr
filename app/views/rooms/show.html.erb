@@ -1,27 +1,33 @@
-<h1>
-  <%= @room.name %>
-</h1>
+<h3 class="mx-3">ChatRoom</h3>
+<p class="mx-3"><span class="font-weight-bold"><%= @room.match.candidate.given_name %></span> applying for the role of
+<span class="font-weight-bold"><%= @room.match.job.title %></span> at
+<span class="font-weight-bold"><%= @room.match.job.company.name %></span>
+</p> 
+
+
+<hr>
+
 
 
 
   <div class="col">
     <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
       <% @room_messages.each do |room_message| %>
-        <div class="chat-message-container">
+        <div class="chat-message-container border border-light rounded">
           <div class="row no-gutters">
             <div class="col-auto text-center">
-               <span> <%= room_message.name %> says:</span>
+               <span> <%= room_message.name %>:</span>
             </div>
 
             <div class="col">
               <div class="message-content">
-                <p class="mb-1">
+                <p class="mb-1 px-3">
                   <%= room_message.message %>
                 </p>
 
                 <div class="text-right">
                   <small>
-                    <%= room_message.created_at %>
+                    <%= time_ago_in_words(room_message.updated_at)%> ago
                   </small>
                 </div>
               </div>
@@ -32,7 +38,7 @@
     </div>
 
     <%= simple_form_for @room_message, remote: true do |form| %>
-      <div class="input-group mb-3">
+      <div id="the-input-box" class="input-group mb-3">
         <%= form.input :message, as: :string,
                                  wrapper: false,
                                  label: false,
@@ -54,12 +60,13 @@
   <div class="chat-message-container">
     <div class="row no-gutters">
       <div class="col-auto text-center">
+        <span data-role="user-name"></span>:
+      </div>
         
 
       <div class="col">
         <div class="message-content">
-          <p class="mb-1" data-role="message-text">
-
+          <p class="mb-1 px-3" data-role="message-text">
           </p>
 
           <div class="text-right">

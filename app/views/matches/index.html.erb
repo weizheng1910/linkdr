@@ -1,4 +1,6 @@
 <% if current_user_company %>
+		<h3>Matches</h3>
+
 		<table>
 			<tr>
 				<th>Candidate Name</th>
@@ -14,7 +16,7 @@
 						</td>
 						<td>
 							<% if match.job_like && match.candidate_like %>
-								<span class="text-success"> MATCH! Go here => <a href= 'rooms/<%= match.id %>' >Link to chat</a></span>
+								<span class="text-success"> MATCH! <a href= 'rooms/<%= match.id %>' >Link to chat</a></span>
 							<% elsif match.candidate_like && !match.job_like %>
 								<span class="text-primary"> Candidate liked this!</span>
 							<% elsif match.job_like == false %>
@@ -32,7 +34,7 @@
 				
 <% else %>
 
-	<h3>Jobs which fits your skills set</h3>
+	<h3>Matches</h3>
 
 	<table>
 
@@ -48,7 +50,7 @@
 				<td><%= m.job.company.name %></td>
 				<td>
 					<% if m.job_like && m.candidate_like %>
-						<span class="text-success"><a href= 'rooms/<%= m.id %>' >Link to chat</a></span>
+						<span class="text-success">MATCH! <a href= 'rooms/<%= m.id %>' >Link to chat</a></span>
 					<% elsif m.candidate_like && !m.job_like %>
 						<span class="text-primary">Liked</span>
 					<% elsif m.job_like == false %>
