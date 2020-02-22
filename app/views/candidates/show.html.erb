@@ -21,7 +21,7 @@
           <%= link_to "Download Resume", @candidate.resume_url %>
         <% end %><br>
           <i class="material-icons">build</i> <strong>Years of experience:</strong>  <%= @candidate.years_of_experience %> <br>
-          <i class="material-icons">attach_money</i>  <strong>Expected salary:</strong> <%= @candidate.expected_salary %> <br><br>
+          <i class="material-icons">attach_money</i>  <strong>Expected salary:</strong> $<%= @candidate.expected_salary %> <br><br>
           <div class="skills">
           <% @candidate.skills.each do |m| %>
           <%= content_tag(:div, m.name, class: "badge badge-pill badge-available") %>
@@ -31,8 +31,11 @@
   </div>
 
   <div class="actions">
-    <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> Send a Technical Test | <i class="material-icons">email</i> Send An Email
+    <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
+  <i class="material-icons">email</i> Send An Email
+  <% end %>
   </div>
+  
 </div>
 
   </div>
