@@ -1,5 +1,4 @@
-
-<%= form_with(model: job, local: true) do |form| %>
+<%= form_with(model: job, local: true, class: "jobs-form") do |form| %>
   <div class="row">
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -16,40 +15,41 @@
   <div class="col-sm-6">
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "Job Title" %>
+    <%= form.text_field :title, placeholder: "Job Title", required: true %>
   </div>
   </div>
 
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :offered_salary %>
-    <%= form.text_field :offered_salary, placeholder: "Offered Salary" %>
+    <%= form.number_field :offered_salary, :max => 100000, :min => 10, placeholder: "Offered Salary", required: true %>
   </div>
   </div>
 
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.country_select :country, required: true %>
   </div>
   </div>
 
 <div class="col-sm-12">
   <div class="field">
-    <%= form.label :skills %> <br>
-
+    <%= form.label :skills %> (Maximum of 5 skills)<br>
+    <div class="skills-checkbox">
      <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name) do |b| %>
         <%= b.label class:"label-checkbox" do%>
          <%=b.check_box + b.text%>
         <% end %>
     <% end %>
+    </div>
   </div>
 </div>
 
   <div class="col-sm-12">
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, required: true %>
   </div>
   </div>
 
@@ -67,6 +67,29 @@
     </div>
     </div>
   </div>
-
-
 <% end %>
+
+<script>
+function onlyOneCheckBox() {
+	var checkboxgroup = document.querySelector('.jobs-form').querySelectorAll("input");
+	var limit = 5;
+	for (var i = 0; i < checkboxgroup.length; i++) {
+		checkboxgroup[i].onclick = function() {
+			var checkedcount = 0;
+				for (var i = 0; i < checkboxgroup.length; i++) {
+				checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+			}
+			if (checkedcount > limit) {
+        Swal.fire({
+            title: 'Error',
+            text: 'You can only select a maximum of ' + limit + "           skills!",
+            icon: 'error',
+            confirmButtonText: 'Continue'
+          })
+				this.checked = false;
+			}
+		}
+	}
+}
+onlyOneCheckBox()
+</script>

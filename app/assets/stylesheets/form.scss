@@ -37,7 +37,8 @@ $border-grey: #e1e1e1;
 
 input[type=text],
 input[type=email],
-input[type=password]  {
+input[type=password],
+input[type=number]  {
     border: 1px solid $border-grey;
     padding: 8px 12px;
     width: 100%;
@@ -66,6 +67,17 @@ input:focus {
     border-radius: 10px;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
 
 .field_with_errors {
     border-radius: 10px;
@@ -116,5 +128,16 @@ textarea {
 
     &:focus {
         outline: none;
+    }
+}
+
+.profile-pic {
+    width:150px;
+    height:150px;
+    
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
     }
 }

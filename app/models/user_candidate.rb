@@ -10,4 +10,7 @@ class UserCandidate < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  include Gravtastic
+  gravtastic :default => "mm"
 end

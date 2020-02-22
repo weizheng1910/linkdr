@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Congrats! You've Linkd!</h1>
+    <p>You matched with <strong><%= @candidate.candidate.matches.last.job.company.name %></strong>!</p>
+    <p>Here are some questions we'd like you to answer:</p>
+    <ul>
+      <li>How do you find the missing number in a given integer array of 1 to 100?</li>
+      <li>How do you find the duplicate number on a given integer array?</li>
+      <li>How do you find the largest and smallest number in an unsorted integer array?</li>
+      <li>How do you find all pairs of an integer array whose sum is equal to a given number?</li>
+      <li>How do you find duplicate numbers in an array if it contains multiple duplicates?</li>
+    </ul>
+    <p>Please email your answers to <%= @candidate.candidate.matches.last.job.company.user_company.email %>!</p>
+    <p>All the best and thanks for using <strong>Linkdr</strong>!</p>
+    <img src="https://github.com/weizheng1910/linkdr/raw/master/public/small-logo.png" /><br>
+    <small>© SBRWZ 2020.
+      All Rights Reserved.
+    </small>
+  </body>
+</html>

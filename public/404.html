@@ -3,59 +3,89 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+  @font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-BoldItalic.woff2') format('woff2'),
+      url('/fonts/Apercu-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Italic.woff2') format('woff2'),
+      url('/fonts/Apercu-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Regular.woff2') format('woff2'),
+      url('/fonts/Apercu-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('/fonts/Apercu-Bold.woff2') format('woff2'),
+      url('/fonts/Apercu-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Apercu';
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  overflow-x: hidden;
+}
+
+  .home {
+    margin-top: 10vh;
+    background-color: #4585a9;
+    color: #ffffff;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  .navbar {
+      margin-bottom: 65px;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .text {
+      font-size: 28px;
+      line-height: 35px;
+  }
+  .circle img {
+      width: 100%;
+      border-radius: 50%;
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  img {
+      width: 250px;
   }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  button[type=submit] {
+    background: #ff6161;
+    min-width: 150px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+
+  button[type=submit]:hover {
+      background: #000000;
   }
   </style>
 </head>
 
+<!-- This file lives in public/404.html
 <body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
       <h1>The page you were looking for doesn't exist.</h1>
@@ -63,5 +93,30 @@
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
+</body>
+</html>-->
+
+<body class="home">
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-5 circle">
+    <img src='/workers-circle.jpg' class="img-fluid" />
+    </div>
+    
+    <div class="col-sm-5 offset-sm-1 text pt-5">
+      <img src='/transparent-logo.png' /> <br><br>
+      <h1>404 Error</h1>
+      Oopsie, the page you are looking for doesn't exist! <br><br>
+
+      <button type="submit" onclick="goBack()">Back</button>
+
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+    </div>
+    </div>
+    </div>
 </body>
 </html>

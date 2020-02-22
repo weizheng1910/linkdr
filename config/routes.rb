@@ -27,4 +27,6 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/challenges' => 'challenges#user_challenges', as: :user_challenges
 
+  get '*path' => redirect('/')
+
 end

@@ -41,8 +41,14 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    @company.update(company_params)
-    redirect_to @company
+    if params["company"]["avatar"] != nil
+      result = Cloudinary::Uploader.upload(params["company"]["avatar"])
+      @company.avatar_url = result["url"]
+      @company.update(company_params)
+    else
+      @company.update(company_params)
+    end
+    redirect_to "/dashboard/"
     # redirect_to '/companies/' + params[:id]
   end
 

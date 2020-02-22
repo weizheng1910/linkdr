@@ -7,15 +7,24 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
     sort_by = params["sort"]
-    puts sort_by
     if sort_by == "salary asc"
-      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }
+      @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: 6)
+      if current_user_company
+        @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: 5)
+      end
     elsif sort_by == "salary desc"
-      @jobs = @jobs.sort_by { |job| job.offered_salary.to_i }.reverse
+      @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: 6)
+      if current_user_company
+        @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: 5)
+      end
     elsif sort_by == "best matches"
-      @jobs = @jobs.sort_by { |job| (job.skills & @candidate.skills).length }.reverse
+      @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: 6)
+    else
+      @pagy, @records = pagy(Job.all, items: 6)
+      if current_user_company
+        @pagy, @records = pagy(Job.all, items: 5)
+      end
     end
   end
 
@@ -31,6 +40,9 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     candidate_match_skills
+    if @company == @job.company
+      @matches = Match.where(job_id: @job.id, candidate_like: true)
+    end
   end
 
   # GET /jobs/new
@@ -52,7 +64,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.company = current_user_company.company
-
+    @job.country = @job.country_name
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: "Job was successfully created." }
@@ -69,6 +81,8 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
+        @job.country = @job.country_name
+        @job.save
         format.html { redirect_to @job, notice: "Job was successfully updated." }
         format.json { render :show, status: :ok, location: @job }
       else
@@ -81,6 +95,7 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    @job.matches.destroy_all
     @job.destroy
     respond_to do |format|
       format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
@@ -103,6 +118,7 @@ class JobsController < ApplicationController
       if match == true
         Match.create(candidate: @candidate, job: @job)
         @match = Match.find_by(candidate: @candidate, job: @job)
+        @job.views += 1
       end
     end
   end

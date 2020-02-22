@@ -11,4 +11,7 @@ class UserCompany < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :company
+
+  include Gravtastic
+  gravtastic :default => "mm"
 end

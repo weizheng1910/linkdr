@@ -11,17 +11,14 @@ class CandidatesController < ApplicationController
 
   def show
     if user_candidate_signed_in?
-      # @candidate = Candidate.find(params[:id])
-      populate_matches_for_candidate (current_user_candidate)
-      @candidate = current_user_candidate.candidate
-      @matches = Match.where(
-        candidate: @candidate,
-        job_like: nil,
-      )
-      if @candidate != current_user_candidate.candidate
-        @candidate.views += 1
-        @candidate.save
-      end
+      redirect_to root_path
+      # @matches = Match.where(candidate: @candidate, candidate_like: true)
+      # populate_matches_for_candidate (current_user_candidate)
+      # @candidate = current_user_candidate.candidate
+      # @matches = Match.where(
+      #   candidate: @candidate,
+      #   job_like: nil,
+      # )
     elsif user_company_signed_in?
       @matches = Match.where(candidate: @candidate)
       @matches.each do |match|
@@ -54,7 +51,7 @@ class CandidatesController < ApplicationController
     else
       @candidate.update(candidate_params)
     end
-    redirect_to @candidate
+    redirect_to dashboard_path
   end
 
   private

@@ -29,8 +29,14 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'cloudinary'
 gem 'devise'
 gem 'faker'
+gem 'gravtastic'
+# Pagy for pagination
+gem 'pagy', '~> 3.5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'countries'
+gem 'country_select'
+gem 'simple_form'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
