@@ -1,92 +1,95 @@
-
 <div class="container candidate">
-<h2>Edit your profile</h2>
-<br>
-
-<div class="form">
-<%= form_with scope: :candidate, model: @candidate, class: "candidates-form", local: true do |form| %>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="field">
-    <%= form.label :given_name %><br>
-    <%= form.text_field :given_name %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="field">
-    <%= form.label :family_name %><br>
-    <%= form.text_field :family_name %>
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="field">
-      <%= form.label :bio %><br>
-      <%= form.text_area :bio, rows: 5 %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="field">
-    <%= form.label :years_of_experience %><br>
-    <%= form.text_field :years_of_experience %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="field">
-    <%= form.label :expected_salary %><br>
-    <%= form.number_field :expected_salary, :max => 100000, :min => 10 %>
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="field">
-      <%= form.label :skills %> <br>
-      <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name) do |b| %>
-        <%= b.label class:"label-checkbox" do%>
-         <%=b.check_box + b.text%>
-        <% end %>
+  <h2>Edit your profile</h2>
+  <br>
+  <div class="form">
+    <%= form_with scope: :candidate, model: @candidate, class: "candidates-form", local: true do |form| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :given_name %><br>
+            <%= form.text_field :given_name %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :family_name %><br>
+            <%= form.text_field :family_name %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="field">
+            <%= form.label :bio %><br>
+            <%= form.text_area :bio, rows: 5 %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :years_of_experience %><br>
+            <%= form.text_field :years_of_experience %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :expected_salary %><br>
+            <%= form.number_field :expected_salary, :max => 100000, :min => 10 %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="field">
+            <%= form.label :skills %> <br>
+            <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name) do |b| %>
+              <%= b.label class:"label-checkbox" do%>
+                <%=b.check_box + b.text%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="field">
+            <%= form.label :resume %>
+            <%= form.file_field :resume %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <%= form.hidden_field :user_candidate_id %>
+        </div>
+        <div class="col-sm-12">
+          <div class="actions row">
+            <div class="col-sm-6">
+              <%= link_to 'Back', url_for(:back) %>
+            </div>
+            <div class="col-sm-6 text-right">
+              <%= form.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="field">
-    <%= form.label :resume %>
-    <%= form.file_field :resume %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <%= form.hidden_field :user_candidate_id %>
-  </div>
-  <div class="col-sm-12">
-    <div class="actions row">
-      <div class="col-sm-6">
-          <%= link_to 'Back', url_for(:back) %>
-      </div>
-      <div class="col-sm-6 text-right">
-        <%= form.submit %>
-      </div>
-  </div>
   </div>
 </div>
-<% end %>
-</div>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
-function onlyOneCheckBox() {
-	var checkboxgroup = document.querySelector('.candidates-form').querySelectorAll("input");
-	var limit = 10;
-	for (var i = 0; i < checkboxgroup.length; i++) {
-		checkboxgroup[i].onclick = function() {
-			var checkedcount = 0;
-				for (var i = 0; i < checkboxgroup.length; i++) {
-				checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
-			}
-			if (checkedcount > limit) {
-				alert("You can only select a maximum of " + limit + " skills");
-				this.checked = false;
-			}
-		}
-	}
-}
-onlyOneCheckBox()
+  function onlyOneCheckBox() {
+  	var checkboxgroup = document.querySelector('.candidates-form').querySelectorAll("input");
+  	var limit = 10;
+  	for (var i = 0; i < checkboxgroup.length; i++) {
+  		checkboxgroup[i].onclick = function() {
+  			var checkedcount = 0;
+  				for (var i = 0; i < checkboxgroup.length; i++) {
+  				checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+  			}
+  			if (checkedcount > limit) {
+  				// alert("You can only select a maximum of " + limit + " skills");
+          Swal.fire({
+            title: 'Error',
+            text: 'You can only select a maximum of ' + limit + "           skills!",
+            icon: 'error',
+            confirmButtonText: 'Continue'
+          })
+  				this.checked = false;
+  			}
+  		}
+  	}
+  }
+  onlyOneCheckBox()
 </script>
