@@ -9,10 +9,12 @@ module ApplicationCable
     private
 
     def find_verified_user
-      if verified_user = UserCandidate.find_by(id: cookies.signed['user_candidate.id'])
-        verified_user
-      elsif verified_user = UserCompany.find_by(id: cookies.signed['user_company.id'])
-        verified_user
+      if verified_user = UserCandidate.find_by(email: cookies.signed['email'])
+      	puts verified_user
+      	verified_user
+      elsif verified_user = UserCompany.find_by(email: cookies.signed['email'])
+      	puts verified_user
+      	verified_user
       else
         reject_unauthorized_connection
       end

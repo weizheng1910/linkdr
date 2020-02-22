@@ -8,10 +8,12 @@ module Accessible
   protected
   def check_user
     if current_user_candidate
-      flash.clear
+      
+      cookies.signed[:email] = current_user_candidate.email
       redirect_to('/') and return
     elsif current_user_company
-      flash.clear
+      
+      cookies.signed[:email] = current_user_company.email
       redirect_to('/') and return
     end
   end

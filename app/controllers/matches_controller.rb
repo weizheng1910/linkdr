@@ -2,6 +2,15 @@ class MatchesController < ApplicationController
   before_action :set_match, only: [ :edit, :update, :destroy ]
 
   def index
+    jobs = current_user_company.company.job
+    array = []
+    jobs.each do |job|
+      array << Match.where(job_id: job.id)
+    end 
+
+    @array = array
+
+    
   end
 
   def show

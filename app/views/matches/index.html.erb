@@ -1,0 +1,16 @@
+<% @array.each do |matches_per_job|%>
+	<h2><%= matches_per_job[0].job.title %></h2>
+	<% matches_per_job.each do |match|%>
+		<p>
+			<%= match.candidate.given_name %>
+
+			<% if match.candidate_like && match.job_like %>
+				<h2>MATCH</h2>
+			<% elsif match.job_like %>
+					<h3>JOBVV</h3>
+			<% end %>
+			
+
+		</p>
+	<% end %>
+<% end %>
