@@ -68,6 +68,19 @@ body {
   img {
       width: 250px;
   }
+
+  button[type=submit] {
+    background: #ff6161;
+    min-width: 150px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+
+  button[type=submit]:hover {
+      background: #000000;
+  }
   </style>
 </head>
 
@@ -86,13 +99,22 @@ body {
 <body class="home">
   <div class="container">
     <div class="row">
-    <div class="col-sm-6 circle">
+    <div class="col-sm-5 circle">
     <img src='/workers-circle.jpg' class="img-fluid" />
     </div>
     
-    <div class="col-sm-6 text pt-5">
+    <div class="col-sm-5 offset-sm-1 text pt-5">
       <img src='/transparent-logo.png' /> <br><br>
-      Oopsie page doesn't exist
+      <h1>404 Error</h1>
+      Oopsie, the page you are looking for doesn't exist! <br><br>
+
+      <button type="submit" onclick="goBack()">Back</button>
+
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
     </div>
     </div>
     </div>
