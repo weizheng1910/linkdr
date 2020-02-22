@@ -55,7 +55,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.company = current_user_company.company
-
+    @job.country = @job.country_name
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: "Job was successfully created." }
@@ -72,6 +72,8 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
+        @job.country = @job.country_name
+        @job.save
         format.html { redirect_to @job, notice: "Job was successfully updated." }
         format.json { render :show, status: :ok, location: @job }
       else
