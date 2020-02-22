@@ -3,7 +3,6 @@ class UserMailer < ApplicationMailer
   
   def technical_test
     @candidate = params[:candidate]
-    byebug
     mail(to: @candidate.email, subject: "Congrats, you're Linkd!")
   end
 end
