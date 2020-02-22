@@ -36,7 +36,7 @@ Our app targets to streamline the hiring process for tech companies or recruiter
 
 ## Team
 
-- [Stu](https://www.github.com/laustynspace)
+- [Stu](https://github.com/LaustinSpayce)
 - [Ben](https://github.com/benjacoblee)
 - [Weizheng](https://github.com/weizheng1910)
 - [Rachelle](https://github.com/rachellesg)
