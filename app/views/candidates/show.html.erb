@@ -1,48 +1,43 @@
 <%= title "Linkdr | Success!" %>
-
 <div class="container candidate">
   <h2>You successfully LINKD with <span class="highlight"><%= @candidate.given_name %></span>! 🥳 </h2>
   <br>
   <section class="public-profile text-center">
-
-  <div class="info">
-  <div class="row">
-  <div class="col-12 message text-center">
-  
-  <p>Congratulations on successfully matching a candidate,<br>now you can decide what you want to do with them.<br>Their contact details are provided below.</p>
-
-  </div>
-  <div class="col-12 profile text-center">
-     <div class="row">
-        <div class="col-sm-8 offset-sm-2 stats"> 
-        <h3><i class="material-icons">face</i> Candidate Profile</h3>
-        <strong>Name:</strong> <%= @candidate.given_name %> <u><%= @candidate.family_name %></u><br><br>
-        <strong>Bio:</strong> <%= @candidate.bio %> <br>
-        <% if @candidate.resume_url != nil %>
-          <strong>Resume</strong>
-          <%= link_to "Download Resume", @candidate.resume_url %>
-        <% end %><br>
-          <i class="material-icons">build</i> <strong>Years of experience:</strong>  <%= @candidate.years_of_experience %> <br>
-          <i class="material-icons">attach_money</i>  <strong>Expected salary:</strong> $<%= @candidate.expected_salary %> <br><br>
-          <div class="skills">
-          <% @candidate.skills.each do |m| %>
-          <%= content_tag(:div, m.name, class: "badge badge-pill badge-available") %>
-          <% end %>
-          </div> 
-     </div>
-  </div>
-
-  <div class="actions">
-    <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
-  <i class="material-icons">email</i> Send An Email
-  <% end %>
-  </div>
-  
-</div>
-
-  </div>
-
-  </div>
-</section>
-
+    <div class="info">
+      <div class="row">
+        <div class="col-12 message text-center">
+          <p>Congratulations on successfully matching a candidate,<br>
+            now you can decide what you want to do with them.<br>
+            Their contact details are provided below.</p>
+        </div>
+        <div class="col-12 profile text-center">
+          <div class="row">
+            <div class="col-sm-8 offset-sm-2 stats">
+              <h3><i class="material-icons">face</i> Candidate Profile</h3>
+              <strong>Name:</strong> <%= @candidate.given_name %> <u><%= @candidate.family_name %></u><br>
+              <br>
+              <strong>Bio:</strong> <%= @candidate.bio %> <br>
+              <% if @candidate.resume_url != nil %>
+                <strong>Resume</strong>
+                <%= link_to "Download Resume", @candidate.resume_url %>
+              <% end %><br>
+              <i class="material-icons">build</i> <strong>Years of experience:</strong>  <%= @candidate.years_of_experience %> <br>
+              <i class="material-icons">attach_money</i>  <strong>Expected salary:</strong> $<%= @candidate.expected_salary %> <br>
+              <br>
+              <div class="skills">
+                <% @candidate.skills.each do |m| %>
+                  <%= content_tag(:div, m.name, class: "badge badge-pill badge-available") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> <span class="auto-mailer">Send a Technical Test</span> | <%= mail_to @candidate.user_candidate.email do %>
+              <i class="material-icons">email</i> Send An Email
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

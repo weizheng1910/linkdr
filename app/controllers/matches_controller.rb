@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: [ :edit, :update, :destroy ]
+  before_action :set_match, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -21,10 +21,11 @@ class MatchesController < ApplicationController
       if @match.update(match_params)
         if current_user_company
           if @match.job_like && @match.candidate_like
+            UserMailer.with(candidate: @match.candidate.user_candidate).technical_test.deliver_now
+            return 
             redirect_to @match.candidate
-            return
           end
-          format.html { redirect_to '/jobs/' + @match.job.id.to_s + '/matches/', notice: "Feedback accepted" }
+          format.html { redirect_to "/jobs/" + @match.job.id.to_s + "/matches/", notice: "Feedback accepted" }
         else
           format.html { redirect_to @match.job, notice: "Feedback accepted" }
           format.json { render :show, status: :ok, location: @match.job }
@@ -44,11 +45,11 @@ class MatchesController < ApplicationController
     if current_user_company
       job_id = params[:id]
       if job_id
-        @job = Job.find_by( id: job_id )
-        populate_matches_for_company ( @job )
+        @job = Job.find_by(id: job_id)
+        populate_matches_for_company (@job)
         @match = Match.order("candidate_like").find_by(
           job: @job,
-          job_like: nil
+          job_like: nil,
         )
         if @match
           @match.candidate.views += 1
@@ -59,14 +60,12 @@ class MatchesController < ApplicationController
         end
       end
     end
-
-
   end
 
   # Match game for candidates
   def candidatesmatch
     if current_user_candidate
-      populate_matches_for_candidate ( current_user_candidate )
+      populate_matches_for_candidate (current_user_candidate)
       @candidate = current_user_candidate.candidate
       @match = Match.where(
         candidate: @candidate,
@@ -85,16 +84,16 @@ class MatchesController < ApplicationController
     end
 
     id = this_match.candidate_id
-    redirect_to '/candidates/' + id.to_s + '/matches'
+    redirect_to "/candidates/" + id.to_s + "/matches"
   end
 
-private
+  private
 
   def set_match
     @match = Match.find(params[:id])
   end
 
-  def populate_matches_for_candidate ( candidate )
+  def populate_matches_for_candidate(candidate)
     @jobs = Job.all
     @jobs.each_with_index do |job, index|
       match = true
@@ -111,7 +110,7 @@ private
     end
   end
 
-  def populate_matches_for_company ( job )
+  def populate_matches_for_company(job)
     @candidates = Candidate.all
     @candidates.each_with_index do |candidate, index|
       match = true
