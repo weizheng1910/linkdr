@@ -10,7 +10,7 @@ Faker::UniqueGenerator.clear
 
 skills = ["Javascript", "HTML", "CSS", "Node.js",
   "Express.js", "Ruby on Rails", "React", "PostgreSQL",
-  "Python", "Git", "Java", "PHP" ]
+  "Python", "Git", "Java", "PHP", "Reddit", "Facebooking", "memes", "Pokémon" ]
 
 # Create skills
 skills.each do |skill|
@@ -73,13 +73,23 @@ thirdJob = Job.create(
 thirdJob.skills << Skill.first
 thirdJob.save
 
-10.times do
+# Create a huge bunch of fake companies
+30.times do
+  UserCompany.create(email: Faker::Internet.unique.safe_email, password: Faker::Internet.password)
+  company = Company.last
+  company.name = Faker::Company.name
+  company.industry = Faker::Company.industry
+  company.size = Faker::Company.bs
+  company.save
+end
+
+100.times do
   newJob = Job.new(
     title: Faker::Job.title,
     description: Faker::Lorem.paragraph,
     offered_salary: Faker::Number.number(digits: 4).to_s,
     country: "Singapore",
-    company_id: 1
+    company_id: rand(30)
   )
   5.times do
     skill = Skill.order('RANDOM()').first
@@ -93,7 +103,7 @@ thirdJob.save
 end
 
 # 50 new candidates with random profiles n stuff
-50.times do
+300.times do
   UserCandidate.create(
     email: Faker::Internet.unique.safe_email,
     password: Faker::Internet.password
@@ -133,11 +143,20 @@ candidates.each do |candidate|
       end
     end
     if match == true
-      Match.create(
-        job_id: job.id,
-        candidate_id: candidate.id,
-        candidate_like: true
-      )
+      number = rand 4
+      if number == 0
+        Match.create(
+          job_id: job.id,
+          candidate_id: candidate.id,
+          candidate_like: true
+        )
+      elsif number == 1
+        Match.create(
+          job_id: job.id,
+          candidate_id: candidate.id,
+          candidate_like: false
+        )
+      end
     end
   end
 end
