@@ -26,6 +26,16 @@ $peach: #f8f0ec;
     padding: 0 10px;
 }
 
+@media screen and (max-width: 414px) {
+    .chat-message-container {
+        padding: 10px;
+    
+        .col-auto {
+            width: 100%;
+        }
+    }
+}
+
 .chat-input {
     width: 100%;
 }

@@ -152,6 +152,16 @@ div {
   }
 }
 
+@media screen and (max-width: 414px) {
+  .navbar {
+    a {
+      img {
+        width: 90px;
+      }
+    }
+  }
+}
+
 .container {
   margin: 50px auto;
 }
@@ -187,6 +197,16 @@ footer {
         font-size: 15px;
       }
     }
+}
+
+
+@media screen and (max-width: 414px) {
+  footer {
+    div {
+      margin: 10px auto;
+      text-align: center;
+    }
+  }
 }
 
 footer:before {
