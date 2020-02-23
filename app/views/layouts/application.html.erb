@@ -34,8 +34,10 @@
           <%= link_to "/" do %>
             <%= image_tag('/logo.png') %>
           <% end %>
+          
           <% if user_company_signed_in? %>
-            <div class="text-right">
+            <div class="text-right d-flex">
+            <span class="badge pill badge-user"><%= @company.name %></span> &nbsp; &nbsp;
               <div class="dropdown show">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons header-icon">supervisor_account</i> <em>companies</em>
@@ -54,7 +56,8 @@
               </div>
             </div>
           <% elsif user_candidate_signed_in? %>
-            <div class="text-right">
+            <div class="text-right d-flex">
+            <span class="badge pill badge-user"><%= @candidate.given_name %></span> &nbsp; &nbsp;
               <div class="dropdown show">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons header-icon">face</i> <em>candidates</em>

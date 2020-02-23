@@ -202,6 +202,12 @@ footer:before {
   background: $secondary-color;
 }
 
+.badge-user {
+  font-size: 18px;
+  background: $primary-color;
+  padding: 6px 5px 0;
+  color: $white;
+}
 
 .pagy-bootstrap-nav {
   margin: 20px auto;
