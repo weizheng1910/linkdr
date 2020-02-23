@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   before_action :authenticate_user_company!, :except => [:show, :index]
 
   def index
+    redirect_to dashboard_path
   end
 
   def show
