@@ -100,3 +100,14 @@ $repeat: 80;
         }
     }
 }
+
+
+@media screen and (max-width: 414px) {
+.jobs,
+.posted-jobs,
+.suggested-jobs {
+    .listing {
+        flex: 0 1 100% !important;
+    }
+}
+}

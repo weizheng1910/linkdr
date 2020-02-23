@@ -15,7 +15,7 @@
         <a class="dropdown-item" href="/jobs?sort=salary asc">Salary ascending</a>
         <a class="dropdown-item" href="/jobs?sort=salary desc">Salary descending</a>
          <% if @candidate %>
-        <a class="dropdown-item" href="/jobs?sort=best matches">Best Matches</a>
+        <a class="dropdown-item" href="/jobs?sort=best matches">Best matches</a>
         <% end %>
       </div>
     </div>
@@ -58,7 +58,7 @@
           <% if @candidate && job.matches.any?{ |m| m.candidate_id == @candidate.id && m.candidate_like }%>
             <span class="badge badge-pill badge-primary">Applied!</span>
           <% end %>
-        </div>
+          </div>
       </div>
   <% end %>
   <%== pagy_bootstrap_nav(@pagy) %>
