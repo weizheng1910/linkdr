@@ -6,6 +6,7 @@ class MatchesController < ApplicationController
     # Need to refactor this to have pagination and reordering
     # (most recent candidates, mark them as being reached out to?)
     if current_user_company
+      @company = current_user_company.company
       jobs = current_user_company.company.job
       array = []
       jobs.each do |job|
@@ -16,6 +17,7 @@ class MatchesController < ApplicationController
       # Route / job is they are a candidate
       # Require pagination and ordering on this matches list.
     elsif current_user_candidate
+      @candidate = current_user_candidate.candidate
       @matches = Match.where(candidate_id: current_user_candidate.candidate.id)
 
       # If they are not logged in then redirect them to the index
