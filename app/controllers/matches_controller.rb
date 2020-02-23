@@ -3,6 +3,8 @@ class MatchesController < ApplicationController
 
   def index
     # Route / job if they are a company
+    # Need to refactor this to have pagination and reordering
+    # (most recent candidates, mark them as being reached out to?)
     if current_user_company
       jobs = current_user_company.company.job
       array = []
@@ -12,6 +14,7 @@ class MatchesController < ApplicationController
       @array = array
 
     # Route / job is they are a candidate
+    # Require pagination and ordering on this matches list.
     elsif current_user_candidate
       @matches = Match.where(candidate_id: current_user_candidate.candidate.id)
 
