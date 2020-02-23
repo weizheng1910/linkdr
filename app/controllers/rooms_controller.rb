@@ -20,6 +20,33 @@ def show
   else 
   @candidate = current_user_candidate.candidate
   end
+
+      puts "HHAHAHAHAHAHH"
+      p cookies.signed['email']
+      puts "HHAHAHAHAHAHH"
+  @match = Match.find(params[:id])
+
+  # If you are logged in as a company or a candidate 
+  # Check if you should be in the room 
+  if @company 
+    if @match.job.company.user_company.email != cookies.signed['email']
+      puts "HHAHAHAHAHAHH"
+      puts cookies.signed['email']
+      puts "HHAHAHAHAHAHH"
+
+      render plain: "You should not be here."
+    end
+  elsif @candidate
+    if @match.candidate.user_candidate.email != cookies.signed['email']
+
+      puts "HHAHAHAHAHAHH"
+      puts cookies.signed['email']
+      puts "HHAHAHAHAHAHH"
+
+      render plain: "You should not be here."
+    end
+  end
+
   @room_messages = RoomMessage.where( room_id:params[:id])
   @room_message = RoomMessage.new room: @room
   
