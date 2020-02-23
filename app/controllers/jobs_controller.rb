@@ -9,16 +9,23 @@ class JobsController < ApplicationController
   def index
     sort_by = params["sort"]
     items_to_display = current_user_company ? 5 : 6
-    if sort_by == "salary asc"
-      @pagy, @records = pagy(Job.order("offered_salary ASC").all, items: items_to_display)
-    elsif sort_by == "salary desc"
-      @pagy, @records = pagy(Job.order("offered_salary DESC").all, items: items_to_display)
-    elsif sort_by == "best matches"
-      @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: items_to_display)
-    elsif sort_by == "newest jobs"
-      @pagy, @records = pagy(Job.order("created_at DESC"), items: items_to_display)
+    if @candidate
+      jobs_to_exclude = Job.joins(:matches).where("candidate_id = ? AND job_like = false", @candidate.id).pluck(:id)
+      jobs_to_exclude << Job.joins(:matches).where("candidate_id= ? AND candidate_like = false", @candidate.id).pluck(:id)
+      jobs_to_exclude.flatten!
     else
-      @pagy, @records = pagy(Job.all, items: items_to_display)
+      jobs_to_exclude = nil
+    end
+    if sort_by == "salary asc"
+      @pagy, @records = pagy(Job.order("offered_salary ASC").where.not(id: jobs_to_exclude), items: items_to_display)
+    elsif sort_by == "salary desc"
+      @pagy, @records = pagy(Job.order("offered_salary DESC").where.not(id: jobs_to_exclude), items: items_to_display)
+    elsif sort_by == "best matches"
+      @pagy, @records = pagy_array(Job.where.not(id: jobs_to_exclude).sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: items_to_display)
+    elsif sort_by == "newest jobs"
+      @pagy, @records = pagy(Job.order("created_at DESC").where.not(id: jobs_to_exclude), items: items_to_display)
+    else
+      @pagy, @records = pagy(Job.where.not(id: jobs_to_exclude), items: items_to_display)
     end
   end
 
