@@ -37,6 +37,9 @@ class JobsController < ApplicationController
     if @company == @job.company
       @matches = Match.where(job_id: @job.id, candidate_like: true)
     end
+
+    @job.views += 1
+    @job.save
   end
 
   # GET /jobs/new
@@ -101,18 +104,19 @@ class JobsController < ApplicationController
 
   def candidate_match_skills
     match = true
+    passing_percentage = 80
+
     if @candidate
-      @job.skills.each do |skill|
-        if @candidate.skills.include? skill
-          next
-        else
-          match = false
-        end
+      overlap_percentage = ((@candidate.skills & @job.skills).length.to_f / @job.skills.length.to_f) * 100
+      if overlap_percentage >= passing_percentage
+        match = true
+      else
+        match = false
       end
+
       if match == true
         Match.create(candidate: @candidate, job: @job)
         @match = Match.find_by(candidate: @candidate, job: @job)
-        @job.views += 1
       end
     end
   end
