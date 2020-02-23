@@ -55,6 +55,9 @@
           <i class="material-icons">remove_red_eye</i>  <a href=<%= job_path(job.id) %>>View Job</a> <% if @company && @company == job.company %>
             | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
+          <% if @candidate && job.matches.any?{ |m| m.candidate_id == @candidate.id && m.candidate_like }%>
+            <span class="badge badge-pill badge-primary">Applied!</span>
+          <% end %>
         </div>
       </div>
   <% end %>
