@@ -22,7 +22,7 @@ $(function() {
           location.reload()
           content.find('[data-role="user-name"]').text(data.name);
           content.find('[data-role="message-text"]').text(data.message);
-          content.find('[data-role="message-date"]').text(timeago.format(data.updated_at));
+          content.find('[data-role="message-date"]').text(data.updated_at);
 
           $element.append(content);
            $('.chat-input').focus()   

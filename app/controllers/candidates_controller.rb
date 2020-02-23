@@ -33,6 +33,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
+    cookies.signed[:email] = current_user_candidate.email
     @candidate = Candidate.find(params[:id])
     @skills = Skill.all
   end

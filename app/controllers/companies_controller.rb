@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    cookies.signed[:email] = current_user_company.email
     @company = Company.find(params[:id])
   end
 

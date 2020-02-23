@@ -20,6 +20,21 @@ def show
   else 
   @candidate = current_user_candidate.candidate
   end
+
+  @match = Match.find(params[:id])
+
+  # If you are logged in as a company or a candidate 
+  # Check if you should be in the room 
+  if @company 
+    if @match.job.company.user_company.email != cookies.signed['email']
+      redirect_to dashboard_path
+    end
+  elsif @candidate
+    if @match.candidate.user_candidate.email != cookies.signed['email']
+      redirect_to dashboard_path
+    end
+  end
+
   @room_messages = RoomMessage.where( room_id:params[:id])
   @room_message = RoomMessage.new room: @room
   

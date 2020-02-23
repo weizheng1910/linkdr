@@ -56,9 +56,10 @@ class UserCandidates::RegistrationsController < Devise::RegistrationsController
   
 
     def after_sign_in_path_for(resource)
+      cookies.signed[:email] = current_user_candidate.email
       @candidate = Candidate.last
-    puts @candidate.id
-    '/candidates/' + @candidate.id.to_s + '/edit'   
+      puts @candidate.id
+      '/candidates/' + @candidate.id.to_s + '/edit'   
     end
   
 
