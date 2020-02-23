@@ -17,7 +17,7 @@ Our app targets to streamline the hiring process for tech companies or recruiter
   - Shown relevant candidates for respective listings
   - Reach out to candidates after you get LINKD via our in-app chat system or by direct email
   
-- Candidates will be able:
+- Candidates will be able to:
   - View relevant job listings
   - Express interest in jobs
   - Sit back and wait for companies to approach!
