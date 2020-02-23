@@ -1,8 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:edit, :update, :destroy]
   before_action :authenticate_user_company!, :except => [:index, :show, :filter_job_company]
-  before_action :set_candidate_info
-  before_action :set_company_info
 
   # GET /jobs
   # GET /jobs.json
@@ -40,6 +38,13 @@ class JobsController < ApplicationController
   # Anyone can see a job, hence it skips the validation in :set_job
   def show
     @job = Job.find(params[:id])
+    if @candidate
+      byebug
+      if @job.matches.any? { |m| m.candidate_id == @candidate.id && (m.candidate_like == false || m.job_like == false) }
+        redirect_to '/dashboard/'
+        return
+      end
+    end
     candidate_match_skills
     if @company == @job.company
       @matches = Match.where(job_id: @job.id, candidate_like: true)
@@ -125,19 +130,6 @@ class JobsController < ApplicationController
         Match.create(candidate: @candidate, job: @job)
         @match = Match.find_by(candidate: @candidate, job: @job)
       end
-    end
-  end
-
-  # If the page viewer is a candidate we then want to access their information.
-  def set_candidate_info
-    if current_user_candidate
-      @candidate = current_user_candidate.candidate
-    end
-  end
-
-  def set_company_info
-    if current_user_company
-      @company = current_user_company.company
     end
   end
 
