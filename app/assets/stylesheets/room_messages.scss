@@ -2,7 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$light-grey: #f0f0f0;
+$white: #ffffff;
+$mid-grey: #999999;
+
+$grey: #262222;
+$primary-color: #4585a9;
+$secondary-color: #ff6161;
+
+$border-grey: #e1e1e1;
+
+$peach: #f8f0ec;
+
+.chat {
+    background: $white;
+    padding: 20px;
+    margin: 30px auto;
+}
+
+.user-name {
+    border-radius: 10px;
+    background: $peach;
+    padding: 0 10px;
+}
+
+.chat-input {
+    width: 100%;
+}
+
+.input-group-append {
+    padding: 0;
+    margin-left: -5px;
+}
 
 .chat-message-container {
-    padding: 20px;
+    padding: 10px;
+
+    .timestamp {
+        color: $mid-grey;
+    }
 }
+
+// .chat-message-container:nth-child(odd) {
+//     background-color: #f7f7f7;
+// }

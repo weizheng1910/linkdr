@@ -13,7 +13,7 @@
         <div class="chat-message-container">
           <div class="row no-gutters">
             <div class="col-auto text-center">
-               <span class="badge-available"><%= room_message.name %>:</span>
+               <span class="user-name"><%= room_message.name %>:</span>
             </div>
 
             <div class="col">
@@ -24,7 +24,9 @@
 
                 <div class="text-right">
                   <small>
+                  <em class="timestamp">
                     <%= time_ago_in_words(room_message.updated_at)%> ago
+                    </em>
                   </small>
                 </div>
               </div>
@@ -35,7 +37,6 @@
     </div>
 
     <%= simple_form_for @room_message,  remote: true do |form| %>
-    <div class="row">
       <div id="the-input-box" class="input-group">
         <%= form.input :message, as: :string,
                                  wrapper: false,
@@ -47,7 +48,6 @@
         <div class="input-group-append col-3">
           <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
         </div>
-      </div>
       </div>
 
       <%= form.input :room_id, as: :hidden %>
