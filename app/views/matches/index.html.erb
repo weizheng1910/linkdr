@@ -1,71 +1,69 @@
 <%= title "Linkdr | Your Matches" %>
+<h1>Your Matches</h1>
+<div class="h1-after">&nbsp;</div>
 <div class="container company">
 <% if current_user_company %>
-	<h3>Your Matches</h3>
-	<div class="container candidate">
-		<section class="candidate-info">
-			<table>
-				<tr>
-					<th>Candidate Name</th>
-					<th>Jobs</th>
-					<th>Status</th>
-				</tr>
-				<% @array.each do |matches_per_job|%>
-					<% matches_per_job.each_with_index do |match, index|%>
-						<tr>
-							<td> <%= match.candidate.given_name %> <%= match.candidate.family_name %></td>
-							<td>
-								<%= match.job.title %>
-							</td>
-							<td>
-								<% if match.job_like && match.candidate_like %>
-									<span class="text-success"> MATCH! <a href= 'rooms/<%= match.id %>' >Link to chat</a></span>
-								<% elsif match.candidate_like && !match.job_like %>
-									<span class="text-primary"> Candidate liked this!</span>
-								<% elsif match.job_like == false %>
-									<span class="text-danger">You have rejected this</span>
-								<% else %>
-									<span> Awaiting your reply </span>
-								<% end %>
-							</td>
-						</tr>
-					<% end %>
-				<% end %>
-			</table>
-		</section>
-	</div>
-
-
-
-	<% else %>
-		<h3>Matches</h3>
-		<div class="container candidate">
-		<section class="candidate-info">
-			<table>
-			<tr>
-				<th>Job Title</th>
-				<th>Company</th>
-				<th>Status</th>
-			</tr>
-			<% @matches.each do |m|%>
-				<tr>
-					<td><%= m.job.title %></td>
-					<td><%= m.job.company.name %></td>
-					<td>
-						<% if m.job_like && m.candidate_like %>
-							<span class="text-success">MATCH! <a href= 'rooms/<%= m.id %>' >Link to chat</a></span>
-						<% elsif m.candidate_like && !m.job_like %>
-							<span class="text-primary">Liked</span>
-						<% elsif m.job_like == false %>
-							<span class="text-danger">Rejected</span>
-						<% else %>
-							<span> Status Pending</span>
-						<% end %>
-					</td>
-				</tr>
+<section class="suggested-jobs">
+<div class="board">
+	<% @array.each do |matches_per_job|%>
+	<% matches_per_job.each_with_index do |match, index|%>
+	<% if match.job_like && match.candidate_like %>
+	<div class="listing">
+		<div class="position-title"><%= match.job.title %></div>
+		<strong>Candidate Name:<br>
+		<%= match.candidate.given_name %> <u><%= match.candidate.family_name %></u>
+		</strong> <br><br>
+		<span class="position-salary">
+			$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
+		</span><br>
+		<p class="description"><%= match.job.description %> <br><br>
+		<% if match.job_like && match.candidate_like %>
+			<a href= 'rooms/<%= match.id %>' >
+			<i class="material-icons">chat</i> Start Chatting</a> 
+		<% end %>
+		</p>
+		<div class="skills">
+		<% match.job.skills.each do |skill| %>
+			<% if match.candidate.skills.include? skill %>
+			<%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+			<% else %>
+			<%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
 			<% end %>
-		</table>
-		</section>
+		<% end %>
+		</div>
 	</div>
 	<% end %>
+		<% end %>
+	<% end %>
+</div>
+</section>
+</div>
+
+<% else %>
+	<section class="suggested-jobs">
+	<div class="board">
+	<% @matches.each do |m|%>
+	<% if m.job_like && m.candidate_like %>
+	<div class="listing">
+		<div class="position-title"><%= m.job.title %></div>
+		<strong>Company Name:<br>
+		<%= m.job.company.name %>
+		</strong> <br><br>
+		<span class="position-salary">
+			$<%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %>
+		</span><br>
+		<p class="description"><%= m.job.description %> <br><br>
+		<% if m.job_like && m.candidate_like %>
+			<a href= 'rooms/<%= m.id %>' >
+			<i class="material-icons">chat</i> Start Chatting</a> 
+		<% end %>
+		</p>
+	</div>
+	<% else %>
+		<i class="material-icons">sentiment_dissatisfied</i>   Womp womp sorry you got no matches
+	<% end %>
+	<% end %>
+	</div>
+	</section>
+<% end %>
 </div>

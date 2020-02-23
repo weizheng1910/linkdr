@@ -33,7 +33,7 @@
   </div>
 
   <div class="actions">
-        <%= link_to "See your matches here:)", matches_path %> <br><br>
+    <%= link_to "See your matches here:)", matches_path %> <br><br>
     <i class="material-icons">chat</i> Start Chatting |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
   <i class="material-icons">email</i> Send An Email
   <% end %>
