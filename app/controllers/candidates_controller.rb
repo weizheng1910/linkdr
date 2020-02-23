@@ -20,7 +20,7 @@ class CandidatesController < ApplicationController
       #   job_like: nil,
       # )
     elsif user_company_signed_in?
-      @candidate = current_user_company.company
+      @company = current_user_company.company
       @matches = Match.where(candidate: @candidate)
       @matches.each do |match|
         if match.job_like and match.candidate_like and match.job.company == current_user_company.company
