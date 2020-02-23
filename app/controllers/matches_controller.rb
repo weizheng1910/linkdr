@@ -2,20 +2,28 @@ class MatchesController < ApplicationController
   before_action :set_match, only: [:edit, :update, :destroy]
 
   def index
+    # Route / job if they are a company
+    # Need to refactor this to have pagination and reordering
+    # (most recent candidates, mark them as being reached out to?)
     if current_user_company
       jobs = current_user_company.company.job
       array = []
       jobs.each do |job|
         array << Match.where(job_id: job.id)
-      end 
+      end
       @array = array
 
+    # Route / job is they are a candidate
+    # Require pagination and ordering on this matches list.
     elsif current_user_candidate
       @matches = Match.where(candidate_id: current_user_candidate.candidate.id)
 
+      # If they are not logged in then redirect them to the index
+    else
+      redirect_to '/'
     end
 
-    
+
   end
 
   def show
@@ -37,7 +45,7 @@ class MatchesController < ApplicationController
           if @match.job_like && @match.candidate_like
             UserMailer.with(candidate: @match.candidate.user_candidate).technical_test.deliver_now
             redirect_to @match.candidate
-            return 
+            return
           end
           format.html { redirect_to "/jobs/" + @match.job.id.to_s + "/matches/", notice: "Feedback accepted" }
         else
