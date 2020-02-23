@@ -20,6 +20,10 @@ $light-pink: rgb(252,232,227);
         box-shadow: 9px 9px 24px 6px rgba(0,0,0,0.11);
         line-height: 40px;
 
+        div {
+            word-break: break-word;
+        }
+
         h3 {
             background: rgb(252,232,227); 
             font-weight: bold;
