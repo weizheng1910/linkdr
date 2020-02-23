@@ -64,6 +64,7 @@ $repeat: 80;
             position: relative;
             margin: 10px;
             text-decoration: none;
+            word-break: break-word;
 
             &:hover {
                 // background: $light-pink;
