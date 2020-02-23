@@ -6,6 +6,7 @@ $grey: #262222;
 $primary-color: #4585a9;
 $secondary-color: #ff6161;
 
+$red: #e51a45;
 $white: #ffffff;
 
 $light-pink: rgb(252,232,227);
@@ -105,4 +106,10 @@ $light-pink: rgb(252,232,227);
             }
         }
     }
+}
+
+
+.error-message {
+    color: $red;
+    font-weight: bold;
 }

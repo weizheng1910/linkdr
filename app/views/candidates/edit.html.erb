@@ -2,9 +2,11 @@
 
 <div class="container candidate">
   <h2>Edit your profile</h2>
-  <p><%= flash[:error] %></p>
   <br>
   <div class="form">
+  <p class="error-message">
+   <%= flash[:error] %>
+  </p>
     <%= form_with scope: :candidate, model: @candidate, class: "candidates-form", local: true do |form| %>
       <div class="row">
         <div class="col-sm-6">
