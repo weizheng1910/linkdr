@@ -37,7 +37,8 @@
       </div>
     <% end %>
     <% @records.each do |job|%>
-      <div class="listing col-sm-4">
+      <div class="listing">
+      <div class="details">
         <div class="position-title"><%= job.title %></div>
         <span class="position-salary">$<%= job.offered_salary %></span> | <span class="location"><%= job.country %></span><br>
         <p class="description"><%= job.description %> </p>
@@ -58,6 +59,7 @@
           <% if @candidate && job.matches.any?{ |m| m.candidate_id == @candidate.id && m.candidate_like }%>
             <span class="badge badge-pill badge-primary">Applied!</span>
           <% end %>
+          </div>
         </div>
       </div>
   <% end %>
