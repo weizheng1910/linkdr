@@ -15,6 +15,11 @@ class RoomsController < ApplicationController
   
 def show
   @room = Room.find(params[:id])
+  if user_company_signed_in?
+  @company = current_user_company.company
+  else 
+  @candidate = current_user_candidate.candidate
+  end
   @room_messages = RoomMessage.where( room_id:params[:id])
   @room_message = RoomMessage.new room: @room
   
