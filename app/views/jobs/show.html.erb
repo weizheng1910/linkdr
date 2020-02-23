@@ -72,13 +72,13 @@
 <% $matches_exist = 0 %>
 <% if @matches %>
   <section class="suggested-jobs">
+        <div class="board">
     <% @matches.each do |m| %>
       <% if m.job_like and m.candidate_like and m.job.company == current_user_company.company %>
         <% $matches_exist += 1 %>
         <% if $matches_exist == 1 %>
           <p>These candidates have liked your job and you have liked them. Why not take it further?</p>
         <% end %>
-        <div class="board">
           <div class="listing">
             <div class="position-title">
               <%= link_to m.candidate.full_name, m.candidate %>
@@ -87,10 +87,10 @@
             <div class="actions">
               <i class="material-icons">remove_red_eye</i><%= link_to 'View Candidate', m.candidate %>
             </div>
-          </div>
         </div>
       <% end %>
     <% end %>
+          </div>
   </section>
 <% end %>
 
