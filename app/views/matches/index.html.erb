@@ -44,7 +44,7 @@
 	<div class="board">
 	<% @matches.each do |m|%>
 	<% if m.job_like && m.candidate_like %>
-	<div class="listing">
+	<div class="listing col-sm-4">
 		<div class="position-title"><%= m.job.title %></div>
 		<strong>Company Name:<br>
 		<%= m.job.company.name %>
