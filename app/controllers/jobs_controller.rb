@@ -20,6 +20,11 @@ class JobsController < ApplicationController
       end
     elsif sort_by == "best matches"
       @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: 6)
+    elsif sort_by == "newest jobs"
+      @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.created_at) }.reverse, items: 6)
+      if current_user_company
+        @pagy, @records = pagy_array(Job.all.sort_by { |job| (job.created_at) }.reverse, items: 5)
+      end
     else
       @pagy, @records = pagy(Job.all, items: 6)
       if current_user_company
