@@ -65,6 +65,7 @@ class MatchesController < ApplicationController
   # Match game for companies
   def companiesmatch
     if current_user_company
+      @company = current_user_company.company
       job_id = params[:id]
       if job_id
         @job = Job.find_by(id: job_id)
@@ -87,6 +88,7 @@ class MatchesController < ApplicationController
   # Match game for candidates
   def candidatesmatch
     if current_user_candidate
+      @candidate = current_user_candidate.candidate
       populate_matches_for_candidate (current_user_candidate)
       @candidate = current_user_candidate.candidate
       @match = Match.where(
