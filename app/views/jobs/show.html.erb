@@ -18,9 +18,9 @@
       <p class="description"><%= @job.description %></p>
       <div class="text-left">
       <% if @company %>
-      <% if @company = @job.company %>
-        <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
-      <% end %>
+        <% if @company == @job.company %>
+          <%= link_to 'Edit Job Listing', edit_job_path(@job) %>
+        <% end %>
       <% end %>
       </div>
       <div class="text-right">
@@ -60,7 +60,7 @@
       <% end %>
       <% if @company %>
       <br>
-      <% if @company = @job.company %>
+      <% if @company == @job.company %>
         <br><%= link_to 'Find some sexy candidates', job_path + '/matches/' %>
 
       <% end %>
