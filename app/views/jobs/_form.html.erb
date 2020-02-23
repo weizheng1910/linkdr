@@ -29,7 +29,7 @@
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :country %>
-    <%= form.country_select :country, required: true %>
+    <%= form.country_select :country, { include_blank: 'Select a country',priority_countries: ["SG"] }, required: true %>
   </div>
   </div>
 
