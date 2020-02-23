@@ -89,7 +89,7 @@ end
     description: Faker::Lorem.paragraph,
     offered_salary: Faker::Number.number(digits: 4).to_s,
     country: "Singapore",
-    company_id: 1
+    company_id: Rand(50)
   )
   5.times do
     skill = Skill.order('RANDOM()').first
