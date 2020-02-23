@@ -144,7 +144,7 @@ candidates.each do |candidate|
     end
     if match == true
       number = rand 4
-      if number = = 0
+      if number == 0
         Match.create(
           job_id: job.id,
           candidate_id: candidate.id,
