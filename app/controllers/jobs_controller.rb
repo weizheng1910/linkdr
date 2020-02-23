@@ -39,7 +39,6 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     if @candidate
-      byebug
       if @job.matches.any? { |m| m.candidate_id == @candidate.id && (m.candidate_like == false || m.job_like == false) }
         redirect_to '/dashboard/'
         return
