@@ -74,7 +74,7 @@ thirdJob.skills << Skill.first
 thirdJob.save
 
 # Create a huge bunch of fake companies
-50.times do
+30.times do
   UserCompany.create(email: Faker::Internet.unique.safe_email, password: Faker::Internet.password)
   company = Company.last
   company.name = Faker::Company.name
@@ -83,13 +83,13 @@ thirdJob.save
   company.save
 end
 
-300.times do
+100.times do
   newJob = Job.new(
     title: Faker::Job.title,
     description: Faker::Lorem.paragraph,
     offered_salary: Faker::Number.number(digits: 4).to_s,
     country: "Singapore",
-    company_id: Rand(50)
+    company_id: rand(30)
   )
   5.times do
     skill = Skill.order('RANDOM()').first
@@ -103,7 +103,7 @@ end
 end
 
 # 50 new candidates with random profiles n stuff
-500.times do
+300.times do
   UserCandidate.create(
     email: Faker::Internet.unique.safe_email,
     password: Faker::Internet.password
