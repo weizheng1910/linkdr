@@ -2,6 +2,7 @@
 
 <div class="container candidate">
   <h2>Edit your profile</h2>
+  <p><%= flash[:error] %></p>
   <br>
   <div class="form">
     <%= form_with scope: :candidate, model: @candidate, class: "candidates-form", local: true do |form| %>

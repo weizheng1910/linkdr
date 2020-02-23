@@ -46,7 +46,14 @@ class CandidatesController < ApplicationController
   def update
     @candidate = Candidate.find(params[:id])
     if params["candidate"]["resume"] != nil
+      begin
       result = Cloudinary::Uploader.upload(params["candidate"]["resume"], :allowed_formats => ["pdf"])
+      rescue => e
+        if e
+          redirect_to edit_candidate_path, flash: { error: "Please upload a PDF file!" }
+          return
+        end
+      end
       @candidate.resume_url = result["url"]
       @candidate.update(candidate_params)
     else
