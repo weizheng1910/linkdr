@@ -13,17 +13,15 @@ class MatchesController < ApplicationController
       end
       @array = array
 
-    # Route / job is they are a candidate
-    # Require pagination and ordering on this matches list.
+      # Route / job is they are a candidate
+      # Require pagination and ordering on this matches list.
     elsif current_user_candidate
       @matches = Match.where(candidate_id: current_user_candidate.candidate.id)
 
       # If they are not logged in then redirect them to the index
     else
-      redirect_to '/'
+      redirect_to "/"
     end
-
-
   end
 
   def show
