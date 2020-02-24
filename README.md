@@ -91,6 +91,6 @@ redis-server
 ## Team
 
 - [Stu](https://github.com/LaustinSpayce)
+- [Rachelle](https://github.com/rachellesg)
 - [Ben](https://github.com/benjacoblee)
 - [Weizheng](https://github.com/weizheng1910)
-- [Rachelle](https://github.com/rachellesg)
