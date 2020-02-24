@@ -4,6 +4,8 @@
 
 Linkdr is where people hire software developers. Like in real life, but better.
 
+**[Hosted on Heroku](http://linkdr.herokuapp.com/)**
+
 ## The App
 
 In this day and age where technology is prevalent, tech companies are constantly hiring. For tech recruiters who are scuttling around trying to match relevant candidates to their available jobs, they simply have no time manually read through bloated resumes.
