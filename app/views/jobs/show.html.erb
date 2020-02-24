@@ -40,15 +40,12 @@
         <div>
           <% if @match.candidate_like == nil %>
           <%= form_with model: @match, local: true do |f| %>
-          <p>
             <%= f.hidden_field :candidate_like, :value => true %>
-          </p>
           <%= f.submit "I am interested in this job" %>
           <% end %>
+          <br>
           <%= form_with model: @match, local: true do |f| %>
-          <p>
             <%= f.hidden_field :candidate_like, :value => false %>
-          </p>
           <%= f.submit "I do not like this job" %>
         <% end %>
           <% elsif @match.candidate_like == true %>
