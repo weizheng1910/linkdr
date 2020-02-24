@@ -23,8 +23,8 @@
         </div>
         <div class="col-sm-12">
           <div class="field">
-            <%= form.label :bio %><br>
-            <%= form.text_area :bio, rows: 5 %>
+            <%= form.label :bio %> <small><em>(Short and sweet, max 150 chars)</em></small><br>
+            <%= form.text_field :bio, maxlength: 150 %>
           </div>
         </div>
         <div class="col-sm-6">

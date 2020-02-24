@@ -111,10 +111,11 @@
                   <strong>Years of experience:</strong> <%= @candidate.years_of_experience %> <br>
                   <strong>Expected salary:</strong> $<%= @candidate.expected_salary %> <br>
                 </div>
-                <div class="col-4">
+                <div class="col-4 profile-image">
                   <%= image_tag current_user_candidate.gravatar_url %>
                 </div>
               </div>
+                  <strong>Bio:</strong> <%= @candidate.bio %> <br>
               <strong>Skills:</strong> <% @candidate.skills.each do |skill| %>
                 <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
               <% end %>
