@@ -15,10 +15,10 @@
 				</strong> <br><br>
 				<span class="position-salary">
 					$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
-				</span><br>
-				<p class="description"><%= match.job.description.truncate(150) %> <br><br>
+				</span> 
+				<p class="description"><%= match.job.description.truncate(150) %>  
 					<a href='/rooms/<%= match.id %>' >
-					<i class="material-icons">chat</i> Start Chatting</a><br>
+					<i class="material-icons">chat</i> Start Chatting</a> 
 					<%= mail_to match.candidate.user_candidate.email do %>
 						<i class="material-icons">email</i> Send An Email
 					<% end %>
@@ -64,10 +64,10 @@
 					</p>
 				</div>
 				<% end %>
-			<% end %>
-		<%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>
-		<% end %>
 		</div>
+		<%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>
+			<% end %>
+		<% end %>
 	</section>
 <% end %>
 </div>
