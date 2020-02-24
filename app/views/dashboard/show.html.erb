@@ -120,7 +120,7 @@
                 <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
               <% end %>
               <% if @candidate.resume_url != nil %>
-                <strong>Resume</strong>
+                <br><strong>Resume:</strong>
                 <%= link_to "Link", @candidate.resume_url %>
               <% end %>
             </div>

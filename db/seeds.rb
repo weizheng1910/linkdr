@@ -200,13 +200,15 @@ meowth.skills << Skill.find(4)
 meowth.skills << Skill.find(5)
 meowth.save
 
+no_of_companies = Company.all.length - 1
+
 20.times do
   newJob = Job.new(
     title: Faker::Job.title,
     description: Faker::Lorem.paragraph,
     offered_salary: Faker::Number.number(digits: 4).to_s,
     country: "Singapore",
-    company_id: rand(30)
+    company_id: rand(no_of_companies) + 1
   )
   5.times do
     skill = Skill.order('RANDOM()').first
