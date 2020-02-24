@@ -67,7 +67,7 @@ redis-server
 - Having two devises user models (one for candidates and one for companies)
   - Managing different views for pages between what candidates would see and what companies would see
   
-## Wireframing
+## Documentation
 
 - **[Brainstorming](/source/brainstorming.jpg)**
 - **[User Flow](/source/user_flow_whiteboard.jpg)**
