@@ -61,6 +61,7 @@ redis-server
 - external files/APIs with cloudinary - especially sharing keys & functionality across team members
 - organising work as a team
 - sorting database and results, pairing candidates with suitable roles
+- having two devises user models (one for candidates and one for companies) - then splitting the views for pages between what candidates would see and what companies would see.
 
 ## Acknowledgements
 
