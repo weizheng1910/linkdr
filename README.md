@@ -23,7 +23,7 @@ Our app aims to streamline the hiring process for tech companies or recruiters, 
   - Sit back and wait for companies to approach!
 
 
-### Installation Instructions
+## Installation Instructions
 Linkdr requires PostgreSQL 10.5 and Redis 5.0.7 to be installed globally
 ```
 bundle install
@@ -35,7 +35,7 @@ redis-server
 ```
 
 
-## APIs
+### APIs
 - **[Cloudinary](https://cloudinary.com/)** - File hosting & upload
 - **[Gravatar](https://en.gravatar.com/)** - User/candidate avatars
 
