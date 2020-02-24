@@ -103,6 +103,7 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    @job.matches.each {|m| m.room.destroy }
     @job.matches.destroy_all
     @job.destroy
     respond_to do |format|
