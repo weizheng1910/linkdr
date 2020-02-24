@@ -43,11 +43,12 @@ redis-server
 - **[Bootstrap](https://getbootstrap.com/)** - Frontend Framework
 
 ### General Approach
-- brainstormed a couple of ideas and narrowed it down to creating an app for tech recruiters + job seekers.
+- brainstormed a couple of ideas and narrowed it down to creating an app for tech recruiters + job seekers
 - identified problems for users
 - came up with personas and their user story 
 - whiteboarding our user flows and wireframes
 - whiteboarding ERD to determine how data needs to be stored and how they are referencing other databases
+- disseminate features to each team member
 - built app in sprints and ran user tests for feedback 
 - debugged, more testing and added more features
 
