@@ -4,7 +4,7 @@
 
 Linkdr is where people hire software developers. Like in real life, but better.
 
-**[Hosted on Heroku](http://linkdr.herokuapp.com/)**
+**[Visit >> Heroku](http://linkdr.herokuapp.com/)**
 
 ## The App
 
