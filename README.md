@@ -50,22 +50,22 @@ redis-server
 - **[Bootstrap](https://getbootstrap.com/)** - Frontend Framework
 
 ### General Approach
-- brainstormed a couple of ideas and narrowed it down to creating an app for tech recruiters + job seekers
-- identified problems for users
-- came up with personas and their user story
-- whiteboarding our user flows and wireframes
-- whiteboarding ERD to determine how data needs to be stored and how they are referencing other databases
-- disseminate features to each team member
-- built app in sprints and ran user tests for feedback
-- debugged, more testing and added more features
+- Brainstormed a couple of ideas and narrowed it down to creating an app for tech recruiters + job seekers
+- Identified problems for users
+- Came up with personas and their user story
+- Whiteboarding our user flows and wireframes
+- Whiteboarding ERD to determine how data needs to be stored and how they are referencing other databases
+- Disseminate features to each team member
+- Built app in sprints and ran user tests for feedback
+- Debugged, more testing and added more features
 
 ### Major Hurdles in building the app.
-- combining two database systems (PostgreSQL and Redis)
-- external files/APIs with cloudinary - especially sharing keys & functionality across team members
-- organising work as a team
-- sorting database and results, pairing candidates with suitable roles
-- having two devises user models (one for candidates and one for companies)
-  - managing different views for pages between what candidates would see and what companies would see.
+- Combining two database systems (PostgreSQL and Redis)
+- External files/APIs with cloudinary - especially sharing keys & functionality across team members
+- Organising work as a team
+- Sorting database and results, pairing candidates with suitable roles
+- Having two devises user models (one for candidates and one for companies)
+  - Managing different views for pages between what candidates would see and what companies would see.
 
 ## Acknowledgements
 
