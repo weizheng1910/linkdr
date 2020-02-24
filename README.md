@@ -33,6 +33,7 @@ Our app targets to streamline the hiring process for tech companies or recruiter
 ## Acknowledgements
 
 - **[Art Illustrations](https://mixkit.co/free-stock-art/)** 
+- **[Icons](https://material.io/resources/icons/?style=baseline)**
 
 ## Team
 
