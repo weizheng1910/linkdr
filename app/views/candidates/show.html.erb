@@ -39,7 +39,7 @@
             <br>
             <br>
             <br>
-            <a href= '/rooms/<%= @matches.order(:updated_at).last.id %>' ><i class="material-icons">chat</i> Start Chatting</a> |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
+            <a href= '/rooms/<%= @matches.order(:updated_at).last.id %>' ><i class="material-icons">chat</i> Start Chatting</a> | <%= mail_to @candidate.user_candidate.email do %>
               <i class="material-icons">email</i> Send An Email
             <% end %>
           </div>
