@@ -23,8 +23,8 @@
         </div>
         <div class="col-sm-12">
           <div class="field">
-            <%= form.label :bio %> <small><em>(Short and sweet, max 150 chars)</em></small><br>
-            <%= form.text_field :bio, maxlength: 150 %>
+            <%= form.label :bio %> <small><em>(Tell us a bit about yourself)</em></small><br>
+            <%= form.text_area :bio %>
           </div>
         </div>
         <div class="col-sm-6">
@@ -41,7 +41,7 @@
         </div>
         <div class="col-sm-12">
           <div class="field">
-            <%= form.label :skills %> <br>
+            <%= form.label :skills %> <small><em>(Choose up to 10)</em></small><br>
             <%= form.collection_check_boxes(:skill_ids, @skills, :id, :name) do |b| %>
               <%= b.label class:"label-checkbox" do%>
                 <%=b.check_box + b.text%>
@@ -51,8 +51,8 @@
         </div>
         <div class="col-sm-6">
           <div class="field">
-            <%= form.label :resume %>
-            <%= form.file_field :resume %>
+            <%= form.label :resume %> <small><em>(.pdf only please)</em></small><br/>
+            <%= form.file_field :resume, accept: 'application/pdf' %>
           </div>
         </div>
         <div class="col-sm-6">

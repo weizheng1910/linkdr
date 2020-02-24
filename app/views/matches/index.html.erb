@@ -3,65 +3,72 @@
 <div class="h1-after">&nbsp;</div>
 <div class="container company">
 <% if current_user_company %>
-<section class="suggested-jobs">
-<div class="board">
-	<% @array.each do |matches_per_job|%>
-	<% matches_per_job.each_with_index do |match, index|%>
-	<% if match.job_like && match.candidate_like %>
-	<div class="listing">
-		<div class="position-title"><%= match.job.title %></div>
-		<strong>Candidate Name:<br>
-		<%= match.candidate.given_name %> <u><%= match.candidate.family_name %></u>
-		</strong> <br><br>
-		<span class="position-salary">
-			$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
-		</span><br>
-		<p class="description"><%= match.job.description %> <br><br>
-		<% if match.job_like && match.candidate_like %>
-			<a href= 'rooms/<%= match.id %>' >
-			<i class="material-icons">chat</i> Start Chatting</a> 
-		<% end %>
-		</p>
-		<div class="skills">
-		<% match.job.skills.each do |skill| %>
-			<% if match.candidate.skills.include? skill %>
-			<%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
-			<% else %>
-			<%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+	<section class="suggested-jobs">
+		<div class="board">
+			<% @array.each do |matches_per_job|%>
+			<% matches_per_job.each_with_index do |match, index|%>
+			<% if match.job_like && match.candidate_like %>
+			<div class="listing">
+				<div class="position-title"><%= match.job.title %></div>
+				<strong>Candidate Name:<br>
+				<%= match.candidate.given_name %> <u><%= match.candidate.family_name %></u>
+				</strong> <br><br>
+				<span class="position-salary">
+					$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
+				</span><br>
+				<p class="description"><%= match.job.description %> <br><br>
+				<% if match.job_like && match.candidate_like %>
+					<a href= 'rooms/<%= match.id %>' >
+					<i class="material-icons">chat</i> Start Chatting</a>
+				<% end %>
+				</p>
+				<div class="skills">
+				<% match.job.skills.each do |skill| %>
+					<% if match.candidate.skills.include? skill %>
+					<%= content_tag(:div, skill.name, class: "badge badge-pill badge-primary") %>
+					<% else %>
+					<%= content_tag(:span, skill.name, class: "badge badge-pill badge-secondary") %>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
 			<% end %>
-		<% end %>
+				<% end %>
+			<% end %>
 		</div>
+	</section>
 	</div>
-	<% end %>
-		<% end %>
-	<% end %>
-</div>
-</section>
-</div>
 
 <% else %>
 	<section class="suggested-jobs">
-	<div class="board">
-	<% @matches.each do |m|%>
-	<% if m.job_like && m.candidate_like %>
-	<div class="listing col-sm-4">
-		<div class="position-title"><%= m.job.title %></div>
-		<strong>Company Name:<br>
-		<%= m.job.company.name %>
-		</strong> <br><br>
-		<span class="position-salary">
-			$<%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %>
-		</span><br>
-		<p class="description"><%= m.job.description %> <br><br>
-		<% if m.job_like && m.candidate_like %>
-			<a href= 'rooms/<%= m.id %>' >
-			<i class="material-icons">chat</i> Start Chatting</a> 
+		<div class="board">
+		<% if @matches.length == 0 %>
+			<section class="suggested-jobs">
+				You've not matched with any jobs yet! <%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>
+			</section>
+		<% else %>
+			<% @matches.each do |m|%>
+				<% if m.job_like && m.candidate_like %>
+				<div class="listing col-sm-4">
+					<div class="position-title"><%= m.job.title %></div>
+					<strong>Company Name:<br>
+					<%= m.job.company.name %>
+					</strong> <br><br>
+					<span class="position-salary">
+						$<%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %>
+					</span><br>
+					<p class="description"><%= m.job.description %> <br><br>
+					<% if m.job_like && m.candidate_like %>
+						<a href= 'rooms/<%= m.id %>' >
+						<i class="material-icons">chat</i> Start Chatting</a>
+					<% end %>
+					</p>
+				</div>
+				<% end %>
+			<% end %>
+		<%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>
 		<% end %>
-		</p>
-	</div>
-	<% end %>
-	<% end %>
-	</div>
+		</div>
 	</section>
 <% end %>
 </div>

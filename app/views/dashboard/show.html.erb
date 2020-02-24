@@ -38,7 +38,7 @@
             <br>
             <br>
             You posted <strong><%= @company.job.length %></strong> jobs.<br><br>
-            
+
                 <%= link_to matches_path do %>
                     View All Matches  <i class="material-icons">link</i>
                   <% end %>
@@ -62,7 +62,7 @@
                 <div class="skills">
                     <% job.skills.each do |skill| %>
                       <%= content_tag(:div, skill.name, class: "badge badge-pill badge-secondary") %>
-                    <% end %>                
+                    <% end %>
                 </div>
                 <div class="actions">
                   <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(job) %> <% if @company && @company == job.company %>
@@ -115,7 +115,7 @@
                   <%= image_tag current_user_candidate.gravatar_url %>
                 </div>
               </div>
-                  <strong>Bio:</strong> <%= @candidate.bio %> <br>
+                  <strong>Bio:</strong> <%= @candidate.bio.truncate(150) %> <br>
               <strong>Skills:</strong> <% @candidate.skills.each do |skill| %>
                 <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
               <% end %>
@@ -129,7 +129,7 @@
               <br>
               <br>
               You expressed interest in <strong><%= @matches.length %></strong> jobs.<br><br>
-              
+
                 <%= link_to matches_path do %>
                     View All Matches  <i class="material-icons">link</i>
                   <% end %>
@@ -157,7 +157,7 @@
                     <% end %>
                   </div>
                   <div class="actions">
-                    <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %> 
+                    <i class="material-icons">remove_red_eye</i>  <%= link_to "View Job", job_path(m.job) %>
                     <% if @company && @company == job.company %>
                       | <%= link_to 'Edit', edit_job_path(job) %> or <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
                     <% end %>
@@ -170,7 +170,7 @@
           </section>
         <% elsif %>
           <section class="suggested-jobs">
-            You've not liked any jobs yet! <%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>  
+            You've not liked any jobs yet! <%= link_to jobs_path do %>View all Job Listings  <i class="material-icons">work_outline</i> <% end %>
           </section>
         <% end %>
       </div>
