@@ -18,7 +18,10 @@
 				</span><br>
 				<p class="description"><%= match.job.description.truncate(150) %> <br><br>
 					<a href='/rooms/<%= match.id %>' >
-					<i class="material-icons">chat</i> Start Chatting</a>
+					<i class="material-icons">chat</i> Start Chatting</a><br>
+					<%= mail_to match.candidate.user_candidate.email do %>
+						<i class="material-icons">email</i> Send An Email
+					<% end %>
 				</p>
 				<div class="skills">
 				<% match.job.skills.each do |skill| %>
@@ -57,7 +60,7 @@
 					</span><br>
 					<p class="description"><%= m.job.description.truncate(150) %> <br><br>
 						<a href='/rooms/<%= m.id %>' >
-						<i class="material-icons">chat</i> Start Chatting</a>
+						<i class="material-icons">chat</i> Start Chatting</a><br>
 					</p>
 				</div>
 				<% end %>
