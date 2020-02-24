@@ -17,10 +17,8 @@
 					$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
 				</span><br>
 				<p class="description"><%= match.job.description %> <br><br>
-				<% if match.job_like && match.candidate_like %>
-					<a href= 'rooms/<%= match.id %>' >
+					<a href='/rooms/<%= match.id %>' >
 					<i class="material-icons">chat</i> Start Chatting</a>
-				<% end %>
 				</p>
 				<div class="skills">
 				<% match.job.skills.each do |skill| %>
@@ -58,10 +56,8 @@
 						$<%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %>
 					</span><br>
 					<p class="description"><%= m.job.description %> <br><br>
-					<% if m.job_like && m.candidate_like %>
-						<a href= 'rooms/<%= m.id %>' >
+						<a href='/rooms/<%= m.id %>' >
 						<i class="material-icons">chat</i> Start Chatting</a>
-					<% end %>
 					</p>
 				</div>
 				<% end %>
