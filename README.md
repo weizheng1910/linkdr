@@ -8,7 +8,7 @@ Linkdr is where people hire software developers. Like in real life, but better.
 
 ## The App
 
-In this day and age where technology is prevalent, tech companies are constantly hiring. For tech recruiters who are scuttling around trying to match relevant candidates to their available jobs, they simply have no time manually read through bloated resumes.
+In this day and age where technology is prevalent, tech companies are constantly hiring. For tech recruiters who are scuttling around trying to match relevant candidates to their available jobs, they simply have no time to manually read through bloated resumes.
 
 Our app aims to streamline the hiring process for tech companies and recruiters, only asking for relevant details from candidates. No more wordy cover letters which no one bothers to read anyway or repeated details being asked!
 
