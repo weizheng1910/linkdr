@@ -3,7 +3,6 @@
   <% if job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
-
       <ul>
       <% job.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -29,7 +28,12 @@
 <div class="col-sm-6">
   <div class="field">
     <%= form.label :country %>
-    <%= form.country_select :country, { include_blank: 'Select a country', priority_countries: ["SG"] }, required: true %>
+    <% if @job.country %>
+      <%= form.country_select :country, { include_blank: 'Select a country', priority_countries: ["SG"],
+      selected: ISO3166::Country.find_country_by_name(@job.country).alpha2}, required: true %>
+    <% else %>
+      <%= form.country_select :country, { include_blank: 'Select a country', priority_countries: ["SG"] }, required: true %>
+    <% end %>
   </div>
   </div>
 
@@ -59,7 +63,7 @@
 
 <div class="col-sm-12">
     <div class="actions row">
-    <div class="col-sm-6 text-left"> 
+    <div class="col-sm-6 text-left">
       <%= link_to 'Back', jobs_path %>
     </div>
     <div class="col-sm-6 text-right">
