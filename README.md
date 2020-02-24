@@ -22,9 +22,6 @@ Our app aims to streamline the hiring process for tech companies or recruiters, 
   - Express interest in jobs
   - Sit back and wait for companies to approach!
 
-## APIs
-- **[Cloudinary](https://cloudinary.com/)** - File hosting & upload
-- **[Gravatar](https://en.gravatar.com/)** - User/candidate avatars
 
 ### Installation Instructions
 Linkdr requires PostgreSQL 10.5 and Redis 5.0.7 to be installed globally
@@ -36,6 +33,12 @@ rails db:seed
 rails server
 redis-server
 ```
+
+
+## APIs
+- **[Cloudinary](https://cloudinary.com/)** - File hosting & upload
+- **[Gravatar](https://en.gravatar.com/)** - User/candidate avatars
+
 
 
 ## Application Development Process
