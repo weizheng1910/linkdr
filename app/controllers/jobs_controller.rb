@@ -19,7 +19,7 @@ class JobsController < ApplicationController
     elsif sort_by == "salary desc"
       @pagy, @records = pagy(Job.order("offered_salary DESC").where.not(id: jobs_to_exclude), items: items_to_display)
     elsif sort_by == "best matches"
-      @pagy, @records = pagy_array(Job.where.not(id: jobs_to_exclude).sort_by { |job| (job.skills & @candidate.skills).length }.reverse, items: items_to_display)
+      @pagy, @records = pagy_array(Job.where.not(id: jobs_to_exclude).sort_by { |job| (job.skills & @candidate.skills).length - job.skills.length }.reverse, items: items_to_display)
     elsif sort_by == "newest jobs"
       @pagy, @records = pagy(Job.order("created_at DESC").where.not(id: jobs_to_exclude), items: items_to_display)
     else
