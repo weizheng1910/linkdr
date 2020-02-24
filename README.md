@@ -22,6 +22,8 @@ Our app targets to streamline the hiring process for tech companies or recruiter
   - Express interest in jobs
   - Sit back and wait for companies to approach!
   
+## APIs
+
 ### Installation Instructions
 ``` 
 bundle install
