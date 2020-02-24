@@ -4,7 +4,6 @@ class Candidate < ActiveRecord::Base
 	has_many :matches
 	# Commented out unless we need the relation heading back
 	# belongs_to :user_candidate
-	validates :bio, length: { maximum: 500 }
 
 	after_save :validate_skills
 
