@@ -65,7 +65,15 @@ redis-server
 - Organising work as a team
 - Sorting database and results, pairing candidates with suitable roles
 - Having two devises user models (one for candidates and one for companies)
-  - Managing different views for pages between what candidates would see and what companies would see.
+  - Managing different views for pages between what candidates would see and what companies would see
+  
+## Wireframing
+
+- **[Brainstorming](/source/brainstorming.jpg)**
+- **[User Flow](/source/user_flow_whiteboard.jpg)**
+- **[ERD](/source/matches_table_erd.jpg)**
+- **[Team Meeting](/source/team_meeting.jpg)**
+- **[Personas](/source/user_persona_janice_whiteboard.jpg)**
 
 ## Acknowledgements
 
