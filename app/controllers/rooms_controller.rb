@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    redirect_to dashboard_path
   end
 
   def new
