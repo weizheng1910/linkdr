@@ -21,6 +21,16 @@ Our app targets to streamline the hiring process for tech companies or recruiter
   - View relevant job listings
   - Express interest in jobs
   - Sit back and wait for companies to approach!
+  
+### Installation Instructions
+``` 
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails server
+redis-server
+```
 
 
 ## Application Development Process
