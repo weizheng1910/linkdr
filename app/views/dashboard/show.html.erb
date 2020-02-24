@@ -20,9 +20,9 @@
             </div>
             <div class="row">
               <div class="col-8">
-                <strong>Company Name:</strong> <%= @company.name %><br>
-                <strong>Company Industry:</strong> <%= @company.industry %><br>
-                <strong>Company Size:</strong> <%= @company.size %><br>
+                <strong>Company Name:</strong><br><%= @company.name %><br>
+                <strong>Company Industry:</strong><br><%= @company.industry %><br>
+                <strong>Company Size:</strong><br><%= @company.size %><br>
               </div>
               <div class="col-4 profile-pic">
                 <% if current_user_company.company.avatar_url != nil %>
