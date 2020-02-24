@@ -83,7 +83,7 @@
             <div class="position-title">
               <%= link_to m.candidate.full_name, m.candidate %>
             </div>
-            <p class="description"><%= m.candidate.bio %></p>
+            <p class="description"><%= m.candidate.bio.truncate(150) %></p>
             <div class="actions">
               <i class="material-icons">remove_red_eye</i><%= link_to 'View Candidate', m.candidate %>
             </div>
