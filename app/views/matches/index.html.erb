@@ -16,7 +16,7 @@
 				<span class="position-salary">
 					$<%= match.job.offered_salary %></span> | <span class="location"><%= match.job.country %>
 				</span><br>
-				<p class="description"><%= match.job.description %> <br><br>
+				<p class="description"><%= match.job.description.truncate(150) %> <br><br>
 					<a href='/rooms/<%= match.id %>' >
 					<i class="material-icons">chat</i> Start Chatting</a>
 				</p>
@@ -55,7 +55,7 @@
 					<span class="position-salary">
 						$<%= m.job.offered_salary %></span> | <span class="location"><%= m.job.country %>
 					</span><br>
-					<p class="description"><%= m.job.description %> <br><br>
+					<p class="description"><%= m.job.description.truncate(150) %> <br><br>
 						<a href='/rooms/<%= m.id %>' >
 						<i class="material-icons">chat</i> Start Chatting</a>
 					</p>

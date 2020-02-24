@@ -260,7 +260,7 @@ candidates.each do |candidate|
       end
     end
     if match == true
-      number = rand 4
+      number = rand 2
       if number == 0
         Match.create(
           job_id: job.id,
