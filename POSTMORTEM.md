@@ -21,7 +21,7 @@ Making more use of partial views to split up components.
 
 For each, please include code examples that each team member wrote.
 
-Weizheng:
+Weizheng: Chat-app , authentication for chat-app
 
 
 **Rachelle**
@@ -84,21 +84,21 @@ end
 
 ## What habits did I use during this unit that helped me?
 
-Weizheng:
+Weizheng: Pen and paper to problem solve.
 Rachelle: frequent commits
 Ben: making use of git branches
 Stu: committing all the time no matter how small the change
 
 ## What habits did I have during this unit that I can improve on?
 
-Weizheng:
+Weizheng: git committing.
 Rachelle: more testing before committing,
 Ben: Better communication with teammates.
 Stu: Better communication with teammates.
 
 ## How is the overall level of the course during this unit? (instruction, course materials, etc.)
 
-Weizheng:
+Weizheng: Gud
 Rachelle: A+
 Ben: gud
 Stu: A+
