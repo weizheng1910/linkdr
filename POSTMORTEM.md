@@ -40,7 +40,18 @@ $repeat: 80;
 }
 ```
 
-Ben:
+**Ben:**
+Handling Rails exception
+```
+begin
+  result = Cloudinary::Uploader.upload(params["candidate"]["resume"], :allowed_formats => ["pdf"])
+  rescue => e
+    if e
+      redirect_to edit_candidate_path, flash: { error: "Please upload a PDF file!" }
+      return
+    end
+end
+```
 
 **Stu:**
 Index method for jobs:
@@ -82,7 +93,7 @@ Stu: committing all the time no matter how small the change
 
 Weizheng:
 Rachelle: more testing before committing,
-Ben:
+Ben: Better communication with teammates.
 Stu: Better communication with teammates.
 
 ## How is the overall level of the course during this unit? (instruction, course materials, etc.)
