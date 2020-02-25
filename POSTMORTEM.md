@@ -1,12 +1,12 @@
 ## Approach and Process
 
-## What in our process and approach to this project would we do differently next time?
+### What in our process and approach to this project would we do differently next time?
 
 Splitting of workload in the initial stages would have been more efficient. There were times where once we were done with a feature we would have no structure on what next to touch on.
 
 Have a clearer idea of user flow. 
 
-## What in our process and approach to this project went well that we would repeat next time?
+### What in our process and approach to this project went well that we would repeat next time?
 
 Planning ahead what technologies and methods we would use. We each took charge of what feature we wanted to work on individually.
 
