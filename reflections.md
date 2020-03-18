@@ -141,8 +141,7 @@ JSX View File
 
 The file responsible for authenticating the WebSocket Connection can be found in the channels/application_cable/connection.rb 
 
-In order to authenticate the WebSocket Connection, I have to validate that the client is a registered candidate or company. When a registered user logs in, a cookie is created using its email address. The cookie is later used to verify the client when it attempts to establish the WebSocket connection.
-
+Before establishing the WebSocket Connection, the client has to be verified as a registered candidate or company. The verification works by checking if the email(stored as a cookie) exists within the database. The connection will not happen when authentication fail, preventing intruders from getting into the chat without logging in. 
 ```
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
@@ -168,10 +167,7 @@ module ApplicationCable
   end
 end
 ```
-
-The above authentication prevents unwanted intruders from getting into the chat without logging in. 
-
-To prevent registered users from visiting the chats that they shouldn't be in, we verify their data using the Rooms table from the database. There should only be one candidate and one company authorised in each chatroom. All other busybodies are redirected back to their main dashboard.
+To prevent registered users from visiting the chatrooms they shouldn't be in, we authenticate them using the Rooms table from the database. There should only be one candidate and one company authorised in each chatroom. All other busybodies are redirected back to their main dashboard.
 
 ```
 def show
