@@ -1,6 +1,6 @@
-# Wei Zheng Summary Reflections
+# ChatRoom Problem-Solving Process
 
-How I build the chat application for Linkdr. I decided to build a chat-app using Websockets as a challenge to myself. After Googling, I came across this [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets)
+After Googling, I came across this [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets)
 
 After scanning through the document. I learnt that WebSockets is a protocol which enables constant 2-way communication between the client and the server of a web application.
 
@@ -14,7 +14,7 @@ This is where WebSockets come in. It allows any client subscribed to the channel
 
 ## Chatroom
 
-In the case of the chatroom, all rooms will be subscribed to the RoomChannel, where there is a stream passing messages back and forth for each room.
+In the case of the chatroom, all rooms will be subscribed to the RoomChannel, where there is a stream passing messages back and forth within each room.
 
 ```
 class RoomChannel < ApplicationCable::Channel
@@ -29,10 +29,10 @@ end
 
 ``` 
 
-Once subscription to the channel is established, the `subscribed` method gets called. The method sets up the stream.
+Once subscription to the channel is established, the `subscribed` method gets called, which sets up the stream.
 
-Every time we do a AJAX post request to post a message, we must also do a broadcast to the stream.
-`RoomChannel.broadcast_to @room, @room_message` Or <Channel Name>.broadcast_to [stream],[data]
+Every time we do a AJAX post request to post a message, we must also do a broadcast to the stream, so that those subsribed can instantly view those messages.
+`RoomChannel.broadcast_to @room, @room_message` Or `<Channel Name>.broadcast_to <stream>,<data>`
 
 ```
 def create
@@ -46,7 +46,7 @@ end
 
 Now that we can broadcast our messages, we also need to be able to receive them.
 
-Using jQuery, we are able to subscribe to a room stream.
+We can subscribe to a room stream using jQuery.
 The call is `App.cable.subscriptions.create` 
 
 When a new message is broadcasted, the messaging template snippet (identified by the tag [data-role="message-template"]) is cloned and updated with the new message, and then appended to the main chat-div where all the messages are displayed (identified by the tag[data-channel-subscribe="room"])
