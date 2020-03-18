@@ -19,7 +19,7 @@ The page has to be re-rendered to get the latest state of the processes. With AJ
 #### WebSockets
 
 This is where WebSockets come in. It establishes a **persistent** **bi-directional** connection between the client and the server,  
-By subscribing to a channel, a client will be able to get the latest state of the processes.
+By subscribing to the designated channel, any client will be able to get the latest state of the processes.
 
 ## Chatroom
 
