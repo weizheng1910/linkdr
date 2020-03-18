@@ -1,6 +1,6 @@
 # ChatRoom Elaboration
 
-I learnt to build the chatroom using this [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets),
+I learnt to build the chatroom using the [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets),
 which uses ActionCable.
 
 ## ActionCable
@@ -9,13 +9,17 @@ ActionCable allows Websockets to be integrated to the Rails App using a client-s
 ## What is WebSockets
 WebSockets is a protocol which enables constant 2-way communication between the client and the server of a web application.
 
-In a standard HTTP protocol, communication is one way - the client sends a request to the server, which ends the communication after sending a response back to the client. 
+####HTTP Protocol
+In a standard HTTP protocol, the client sends a request to the server, which ends the communication after sending a response back to the client.</br> Communication is also uni-directional - the client will only receive data if it makes a requests to the server; the server will not initiate communication with it. 
 
 There are drawbacks to this protocol.
 
 The page has to be re-rendered to get the latest state of the processes. With AJAX, you might be able to do so without refreshing the page, but only the client who has made the request gets the update. Other clients viewing the same page will still have to re-render the page to get the latest state.
 
-This is where WebSockets come in. It allows any client subscribed to the channel to be able to get the latest state of the processes.
+####WebSockets
+
+This is where WebSockets come in. It establishes a **persistent** connection between the client and the server,  
+By subscribing to a channel, a client will be able to get the latest state of the processes.
 
 ## Chatroom
 
@@ -141,7 +145,7 @@ JSX View File
 
 The file responsible for authenticating the WebSocket Connection can be found in the channels/application_cable/connection.rb 
 
-Before establishing the WebSocket Connection, the client has to be verified as a registered candidate or company. The verification works by checking if the email(stored as a cookie) exists within the database. The connection will not happen when authentication fail, preventing intruders from getting into the chat without logging in. 
+Before the WebSocket Connection is established, the client has to be verified as a registered candidate or company. The verification works by checking if the email(stored in a cookie which is created upon login) exists within the database. The connection will not happen if authentication fails, preventing intruders from getting into the chat without logging in. 
 ```
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
