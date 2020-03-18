@@ -21,14 +21,16 @@
         </div>
         <div class="col-sm-6">
           <div class="field">
+            <% @company_size = ["Small, 0-10 employees", "Medium, 10-50 employees",
+              "Large 50-200 employees", "Multinational 200+ employees"] %>
             <%= form.label :company_Size %><br>
-            <%= form.text_field :size %>
+            <%= form.collection_select :size, @company_size, :to_s, :to_s, {:include_blank => false}, {:class => 'form-control form-control-lg'} %>
           </div>
         </div>
         <div class="col-sm-12">
           <div class="field">
             <%= form.label :avatar %><br>
-            <%= form.file_field :avatar %>
+            <%= form.file_field :avatar, accept: 'image/png,image/jpg,image/jpeg,image/gif' %>
           </div>
         </div>
         <div class="col-sm-12">

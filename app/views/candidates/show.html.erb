@@ -32,16 +32,13 @@
             </div>
           </div>
           <div class="actions">
-            <%= link_to "See your matches here:)", matches_path %> <br>
-            <br>
-            <%= link_to "See more outstanding candidates", request.referer.present? ? request.referer : default_path %>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href= '/rooms/<%= @matches.order(:updated_at).last.id %>' ><i class="material-icons">chat</i> Start Chatting</a> |  <i class="material-icons">developer_mode</i> Send a Technical Test | <%= mail_to @candidate.user_candidate.email do %>
+            <a href= '/rooms/<%= @matches.order(:updated_at).last.id %>' ><i class="material-icons">chat</i> Start Chatting</a> | <%= mail_to @candidate.user_candidate.email do %>
               <i class="material-icons">email</i> Send An Email
             <% end %>
+
+            <br>
+            <br>
+            <%= link_to "See other outstanding candidates", request.referer.present? ? request.referer : default_path %>
           </div>
         </div>
       </div>

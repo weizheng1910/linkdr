@@ -20,9 +20,9 @@
             </div>
             <div class="row">
               <div class="col-8">
-                <strong>Company Name:</strong> <%= @company.name %><br>
-                <strong>Company Industry:</strong> <%= @company.industry %><br>
-                <strong>Company Size:</strong> <%= @company.size %><br>
+                <strong>Company Name:</strong><br><%= @company.name %><br>
+                <strong>Company Industry:</strong><br><%= @company.industry %><br>
+                <strong>Company Size:</strong><br><%= @company.size %><br>
               </div>
               <div class="col-4 profile-pic">
                 <% if current_user_company.company.avatar_url != nil %>
@@ -58,7 +58,7 @@
                 </div>
                 <span class="position-salary">$<%= job.offered_salary %></span> | <span
                   class="location"><%= job.country %></span><br>
-                <p class="description"><%= job.description %></p>
+                <p class="description"><%= job.description.truncate(100) %></p>
                 <div class="skills">
                     <% job.skills.each do |skill| %>
                       <%= content_tag(:div, skill.name, class: "badge badge-pill badge-secondary") %>
@@ -120,7 +120,7 @@
                 <%= content_tag(:div, skill.name, class: "badge badge-pill badge-available") %>
               <% end %>
               <% if @candidate.resume_url != nil %>
-                <strong>Resume</strong>
+                <br><strong>Resume:</strong>
                 <%= link_to "Link", @candidate.resume_url %>
               <% end %>
             </div>
@@ -146,7 +146,7 @@
                   <div class="position-title"><%= m.job.title %></div>
                   <span class="position-salary">$<%= m.job.offered_salary %></span> | <span
                 class="location"><%= m.job.country %></span><br>
-                  <p class="description"><%= m.job.description %></p>
+                  <p class="description"><%= m.job.description.truncate(100) %></p>
                   <div class="skills">
                     <% m.job.skills.each do |skill| %>
                       <% if m.candidate.skills.include? skill %>

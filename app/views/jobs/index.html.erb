@@ -40,7 +40,7 @@
       <div class="listing">
         <div class="position-title"><%= job.title %></div>
         <span class="position-salary">$<%= job.offered_salary %></span> | <span class="location"><%= job.country %></span><br>
-        <p class="description"><%= job.description %> </p>
+        <p class="description"><%= job.description.truncate(150) %> </p>
         <p class="skills">Skills Required: <% if @candidate %>
             <% count = 0 %>
             <% job.skills.each do |skill| %>

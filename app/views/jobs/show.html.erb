@@ -40,15 +40,12 @@
         <div>
           <% if @match.candidate_like == nil %>
           <%= form_with model: @match, local: true do |f| %>
-          <p>
             <%= f.hidden_field :candidate_like, :value => true %>
-          </p>
           <%= f.submit "I am interested in this job" %>
           <% end %>
+          <br>
           <%= form_with model: @match, local: true do |f| %>
-          <p>
             <%= f.hidden_field :candidate_like, :value => false %>
-          </p>
           <%= f.submit "I do not like this job" %>
         <% end %>
           <% elsif @match.candidate_like == true %>
@@ -83,7 +80,7 @@
             <div class="position-title">
               <%= link_to m.candidate.full_name, m.candidate %>
             </div>
-            <p class="description"><%= m.candidate.bio %></p>
+            <p class="description"><%= m.candidate.bio.truncate(150) %></p>
             <div class="actions">
               <i class="material-icons">remove_red_eye</i><%= link_to 'View Candidate', m.candidate %>
             </div>
