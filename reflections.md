@@ -10,7 +10,7 @@ ActionCable allows Websockets to be integrated to the Rails App using a client-s
 WebSockets is a protocol which enables constant 2-way communication between the client and the server of a web application.
 
 #### HTTP Protocol
-In a standard HTTP protocol, the client sends a request to the server, which ends the communication after sending a response back to the client.</br> Communication is also uni-directional - the client will only receive data if it makes a requests to the server; the server will not initiate communication with it. 
+In a standard HTTP protocol, connection between the client and the server is **short-lived** - the client sends a request to the server, which ends the communication after sending a response back to the client.</br> Communication is also **uni-directional** - the client will only receive data if it makes a requests to the server; the server will not initiate communication with it. 
 
 There are drawbacks to this protocol.
 
@@ -18,7 +18,7 @@ The page has to be re-rendered to get the latest state of the processes. With AJ
 
 #### WebSockets
 
-This is where WebSockets come in. It establishes a **persistent** connection between the client and the server,  
+This is where WebSockets come in. It establishes a **persistent** **bi-directional** connection between the client and the server,  
 By subscribing to a channel, a client will be able to get the latest state of the processes.
 
 ## Chatroom
