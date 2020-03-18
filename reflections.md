@@ -1,8 +1,13 @@
 # ChatRoom Elaboration
 
-After Googling, I came across this [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets)
+I learnt to build the chatroom using this [site](https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets),
+which uses ActionCable.
 
-After scanning through the document. I learnt that WebSockets is a protocol which enables constant 2-way communication between the client and the server of a web application.
+## ActionCable
+ActionCable allows Websockets to be integrated to the Rails App using a client-side JavaScript framework and a server-side Ruby framework.
+
+## What is WebSockets
+WebSockets is a protocol which enables constant 2-way communication between the client and the server of a web application.
 
 In a standard HTTP protocol, communication is one way - the client sends a request to the server, which ends the communication after sending a response back to the client. 
 
@@ -31,7 +36,7 @@ end
 
 Once subscription to the channel is established, the `subscribed` method gets called, which sets up the stream.
 
-Every time we do a AJAX post request to post a message, we must also do a broadcast to the stream, so that those subsribed can instantly view those messages.
+Every time we post a message, we must broadcast it into the stream, so that those subscribed can instantly see those messages.
 `RoomChannel.broadcast_to @room, @room_message` Or `<Channel Name>.broadcast_to <stream>,<data>`
 
 ```
@@ -44,7 +49,7 @@ def create
 end
 ``` 
 
-Now that we can broadcast our messages, we also need to be able to receive them.
+Now that we can broadcast our messages, we need to be able to receive them too.
 
 We can subscribe to a room stream using jQuery.
 The call is `App.cable.subscriptions.create` 
@@ -136,7 +141,7 @@ JSX View File
 
 The file responsible for authenticating the WebSocket Connection can be found in the channels/application_cable/connection.rb 
 
-In order to authenticate the WebSocket Connection, I have to validate that the client is a registered candidate or company. When a registered user logs in, a cookie of its email is created which is later use to verify the client when it attempts to establish the WebSocket connection.
+In order to authenticate the WebSocket Connection, I have to validate that the client is a registered candidate or company. When a registered user logs in, a cookie is created using its email address. The cookie is later used to verify the client when it attempts to establish the WebSocket connection.
 
 ```
 module ApplicationCable
@@ -166,7 +171,7 @@ end
 
 The above authentication prevents unwanted intruders from getting into the chat without logging in. 
 
-To prevent logged-in users from visiting the chats that they should not be in, we verify their data using the Rooms table in the database. There should only be one authorised candidate and one authorised company allowed in each chatroom. All other busybodies are redirected back to their main dashboard.
+To prevent registered users from visiting the chats that they shouldn't be in, we verify their data using the Rooms table from the database. There should only be one candidate and one company authorised in each chatroom. All other busybodies are redirected back to their main dashboard.
 
 ```
 def show
