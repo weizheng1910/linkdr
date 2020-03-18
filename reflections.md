@@ -8,7 +8,7 @@ In a standard HTTP protocol, communication is one way - the client sends a reque
 
 There are drawbacks to this protocol.
 
-The page has to be re-rendered to get the latest state of the processes. With AJAX, you might be able to do so without refreshing the page, but only the client which makes the AJAX request is able to. Other clients viewing the same page will still have to re-render the page to get the latest state.
+The page has to be re-rendered to get the latest state of the processes. With AJAX, you might be able to do so without refreshing the page, but only the client who has made the request gets the update. Other clients viewing the same page will still have to re-render the page to get the latest state.
 
 This is where WebSockets come in. It allows any client subscribed to the channel to be able to get the latest state of the processes.
 
