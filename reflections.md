@@ -88,7 +88,7 @@ $(function() {
 
 ```
 
-JSX View File
+html.erb File
 
 ```
 <div class="col">
