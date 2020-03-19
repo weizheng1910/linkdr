@@ -25,7 +25,7 @@ By subscribing to the designated channel, any client will be able to get the lat
 
 In the case of the chatroom, all rooms will be subscribed to the RoomChannel, where there is a stream passing messages back and forth within each room.
 
-```
+``` ruby
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     room = Room.find params[:room]
@@ -43,7 +43,7 @@ Once subscription to the channel is established, the `subscribed` method gets ca
 Every time we post a message, we must broadcast it into the stream, so that those subscribed can instantly see those messages.
 `RoomChannel.broadcast_to @room, @room_message` Or `<Channel Name>.broadcast_to <stream>,<data>`
 
-```
+``` ruby
 def create
   @room_message = RoomMessage.create user: current_user,
                                      room: @room,
