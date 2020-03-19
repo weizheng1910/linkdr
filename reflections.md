@@ -61,7 +61,7 @@ The call is `App.cable.subscriptions.create`
 When a new message is broadcasted, the messaging template snippet (identified by the tag [data-role="message-template"]) is cloned and updated with the new message, and then appended to the main chat-div where all the messages are displayed (identified by the tag[data-channel-subscribe="room"])
 
 jQuery Code
-```
+``` jquery
 $(function() {
   $('[data-channel-subscribe="room"]').each(function(index, element) {
     var $element = $(element),
@@ -146,7 +146,7 @@ html.erb File
 The file responsible for authenticating the WebSocket Connection can be found in the channels/application_cable/connection.rb 
 
 Before the WebSocket Connection is established, the client has to be verified as a registered candidate or company. The verification works by checking if the email(stored in a cookie which is created upon login) exists within the database. The connection will not happen if authentication fails, preventing intruders from getting into the chat without logging in. 
-```
+``` ruby
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
     identified_by :current_user
@@ -173,7 +173,7 @@ end
 ```
 To prevent registered users from visiting the chatrooms they shouldn't be in, we authenticate them using the Rooms table from the database. There should only be one candidate and one company authorised in each chatroom. All other busybodies are redirected back to their main dashboard.
 
-```
+``` ruby
 def show
   @room = Room.find(params[:id])
   if user_company_signed_in?
