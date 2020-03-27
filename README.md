@@ -54,7 +54,7 @@ redis-server
 - **[Ruby 2.5.1](https://www.ruby-lang.org/en/)** - Main Language
 - **[Rails 5.2.4.1](https://rubyonrails.org)** - Backend Framework
 - **[PostgreSQL 10.5](https://www.postgresql.org/)** - SQL Database
-- **[Redis 5.0.7](https://redis.io/)** - Chat/Messaging Database
+- **[Redis 5.0.7](https://redis.io/)** - Message Broker
 - **[Bootstrap](https://getbootstrap.com/)** - Frontend Framework
 
 ### General Approach
